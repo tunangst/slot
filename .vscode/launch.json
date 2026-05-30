@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug (venv)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "C:/Users/snype/source/repos/U.Stake/U.Stake/u_stake.py",
+            "console": "integratedTerminal",
+            "cwd": "C:/Users/snype/source/repos/U.Stake",
+            "python": "C:/Users/snype/source/repos/U.Stake/U.Stake/venv/Scripts/python.exe"
+        }
+    ]
+}
+            // "python": "C:/Users/snype/source/repos/U.Stake/U.Stake/venv/Scripts/python.exe",

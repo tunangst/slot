@@ -1,0 +1,27 @@
+u_stake.py::MyTestClass::test_anything
+--------------------------------------------------------------------
+Last Page: https://github.com/
+ Duration: 8.75s
+  Browser: Chrome 147.0.7727.117
+   Driver: chromedriver 147.0.7727.117
+Timestamp: 1777745784  (Unix Timestamp)
+     Date: Saturday, May 2, 2026
+     Time: 1:16:24 PM  (Central Daylight Time, UTC-05:00)
+--------------------------------------------------------------------
+Traceback:
+  File "C:\Users\snype\source\repos\U.Stake\U.Stake\u_stake.py", line 36, in test_anything
+    self.click('span[data-target*="inputButtonText"]')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\snype\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\seleniumbase\fixtures\base_case.py", line 436, in click
+    element = page_actions.wait_for_element_visible(
+        self.driver,
+    ...<3 lines>...
+        original_selector=original_selector,
+    )
+  File "C:\Users\snype\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\seleniumbase\fixtures\page_actions.py", line 524, in wait_for_element_visible
+    timeout_exception(ElementNotVisibleException, message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\snype\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\seleniumbase\fixtures\page_actions.py", line 270, in timeout_exception
+    raise exc(msg)
+Exception: Message: 
+ Element {span[data-target*="inputButtonText"]} was not visible after 7 seconds!

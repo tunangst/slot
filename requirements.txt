@@ -1,0 +1,9 @@
+# U.Stake/venv/Scripts/Activate.ps1
+
+# pip install -r requirements.txt
+seleniumbase
+paddleocr
+paddlepaddle
+numpy
+opencv-python
+scikit-image
