@@ -6,13 +6,13 @@ import json
 # image2 = './U.Stake/images/screenshot2.png'
 slotFile = 'slotdata.json'
 
-def SaveFile(list):
+def SaveFile(location,list):
     
-    with open('slotdata.json','w',encoding= 'utf-8') as f:
+    with open(location,'w',encoding= 'utf-8') as f:
          json.dump(list, f, indent=4)
 
-def LoadFile():
-    with open("slotdata.json", "r", encoding="utf-8") as f:
+def LoadFile(location):
+    with open(location, "r", encoding="utf-8") as f:
         return json.load(f)
 
 def Sleep(sb, number = False):

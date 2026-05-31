@@ -1,6 +1,10 @@
 from classes.classUtilityFunctions import getInfoFromScrapedSlots
 from utilityFunctions import GetRandomNumber
 
+rejectSlotList = [
+    '0daygames-corsairs-hex'
+]
+
 builtSlotList = [
     '0xedge-wild-zeus',
     '0xedgefrutti-bonanza',
@@ -18,6 +22,7 @@ builtSlotList = [
     '1000lakesstudios-candy-carnival-spring-spritz',
     '1000lakesstudios-twisted-candy-shop',
     '1000lakesstudios-arctic-runes',
+    '1000lakesstudios-yakuza-v-i-p',
     '1000lakes-rotation-of-ra',
     '111lightproductions-the-syndicate',
     '111lightproductions-gemburst-rush',

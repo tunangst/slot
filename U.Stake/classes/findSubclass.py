@@ -52,50 +52,50 @@ def findSubclass(sb, slotName, obs):
                         # case '0daygames-corsairs-hex':
                 # newSubclass = ZeroDayGamesCorsairsHex(sb, slotObj)
                 case '0xedge-wild-zeus':
-                        ZeroxEdgeWildZeus(sb,obs)
+                        return ZeroxEdgeWildZeus(sb,obs)
                 case '0xedgefrutti-bonanza':
-                        ZeroxEdgeFruttiBonanza(sb,obs)
+                        return ZeroxEdgeFruttiBonanza(sb,obs)
                 case '0xedge-super-candy-drop':
-                        ZeroxEdgeSuperCandyDrop(sb,obs)
+                        return ZeroxEdgeSuperCandyDrop(sb,obs)
                 case '0xedge-do-not-redeem-it':
-                        ZeroxEdgeDoNotRedeemIt(sb,obs)
+                        return ZeroxEdgeDoNotRedeemIt(sb,obs)
                 case '0xedge-5-alpha-planets':
-                        ZeroxEdgeFiveAlphaPlanets(sb,obs)
+                        return ZeroxEdgeFiveAlphaPlanets(sb,obs)
                 case '1000lakesstudios-toivo':
-                        OneThousandLakesStudiosToivo(sb,obs)
+                        return OneThousandLakesStudiosToivo(sb,obs)
                 case '1000lakesstudios-disco-cubes':
-                        OneThousandLakesStudiosDiscoCubes(sb,obs)
+                        return OneThousandLakesStudiosDiscoCubes(sb,obs)
                 case '1000lakesstudios-bass-fury':
-                        OneThousandLakesStudiosBassFury(sb,obs)
+                        return OneThousandLakesStudiosBassFury(sb,obs)
                 case '1000lakesstudios-operation-epic-taco':
-                        OneThousandLakesStudiosOperationEpicTaco(sb,obs)
+                        return OneThousandLakesStudiosOperationEpicTaco(sb,obs)
                 case '1000lakesstudios-r-i-p-1000':
-                        OneThousandLakesStudiosRIPOneThousand(sb,obs)
+                        return OneThousandLakesStudiosRIPOneThousand(sb,obs)
                 case '1000lakesstudios-flying-finns-1000':
-                        OneThousandLakesStudiosFlyingFinsOneThousand(sb,obs)
+                        return OneThousandLakesStudiosFlyingFinsOneThousand(sb,obs)
                 case '1000lakesstudios-bloom-em':
-                        OneThousandLakesStudiosBloomEm(sb,obs)
+                        return OneThousandLakesStudiosBloomEm(sb,obs)
                 case '1000lakesstudios-apex-syndicate':
-                        OneThousandLakesStudioApexSyndicate(sb,obs)
+                        return OneThousandLakesStudioApexSyndicate(sb,obs)
                 case '1000lakesstudios-yakuza-v-i-p':
-                        OneThousandLakesStudioYakuzaVIP(sb,obs)
+                        return OneThousandLakesStudioYakuzaVIP(sb,obs)
                 case '1000lakesstudios-candy-carnival-spring-spritz':
-                        OneThousandLakesStudioCandyCarnivalSpringSpritz(sb,obs)
+                        return OneThousandLakesStudioCandyCarnivalSpringSpritz(sb,obs)
                 case '1000lakesstudios-twisted-candy-shop':
-                        OneThousandLakesStudioTwistedCandyShop(sb,obs)
+                        return OneThousandLakesStudioTwistedCandyShop(sb,obs)
                 case '1000lakesstudios-arctic-runes':
-                        OneThousandLakesStudioArcticRunes(sb,obs)
+                        return OneThousandLakesStudioArcticRunes(sb,obs)
                 case '1000lakes-rotation-of-ra':
-                        OneThousandLakesRotationOfRa(sb,obs)
+                        return OneThousandLakesRotationOfRa(sb,obs)
                 case '111lightproductions-the-syndicate':
-                        OneThousandOneHundredElevenLightProductionsTheSyndicate(sb,obs)
+                        return OneThousandOneHundredElevenLightProductionsTheSyndicate(sb,obs)
                 case '111lightproductions-gemburst-rush':
-                        OneThousandOneHundredElevenLightProductionsGemburstRush(sb,obs)
+                        return OneThousandOneHundredElevenLightProductionsGemburstRush(sb,obs)
                 case '111lightproductions-nfl-touchdown':
-                        OneThousandOneHundredElevenLightProductionsNFLTouchdown(sb,obs)
+                        return OneThousandOneHundredElevenLightProductionsNFLTouchdown(sb,obs)
                 case '111lightproductions-dragon-fortunes':
-                        OneThousandOneHundredElevenLightProductionsDragonFortunes(sb,obs)
+                        return OneThousandOneHundredElevenLightProductionsDragonFortunes(sb,obs)
                 case '111lightproductions-legends-of-the-lost-grove':
-                        OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(sb,obs)
+                        return OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(sb,obs)
                 case _:
                         print('no subclass found')

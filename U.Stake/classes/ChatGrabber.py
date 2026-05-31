@@ -8,8 +8,8 @@ import re
 import os
 
 class ChatGrabber:
-    def __init__(self):
-        self.timeout = 30
+    def __init__(self, timeout):
+        self.timeout = timeout
         self.startTime = datetime.now()
         self.endTime = self.calcEndTime()
         self.msgPool = []

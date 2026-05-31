@@ -5,6 +5,7 @@ stake = 'https://stake.com/casino/group/slots'
 
 class ScrapeSlots:
     def __init__(self, sb):
+        self.locationName = 'slotdata.json'
         self.sb = sb
         self.fullSlotList = []
         sb.open(stake)
@@ -51,7 +52,7 @@ class ScrapeSlots:
             providers[i].click()
         # add indexes
         self.addIndexes()
-        SaveFile(self.fullSlotList)
+        SaveFile(self.locationName,self.fullSlotList)
 
     def checkRefresh(self,providerString):
         providers = self.sb.find_elements(providerString)

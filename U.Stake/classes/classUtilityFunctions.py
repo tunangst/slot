@@ -7,18 +7,29 @@ from classes.Capture import Capture
 slotFile = 'slotdata.json'
 ssDir = './U.Stake/images/screenshots/'
 
+def pullScrapedSlots():
+    slotList = []
+    with open(slotFile,'r') as file:
+        slotdata = json.load(file)
+        for i in range(len(slotdata)):
+            for j in range(len(slotdata[i])):
+                slotObj = slotdata[i][j]
+                print(slotObj)
+                slotList.append(slotObj)
+        return slotList
+
 def getInfoFromScrapedSlots(slotInput):
-         # loop over slotData
-        with open(slotFile, "r") as file:
-            slotdata = json.load(file)
-            for i in range(len(slotdata)):
-                for j in range(len(slotdata[i])):
-                    if slotdata[i][j]['full'] == slotInput:
-                         print(f'Done! Found: {slotdata[i][j]["full"]}')
-                         return slotdata[i][j]
-                    else:
-                         print(f'looping to find slot: {slotdata[i][j]["full"]}')
-            return False
+    # loop over slotData
+    with open(slotFile, 'r') as file:
+        slotdata = json.load(file)
+        for i in range(len(slotdata)):
+            for j in range(len(slotdata[i])):
+                if slotdata[i][j]['full'] == slotInput:
+                        print(f'Done! Found: {slotdata[i][j]["full"]}')
+                        return slotdata[i][j]
+                else:
+                        print(f'looping to find slot: {slotdata[i][j]["full"]}')
+        return False
 
 def takePicture(sb,action=False, increment=0, fileName=False, eleStr=False):
         destination = ''
@@ -69,7 +80,6 @@ def scaleImg(sb,eleStr,destination):
 
         scaled = cv2.resize(img,(w, h),interpolation=cv2.INTER_AREA)
         cv2.imwrite(destination, scaled)
-
 
 def compareImages(image1,image2,similarity=False):
     # Load images
