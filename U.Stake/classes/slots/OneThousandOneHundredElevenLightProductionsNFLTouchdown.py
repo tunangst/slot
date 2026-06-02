@@ -12,6 +12,7 @@ nextWordList = ['youwon','you won', 'won', 'you']
 class OneThousandOneHundredElevenLightProductionsNFLTouchdown(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
+        self.buyoutBalance = 200
         self.estimatedWaitTime = 30
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
@@ -28,11 +29,11 @@ class OneThousandOneHundredElevenLightProductionsNFLTouchdown(Slot):
         editIndex = 1
         bonusStr = 'div.mg-buy-circle'
         self.sb.find_element(bonusStr).click()
-        Sleep(self.sb)
+        # Sleep(self.sb,5)
         # choose scatter
-        scatterStr = 'button.buy'
+        scatterStr = '//div[contains(@class,"bonus-cards")]/div[contains(@class,"bonus-card")]/div[contains(@class,"bonus-footer")]'
         self.sb.find_elements(scatterStr)[editIndex].click()
-        Sleep(self.sb)
+        # Sleep(self.sb)
         yesStr = 'div.confirm-btn'
         self.sb.find_elements(yesStr)[editIndex].click()
 
@@ -45,13 +46,16 @@ class OneThousandOneHundredElevenLightProductionsNFLTouchdown(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWordsList)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
+    def findFinBal(self):
         canvasStr = 'canvas'
         canvas = self.sb.find_element(canvasStr).click()
-        # div.class="mg-data-panel > div.class="mg-data-panel-container > div[2] > span.class="mg-balance-value
-        totalWinStr = '//div[contains(@class,"mg-data-panel")]/div[4]/div[2]/span[contains(@class,"mg-balance-value")]'
-        totalWin = self.sb.find_element(totalWinStr).text
-        self.winnings = cleanNumber(totalWin)
-        pass
+        Sleep(self.sb,3)
+        # totalWinStr = '//div[contains(@class,"mg-data-panel")]/div[4]/div[2]/span[contains(@class,"mg-balance-value")]'
+        # totalWin = self.sb.find_element(totalWinStr).text
+        # self.winnings = cleanNumber(totalWin)
+
+        balanceStr = 'span.mg-balance-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

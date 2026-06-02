@@ -8,9 +8,11 @@ class ZeroxEdgeSuperCandyDrop(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.startingBalance = 1000.00
+        self.buyoutBalance = 213
         self.estimatedWaitTime = 35
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -49,7 +51,7 @@ class ZeroxEdgeSuperCandyDrop(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin()
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
     def checkFin(self):
         ssNum = 1
@@ -69,7 +71,10 @@ class ZeroxEdgeSuperCandyDrop(Slot):
             if sameImg:
                 return
 
-    def findWinnings(self):
-        value = self.sb.get_text('span.info-value.win')
-        filteredVal = cleanNumber(value)
-        self.winnings = filteredVal
+    def findFinBal(self):
+        # value = self.sb.get_text('span.info-value.win')
+        # filteredVal = cleanNumber(value)
+        # self.winnings = filteredVal
+        balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

@@ -10,10 +10,13 @@ closingWords = ['total win', 'totalwin']
 
 class OneThousandLakesStudioCandyCarnivalSpringSpritz(Slot):
     def __init__(self, sb, obs):
+        Sleep(sb,3)
         super().__init__(sb, slotCode, obs)
+        self.buyoutBalance = 500
         self.estimatedWaitTime = 30
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -22,7 +25,7 @@ class OneThousandLakesStudioCandyCarnivalSpringSpritz(Slot):
 
     def setup(self):
         # click bonus
-        bonusOption = 3
+        Sleep(self.sb,3)
         bonusStr = 'button.game-buttons__bonus'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
@@ -42,11 +45,19 @@ class OneThousandLakesStudioCandyCarnivalSpringSpritz(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWords)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
-        winBlockStr = 'div[data-variant="win"]'
-        winBlock = self.sb.find_element(winBlockStr)
-        winTxt = winBlock.text
-        win = cleanNumber(winTxt)
-        self.winnings = win
+    def findFinBal(self):
+        # winBlockStr = 'div[data-variant="win"]'
+        # winBlock = self.sb.find_element(winBlockStr)
+        # winTxt = winBlock.text
+        # win = cleanNumber(winTxt)
+        # self.winnings = win
+        Sleep(self.sb,5)
+        canvasStr = 'canvas#game'
+        self.sb.find_element(canvasStr).click()
+
+        Sleep(self.sb,5)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

@@ -8,9 +8,11 @@ class ZeroxEdgeFiveAlphaPlanets(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.startingBalance = 1000.00
+        self.buyoutBalance = 250
         self.estimatedWaitTime = 60
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,5)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -37,7 +39,7 @@ class ZeroxEdgeFiveAlphaPlanets(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin()
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
     def checkFin(self):
         ssNum = 1
@@ -57,6 +59,10 @@ class ZeroxEdgeFiveAlphaPlanets(Slot):
             if sameImg:
                 return
 
-    def findWinnings(self):
-        value = self.sb.get_text('span.info-value')
-        self.winnings = cleanNumber(value)
+    def findFinBal(self):
+        # value = self.sb.get_text('span.info-value')
+        # self.winnings = cleanNumber(value)
+        balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
+        balance = self.sb.find_element(balanceStr).text
+        self.endingBalance = cleanNumber(balance)
+        self.finalBalance = self.endingBalance - self.startingBalance

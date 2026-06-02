@@ -11,9 +11,11 @@ closingWordsList = ['totalwin','total win']
 class OneThousandLakesRotationOfRa(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
+        self.buyoutBalance = 500
         self.estimatedWaitTime = 240
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -48,11 +50,20 @@ class OneThousandLakesRotationOfRa(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWordsList)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
-        winBlockStr = 'div[data-variant="win"]'
-        winBlock = self.sb.find_element(winBlockStr)
-        winTxt = winBlock.text
-        win = cleanNumber(winTxt)
-        self.winnings = win
+    def findFinBal(self):
+        # winBlockStr = 'div[data-variant="win"]'
+        # winBlock = self.sb.find_element(winBlockStr)
+        # winTxt = winBlock.text
+        # win = cleanNumber(winTxt)
+        # self.winnings = win
+
+        Sleep(self.sb,5)
+        canvasStr = 'canvas#game'
+        self.sb.find_element(canvasStr).click()
+
+        Sleep(self.sb,5)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

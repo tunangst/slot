@@ -3,6 +3,7 @@ from classes.slots.ZeroxEdgeFruttiBonanza import ZeroxEdgeFruttiBonanza
 from classes.slots.ZeroxEdgeSuperCandyDrop import ZeroxEdgeSuperCandyDrop
 from classes.slots.ZeroxEdgeDoNotRedeemIt import ZeroxEdgeDoNotRedeemIt
 from classes.slots.ZeroxEdgeFiveAlphaPlanets import ZeroxEdgeFiveAlphaPlanets
+from classes.slots.ZeroxLuckyLabObsidianSpin import ZeroxLuckyLabObsidianSpin
 from classes.slots.OneThousandLakesStudiosToivo import OneThousandLakesStudiosToivo
 from classes.slots.OneThousandLakesStudiosDiscoCubes import OneThousandLakesStudiosDiscoCubes
 from classes.slots.OneThousandLakesStudiosBassFury import OneThousandLakesStudiosBassFury
@@ -42,7 +43,7 @@ from classes.slots.OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGr
 # ]
 
 override = True
-overrideName = '111lightproductions-legends-of-the-lost-grove'
+overrideName = '0xluckylab-obsidian-spin'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -61,6 +62,8 @@ def findSubclass(sb, slotName, obs):
                         return ZeroxEdgeDoNotRedeemIt(sb,obs)
                 case '0xedge-5-alpha-planets':
                         return ZeroxEdgeFiveAlphaPlanets(sb,obs)
+                case '0xluckylab-obsidian-spin':
+                        return ZeroxLuckyLabObsidianSpin(sb,obs)
                 case '1000lakesstudios-toivo':
                         return OneThousandLakesStudiosToivo(sb,obs)
                 case '1000lakesstudios-disco-cubes':
@@ -97,5 +100,6 @@ def findSubclass(sb, slotName, obs):
                         return OneThousandOneHundredElevenLightProductionsDragonFortunes(sb,obs)
                 case '111lightproductions-legends-of-the-lost-grove':
                         return OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(sb,obs)
+
                 case _:
                         print('no subclass found')

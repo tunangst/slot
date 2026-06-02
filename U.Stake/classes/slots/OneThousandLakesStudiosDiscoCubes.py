@@ -11,12 +11,12 @@ closingWords = ['total win']
 class OneThousandLakesStudiosDiscoCubes(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.startingBalance = 1000.00
+        self.buyoutBalance = 500
         self.estimatedWaitTime = 90
         # need to pass two splash screens
         # add more time to pass splash screen
-        Sleep(sb,3)
         self.changeScene() # take the screen blocks off
+        Sleep(sb,5)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -29,11 +29,9 @@ class OneThousandLakesStudiosDiscoCubes(Slot):
         bonusStr = 'button.game-buttons__bonus'
         self.sb.find_element(bonusStr).click()
         # choose scatter
-        # frame-bonus__grid > artical > frame-bonus__card-body > frame-bonus__card-footer > button
         scatterStr = '//article[@data-offer-id="buy_12fs"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
-        # scatterStr = f'(//div[contains(@class, "tiles-row")]/div[{bonusOption}]//div[contains(@class, "tile-body")]//button)[1]'
         self.sb.find_element(scatterStr).click()
-        Sleep(self.sb)
+        Sleep(self.sb,3)
         yesStr = 'button.frame-confirm__accept'
         self.sb.find_element(yesStr).click()
 
@@ -47,7 +45,7 @@ class OneThousandLakesStudiosDiscoCubes(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin()
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
     def checkFin(self):
         # need to keep element inside the loop due to needing to rerefrence the element
@@ -62,8 +60,15 @@ class OneThousandLakesStudiosDiscoCubes(Slot):
             else:
                 print(f'Not quite finished checking if finished: {value}')
 
-    def findWinnings(self):
-        winStr = 'div.frame-hud__display--win > span.frame-hud__display-value'
-        winEle = self.sb.find_element(winStr)
-        val = cleanNumber(winEle.text)
-        self.winnings = val
+    def findFinBal(self):
+        # winStr = 'div.frame-hud__display--win > span.frame-hud__display-value'
+        # winEle = self.sb.find_element(winStr)
+        # val = cleanNumber(winEle.text)
+        # self.winnings = val
+        Sleep(self.sb,10)
+        canvasStr = '#game'
+        self.sb.find_element(canvasStr).click()
+        Sleep(self.sb,30)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

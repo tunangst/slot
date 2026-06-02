@@ -14,12 +14,12 @@ findWord = ['total win','totalwin']
 class OneThousandLakesStudiosRIPOneThousand(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.startingBalance = 1000.00
+        self.buyoutBalance = 500
         self.estimatedWaitTime = 60
         # need to pass two splash screens
         # add more time to pass splash screen
-        Sleep(sb,3)
         self.changeScene() # take the screen blocks off
+        Sleep(sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -48,11 +48,18 @@ class OneThousandLakesStudiosRIPOneThousand(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWords)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
-        location = './U.Stake/images/checkFin.png'
-        cap = Capture(imageLocation=location,action='find next',targetWordList=findWord)
-        winTxt = cap.targetBlock['text']
-        val = cleanNumber(winTxt)
-        self.winnings = val
+    def findFinBal(self):
+        # location = './U.Stake/images/checkFin.png'
+        # cap = Capture(imageLocation=location,action='find next',targetWordList=findWord)
+        # winTxt = cap.targetBlock['text']
+        # val = cleanNumber(winTxt)
+        # self.winnings = val
+        Sleep(self.sb,5)
+        canvasStr = '#game'
+        self.sb.find_element(canvasStr).click()
+        Sleep(self.sb,5)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

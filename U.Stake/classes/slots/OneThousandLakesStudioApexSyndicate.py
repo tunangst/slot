@@ -11,10 +11,11 @@ closingWords = ['total win']
 class OneThousandLakesStudioApexSyndicate(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.startingBalance = 1000.00
+        self.buyoutBalance = 777
         self.estimatedWaitTime = 120
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,5)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -23,7 +24,7 @@ class OneThousandLakesStudioApexSyndicate(Slot):
 
     def setup(self):
         # click bonus
-        bonusOption = 3
+        Sleep(self.sb,3)
         bonusStr = 'button.game-buttons__bonus'
         self.sb.find_element(bonusStr).click()
         # choose scatter
@@ -42,11 +43,19 @@ class OneThousandLakesStudioApexSyndicate(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWords)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
-        winBlockStr = 'div[data-variant="win"]'
-        winBlock = self.sb.find_element(winBlockStr)
-        winTxt = winBlock.text
-        win = cleanNumber(winTxt)
-        self.winnings = win
+    def findFinBal(self):
+        # winBlockStr = 'div[data-variant="win"]'
+        # winBlock = self.sb.find_element(winBlockStr)
+        # winTxt = winBlock.text
+        # win = cleanNumber(winTxt)
+        # self.winnings = win
+        Sleep(self.sb,5)
+        canvasStr = 'canvas#game'
+        self.sb.find_element(canvasStr).click()
+
+        Sleep(self.sb,5)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance

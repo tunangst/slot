@@ -11,7 +11,8 @@ closingWords = ['total win', 'totalwin']
 class OneThousandLakesStudioTwistedCandyShop(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.estimatedWaitTime = 30
+        self.buyoutBalance = 500
+        self.estimatedWaitTime = 180
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
         Sleep(self.sb,10)
@@ -42,14 +43,19 @@ class OneThousandLakesStudioTwistedCandyShop(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWords)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
+    def findFinBal(self):
         # crop the screenshot because it will pull in date and other out of range options
+        Sleep(self.sb,3)
         canvasStr = 'canvas#game'
-        canvas = self.sb.find_element(canvasStr)
-        picLocation = takePicture(sb=self.sb,action='fin',eleStr=canvasStr)
-        cap = Capture(imageLocation=picLocation,action='find number')
-        winStr = cap.status
-        self.winnings = cleanNumber(winStr)
+        self.sb.find_element(canvasStr).click()
+        Sleep(self.sb,20)
+        # picLocation = takePicture(sb=self.sb,action='fin',eleStr=canvasStr)
+        # cap = Capture(imageLocation=picLocation,action='find number')
+        # winStr = cap.status
+        # self.winnings = cleanNumber(winStr)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance
         pass

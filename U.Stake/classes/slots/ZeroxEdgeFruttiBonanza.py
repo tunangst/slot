@@ -8,9 +8,11 @@ class ZeroxEdgeFruttiBonanza(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.startingBalance = 1000.00
+        self.buyoutBalance = 300
         self.estimatedWaitTime = 50
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -47,7 +49,7 @@ class ZeroxEdgeFruttiBonanza(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin()
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
     def checkFin(self):
         ssNum = 1
@@ -67,6 +69,10 @@ class ZeroxEdgeFruttiBonanza(Slot):
             if sameImg:
                 return
 
-    def findWinnings(self):
-        value = self.sb.get_text('span.info-value.win')
-        self.winnings = cleanNumber(value)
+    def findFinBal(self):
+        # value = self.sb.get_text('span.info-value.win')
+        # self.winnings = cleanNumber(value)
+        balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance
+

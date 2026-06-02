@@ -15,7 +15,7 @@ class OneThousandOneHundredElevenLightProductionsGemburstRush(Slot):
         self.estimatedWaitTime = 30
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,7)
+        Sleep(self.sb,3)
         self.passSplashScreen()
         Sleep(self.sb,2)
         self.setup()

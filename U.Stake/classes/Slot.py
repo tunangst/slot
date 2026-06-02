@@ -17,8 +17,10 @@ class Slot:
         self.splashScreenCoords = (0,0)
         self.buyBonusCoords = (0,0)
         self.startingBalance = 1000.00
+        self.buyoutBalance = 0
         self.endingBalance = 0
         self.winnings = 0
+        self.finalBalance = 0
 
         #self.checkSlotNameInput(slotNameInput)
         self.loadSlotPage()
@@ -72,7 +74,10 @@ class Slot:
     def findWinnings(self):
         pass
 
+    def findFinBal(self):
+        pass
+
     def changeScene(self):
         # obs scene codes here
-        self.obs.activeCheckWrapper(self.obs.mainScene)
+        self.obs.runMainScene()
         pass

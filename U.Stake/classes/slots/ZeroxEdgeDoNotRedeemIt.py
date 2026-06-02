@@ -13,6 +13,7 @@ class ZeroxEdgeDoNotRedeemIt(Slot):
         self.spinCount = 50
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -34,7 +35,7 @@ class ZeroxEdgeDoNotRedeemIt(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin()
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
     def checkFin(self):
         # find autoplay count and break when the element goes invisible
@@ -48,8 +49,9 @@ class ZeroxEdgeDoNotRedeemIt(Slot):
             if not countIsPresent:
                 return
 
-    def findWinnings(self):
+    def findFinBal(self):
         spanStr = 'span.info-value'
         txtNum = self.sb.get_text(spanStr)
-        value = cleanNumber(txtNum)
-        self.winnings = self.betValue * self.spinCount + value
+        # self.winnings = self.betValue * self.spinCount + value
+        self.endingBalance = cleanNumber(txtNum)
+        self.finalBalance = self.endingBalance - self.startingBalance

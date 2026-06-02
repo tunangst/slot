@@ -11,10 +11,11 @@ closingWords = ['total win']
 class OneThousandLakesStudiosToivo(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.startingBalance = 1000.00
+        self.buyoutBalance = 300
         self.estimatedWaitTime = 30
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -22,7 +23,6 @@ class OneThousandLakesStudiosToivo(Slot):
         # record ending balance
 
     def passSplashScreen(self):
-        Sleep(self.sb)
         bodyStr = 'body'
         self.sb.switch_to_frame('iframe')
         self.sb.find_element(bodyStr).click()
@@ -36,9 +36,7 @@ class OneThousandLakesStudiosToivo(Slot):
         bonusStr = 'button.game-buttons__bonus'
         self.sb.find_element(bonusStr).click()
         # choose scatter
-        # frame-bonus__grid > artical > frame-bonus__card-body > frame-bonus__card-footer > button
         scatterStr = '//article[@data-offer-id="buy_super"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
-        # scatterStr = f'(//div[contains(@class, "tiles-row")]/div[{bonusOption}]//div[contains(@class, "tile-body")]//button)[1]'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
         yesStr = 'button.frame-confirm__accept'
@@ -54,10 +52,18 @@ class OneThousandLakesStudiosToivo(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWords)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
-    def findWinnings(self):
-        picLocation = takePicture(sb=self.sb,action='custom',fileName=winningScreenshot)
-        cap = Capture(imageLocation=picLocation,action='find number')
-        winStr = cap.status
-        self.winnings = cleanNumber(winStr)
+    def findFinBal(self):
+        # picLocation = takePicture(sb=self.sb,action='custom',fileName=winningScreenshot)
+        # cap = Capture(imageLocation=picLocation,action='find number')
+        # winStr = cap.status
+        # self.winnings = cleanNumber(winStr)
+        Sleep(self.sb,5)
+        canvasStr = '#game'
+        info = clickDomElement(sb=self.sb,selector=canvasStr)
+        Sleep(self.sb,5)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance
+        pass

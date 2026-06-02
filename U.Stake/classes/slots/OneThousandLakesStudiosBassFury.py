@@ -11,12 +11,12 @@ closingWords = ['the big catch over'] # 'totalwin'
 class OneThousandLakesStudiosBassFury(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.startingBalance = 1000.00
+        self.buyoutBalance = 250
         self.estimatedWaitTime = 50
         # need to pass two splash screens
         # add more time to pass splash screen
-        Sleep(sb,3)
         self.changeScene() # take the screen blocks off
+        Sleep(sb,3)
         self.passSplashScreen()
         self.setup()
         self.run()
@@ -45,14 +45,20 @@ class OneThousandLakesStudiosBassFury(Slot):
         Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin(closingWords)
         # find what was won
-        self.findWinnings()
+        self.findFinBal()
 
 
-    def findWinnings(self):
+    def findFinBal(self):
         # crop the screenshot because it will pull in date and other out of range options
+        Sleep(self.sb,5)
         canvasStr = 'canvas#game'
-        canvas = self.sb.find_element(canvasStr)
-        picLocation = takePicture(sb=self.sb,action='fin',fileName=winningScreenshot,eleStr=canvasStr)
-        cap = Capture(imageLocation=picLocation,action='find number')
-        winStr = cap.status
-        self.winnings = cleanNumber(cap.status)
+        self.sb.find_element(canvasStr).click()
+        # picLocation = takePicture(sb=self.sb,action='fin',fileName=winningScreenshot,eleStr=canvasStr)
+        # cap = Capture(imageLocation=picLocation,action='find number')
+        # winStr = cap.status
+        # self.winnings = cleanNumber(cap.status)
+        
+        Sleep(self.sb,5)
+        balanceStr = 'span.frame-hud__display-value'
+        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.finalBalance = self.endingBalance - self.startingBalance
