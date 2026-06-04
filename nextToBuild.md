@@ -1,26 +1,5 @@
 [
     {
-        "name": "obsidian spin",
-        "creator": "0xluckylab",
-        "full": "0xluckylab-obsidian-spin",
-        "index1": 2,
-        "index2": 0
-    },
-    {
-        "name": "hearts in sync",
-        "creator": "111lightproductions",
-        "full": "111lightproductions-hearts-in-sync",
-        "index1": 4,
-        "index2": 5
-    },
-    {
-        "name": "sunset serenade",
-        "creator": "111lightproductions",
-        "full": "111lightproductions-sunset-serenade",
-        "index1": 4,
-        "index2": 6
-    },
-    {
         "name": "cat war",
         "creator": "1789studios",
         "full": "1789studios-cat-war",

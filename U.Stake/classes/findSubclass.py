@@ -22,7 +22,8 @@ from classes.slots.OneThousandOneHundredElevenLightProductionsGemburstRush impor
 from classes.slots.OneThousandOneHundredElevenLightProductionsNFLTouchdown import OneThousandOneHundredElevenLightProductionsNFLTouchdown
 from classes.slots.OneThousandOneHundredElevenLightProductionsDragonFortunes import OneThousandOneHundredElevenLightProductionsDragonFortunes
 from classes.slots.OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove import OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove
-
+from classes.slots.OneThousandOneHundredElevenLightProductionsHeartsInSync import OneThousandOneHundredElevenLightProductionsHeartsInSync
+from classes.slots.OneThousandOneHundredElevenLightProductionsSunsetSerenade import OneThousandOneHundredElevenLightProductionsSunsetSerenade
 
 # slotTotal = [
 #         '0xedge-wild-zeus',
@@ -43,7 +44,7 @@ from classes.slots.OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGr
 # ]
 
 override = True
-overrideName = '0xluckylab-obsidian-spin'
+overrideName = '111lightproductions-sunset-serenade'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -100,6 +101,9 @@ def findSubclass(sb, slotName, obs):
                         return OneThousandOneHundredElevenLightProductionsDragonFortunes(sb,obs)
                 case '111lightproductions-legends-of-the-lost-grove':
                         return OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(sb,obs)
-
+                case '111lightproductions-hearts-in-sync':
+                        return OneThousandOneHundredElevenLightProductionsHeartsInSync(sb,obs)
+                case '111lightproductions-sunset-serenade':
+                        return OneThousandOneHundredElevenLightProductionsSunsetSerenade(sb,obs)
                 case _:
                         print('no subclass found')

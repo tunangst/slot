@@ -17,7 +17,9 @@ class OneThousandLakesStudioApexSyndicate(Slot):
         self.changeScene() # take the screen blocks off
         Sleep(self.sb,5)
         self.passSplashScreen()
+        Sleep(self.sb,3)
         self.setup()
+        Sleep(self.sb,3)
         self.run()
         # while check for same screenshots to see if game ended
         # record ending balance

@@ -17,7 +17,9 @@ class OneThousandLakesStudiosOperationEpicTaco(Slot):
         self.changeScene() # take the screen blocks off
         Sleep(sb,3)
         self.passSplashScreen()
+        Sleep(sb,3)
         self.setup()
+        Sleep(sb,3)
         self.run()
         # while check for same screenshots to see if game ended
         # record ending balance

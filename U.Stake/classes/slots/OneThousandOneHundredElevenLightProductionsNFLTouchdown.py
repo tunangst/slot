@@ -18,8 +18,9 @@ class OneThousandOneHundredElevenLightProductionsNFLTouchdown(Slot):
         self.changeScene() # take the screen blocks off
         Sleep(self.sb,7)
         self.passSplashScreen()
-        Sleep(self.sb,2)
+        Sleep(self.sb,3)
         self.setup()
+        Sleep(self.sb,3)
         self.run()
         # while check for same screenshots to see if game ended
         # record ending balance

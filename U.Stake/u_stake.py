@@ -13,7 +13,7 @@ import threading
 # pageTitle = 'U Spin Chrome'
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
-findNextToBuildToggle = False
+findNextToBuildToggle = True
 votingTimeout = 0 #30
 loopIncrement = 1
 

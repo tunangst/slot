@@ -1,4 +1,5 @@
 import json
+import time
 from utilityFunctions import Sleep
 from classes.classUtilityFunctions import takePicture, checkCaptcha, checkRegionChange
 from classes.Capture import Capture
@@ -24,10 +25,11 @@ class Slot:
 
         #self.checkSlotNameInput(slotNameInput)
         self.loadSlotPage()
-        # check captcha, if so solve
+        Sleep(self.sb,3)
         checkCaptcha(self.sb)
-        # Sleep(sb, 4)
+        Sleep(self.sb, 3)
         checkRegionChange(self.sb)
+        Sleep(self.sb, 3)
         self.fullScreen()
         self.findDimensions()
 
@@ -60,16 +62,19 @@ class Slot:
     def run(self):
         pass
 
-    def checkFin(self, closingWordsList):
+    def checkFin(self, closingWordsList,eleStr=False):
         while True:
-            Sleep(self.sb,10)
             # compare screenshots
-            picLocation = takePicture(sb=self.sb,action='custom',fileName=checkFinFileName)
-            # look for Click, Continue, etc
+            if eleStr:
+                picLocation = takePicture(sb=self.sb,action='custom',fileName=checkFinFileName,eleStr=eleStr)
+            else:
+                picLocation = takePicture(sb=self.sb,action='custom',fileName=checkFinFileName)
+                # look for Click, Continue, etc
             instance = Capture(imageLocation=picLocation,action='check end words',closingWordsList=closingWordsList)
             # if instance:
             if instance.fin:
-                return
+                return True
+            Sleep(self.sb,5)
 
     def findWinnings(self):
         pass
@@ -81,3 +86,24 @@ class Slot:
         # obs scene codes here
         self.obs.runMainScene()
         pass
+
+    def timedScreenCheck(self,timeout,checkWordsList,eleStr):
+        counter = timeout
+        end_time = time.monotonic() + counter
+        while True:
+            remaining = max(0, int(end_time - time.monotonic()))
+            seconds = remaining % 60
+            timerText = f'{seconds}'
+            print(timerText, end='\r')
+            if remaining == 0:
+                break
+            time.sleep(0.1)
+
+            # compare screenshots
+            picLocation = takePicture(sb=self.sb,action='tmp',eleStr=eleStr)
+            # look for Click, Continue, etc
+            instance = Capture(imageLocation=picLocation,action='check end words',closingWordsList=checkWordsList)
+            # if instance:
+            if instance.fin:
+                self.sb.find_element(eleStr).click()
+            Sleep(self.sb,5)

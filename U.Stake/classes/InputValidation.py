@@ -11,6 +11,7 @@ builtSlotList = [
     '0xedge-super-candy-drop',
     '0xedge-do-not-redeem-it',
     '0xedge-5-alpha-planets',
+    '0xluckylab-obsidian-spin',
     '1000lakesstudios-toivo',
     '1000lakesstudios-disco-cubes',
     '1000lakesstudios-bass-fury',
@@ -28,7 +29,9 @@ builtSlotList = [
     '111lightproductions-gemburst-rush',
     '111lightproductions-nfl-touchdown',
     '111lightproductions-dragon-fortunes',
-    '111lightproductions-legends-of-the-lost-grove'
+    '111lightproductions-legends-of-the-lost-grove',
+    '111lightproductions-hearts-in-sync',
+    '111lightproductions-sunset-serenade'
 ]
 
 class InputValidation:

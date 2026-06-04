@@ -15,7 +15,9 @@ class ZeroxEdgeDoNotRedeemIt(Slot):
         self.changeScene() # take the screen blocks off
         Sleep(self.sb,3)
         self.passSplashScreen()
+        Sleep(self.sb,3)
         self.setup()
+        Sleep(self.sb,3)
         self.run()
 
     def setup(self):
