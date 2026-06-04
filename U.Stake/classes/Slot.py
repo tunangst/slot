@@ -53,7 +53,7 @@ class Slot:
         # self.sb.minimize_window()
 
     def passSplashScreen(self):
-        Sleep(self.sb,2)
+        # Sleep(self.sb,2)
         bodyStr = 'body'
         self.sb.switch_to_frame('iframe')
         continueBtn = self.sb.find_element(bodyStr)

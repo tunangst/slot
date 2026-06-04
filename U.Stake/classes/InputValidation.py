@@ -32,6 +32,7 @@ builtSlotList = [
     '111lightproductions-legends-of-the-lost-grove',
     '111lightproductions-hearts-in-sync',
     '111lightproductions-sunset-serenade'
+    '1789studios-cat-war'
 ]
 
 class InputValidation:

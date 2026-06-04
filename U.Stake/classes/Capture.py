@@ -133,11 +133,12 @@ class Capture:
             block = self.textBlocks[i]
             lowerText = self.textBlocks[i]['text'].lower()
             # compare lowerText with each word in target words
-            if lowerText in self.targetWordList:
-                print(f'found word matching target words: {lowerText}, I will send the next text')
-                self.fin = True
-                self.targetBlock = self.textBlocks[i+1]
-                return
+            for word in self.targetWordList:
+                if word in lowerText:
+                    print(f'found word matching target words: {lowerText}, I will send the next text')
+                    self.fin = True
+                    self.targetBlock = self.textBlocks[i+1]
+                    return
 
        
     # def selectClickTarget(self):

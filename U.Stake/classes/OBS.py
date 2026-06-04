@@ -68,6 +68,12 @@ class OBS:
     def runWinnerScene(self):
         self.activeCheckWrapper(self.winnerScene)
 
+    def errorScene(self):
+        self.client.set_current_program_scene('error')
+        print('changed scene to: error')
+    def runErrorScene(self):
+        self.activeCheckWrapper(self.errorScene)
+
     def findChromeWindowToCapture(self):
         # move to main scene to make sure the asset changes
         self.mainScene()

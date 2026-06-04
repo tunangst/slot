@@ -24,7 +24,7 @@ from classes.slots.OneThousandOneHundredElevenLightProductionsDragonFortunes imp
 from classes.slots.OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove import OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove
 from classes.slots.OneThousandOneHundredElevenLightProductionsHeartsInSync import OneThousandOneHundredElevenLightProductionsHeartsInSync
 from classes.slots.OneThousandOneHundredElevenLightProductionsSunsetSerenade import OneThousandOneHundredElevenLightProductionsSunsetSerenade
-
+from classes.slots.OneThousandSevenHundredEightyNineStudiosCatWar import OneThousandSevenHundredEightyNineStudiosCatWar
 # slotTotal = [
 #         '0xedge-wild-zeus',
 #         '0xedgefrutti-bonanza',
@@ -44,7 +44,7 @@ from classes.slots.OneThousandOneHundredElevenLightProductionsSunsetSerenade imp
 # ]
 
 override = True
-overrideName = '111lightproductions-sunset-serenade'
+overrideName = '1789studios-cat-war'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -105,5 +105,7 @@ def findSubclass(sb, slotName, obs):
                         return OneThousandOneHundredElevenLightProductionsHeartsInSync(sb,obs)
                 case '111lightproductions-sunset-serenade':
                         return OneThousandOneHundredElevenLightProductionsSunsetSerenade(sb,obs)
+                case '1789studios-cat-war':
+                        return OneThousandSevenHundredEightyNineStudiosCatWar(sb,obs)
                 case _:
                         print('no subclass found')
