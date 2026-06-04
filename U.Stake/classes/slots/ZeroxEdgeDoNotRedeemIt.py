@@ -11,33 +11,34 @@ class ZeroxEdgeDoNotRedeemIt(Slot):
         self.estimatedWaitTime = 60
         self.betValue = 1
         self.spinCount = 50
-        # need to pass two splash screens
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
-        self.run()
+        # Sleep(self.sb,3)
+        # self.run()
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin()
+        Sleep(sb,3)
+        self.findFinBal()
 
     def setup(self):
-        Sleep(self.sb)
         hasteStr = 'button[aria-label="Turbo mode"]'
         self.sb.find_element(hasteStr).click()
-
+        Sleep(self.sb)
         autoPlayStr = 'button[aria-label="Autoplay"]'
         self.sb.find_element(autoPlayStr).click()
-        # choose scatter
+        Sleep(self.sb)
         startBtn = 'button.start-btn'
         self.sb.find_element(startBtn).click()
+        Sleep(self.sb)
         yesStr = '.confirm-yes'
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin()
-        # find what was won
-        self.findFinBal()
+        pass
 
     def checkFin(self):
         # find autoplay count and break when the element goes invisible
@@ -54,6 +55,5 @@ class ZeroxEdgeDoNotRedeemIt(Slot):
     def findFinBal(self):
         spanStr = 'span.info-value'
         txtNum = self.sb.get_text(spanStr)
-        # self.winnings = self.betValue * self.spinCount + value
         self.endingBalance = cleanNumber(txtNum)
         self.finalBalance = self.endingBalance - self.startingBalance

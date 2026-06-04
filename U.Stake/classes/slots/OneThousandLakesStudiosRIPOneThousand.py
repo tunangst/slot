@@ -16,25 +16,26 @@ class OneThousandLakesStudiosRIPOneThousand(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 60
-        # need to pass two splash screens
-        # add more time to pass splash screen
+        self.canvasStr = 'canvas#game'
+        
         self.changeScene() # take the screen blocks off
         Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
-        Sleep(sb,3)
+        Sleep(sb,17)
         self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWords)
+        Sleep(sb,5)
+        self.findFinBal()
 
     def setup(self):
-        Sleep(self.sb,3)
         xVal, yVal = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)
         # switch it to take full screenshot and mark the click location
         ClickTheDom(sb=self.sb,xVal=xVal,yVal=yVal)
+        Sleep(self.sb)
         # the rest are in dom
-        # choose scatter
         scatterStr = '//article[@data-offer-id="super_buy"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
@@ -42,25 +43,10 @@ class OneThousandLakesStudiosRIPOneThousand(Slot):
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb,17)
-        # find play btn
-        canvasStr = '#game'
-        clickDomElement(sb=self.sb,selector=canvasStr)
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWords)
-        # find what was won
-        self.findFinBal()
+        clickDomElement(sb=self.sb,selector=self.canvasStr)
 
     def findFinBal(self):
-        # location = './U.Stake/images/checkFin.png'
-        # cap = Capture(imageLocation=location,action='find next',targetWordList=findWord)
-        # winTxt = cap.targetBlock['text']
-        # val = cleanNumber(winTxt)
-        # self.winnings = val
-        Sleep(self.sb,5)
-        canvasStr = '#game'
-        self.sb.find_element(canvasStr).click()
+        self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,5)
         balanceStr = 'span.frame-hud__display-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)

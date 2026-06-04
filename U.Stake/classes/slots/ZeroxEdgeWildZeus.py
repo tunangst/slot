@@ -5,6 +5,7 @@ from utilityFunctions import Sleep
 
 slotCode = '0xedge-wild-zeus'
 winningScreenshot = 'fin'
+closingWords = ['gongratulations','congratulations']
 
 class ZeroxEdgeWildZeus(Slot):
     def __init__(self, sb, obs):
@@ -12,51 +13,38 @@ class ZeroxEdgeWildZeus(Slot):
         self.startingBalance = 1000.00
         self.buyoutBalance = 500
         self.estimatedWaitTime = 80
-        self.closingWords = ['gongratulations','congratulations']
-        # can find "congratulations" to end the searching
+        self.canvasStr = 'div.fs-content'
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,10)
+        Sleep(sb,10)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWords)
+        Sleep(sb,3)
+        self.findFinBal()
 
     def setup(self):
-        # click bonus
-        Sleep(self.sb)
         bonusOption = 6
         bonusStr = '.bonus-outline-btn'
         self.sb.find_element(bonusStr).click()
-        # choose scatter
+        Sleep(self.sb)
         scatterStr = f'(//div[contains(@class, "tiles-grid")]/div[{bonusOption}]//div[contains(@class, "tile-footer")]//button)[1]'
         self.sb.find_element(scatterStr).click()
+        Sleep(self.sb)
         yesStr = '.confirm-yes'
         self.sb.find_element(yesStr).click()
-        self.sb.sleep(10)
 
     def run(self):
-        # find play btn
         continueStr = '.fsi-tap'
         self.sb.find_element(continueStr).click()
 
-        # find a way to trigger checkFin
-        # read reoccur screenshots to look for " click to continue "
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(self.closingWords)
-        # get winning capture
-        self.findFinBal()
-
     def findFinBal(self):
-        # picLocation = takePicture(sb=self.sb,action='custom',fileName=winningScreenshot)
-        # cap = Capture(imageLocation=picLocation,action='find number')
-        # winStr = cap.status
-        # self.winnings = cleanNumber(winStr)
-        canvasStr = 'div.fs-content'
-        self.sb.find_element(canvasStr).click()
-        # div.bar-left > div.info-stack > div.info-row > span.info-value
+        self.sb.find_element(self.canvasStr).click()
+        Sleep(self.sb)
         balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)

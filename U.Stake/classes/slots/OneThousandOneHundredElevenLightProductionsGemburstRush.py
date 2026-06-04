@@ -14,16 +14,20 @@ class OneThousandOneHundredElevenLightProductionsGemburstRush(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 200
         self.estimatedWaitTime = 30
-        # need to pass two splash screens
+        self.canvasStr = 'canvas#game'
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,7)
+        Sleep(sb,7)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,17)
         self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWordsList)
+        Sleep(sb,3)
+        self.findFinBal()
+        
 
     def setup(self):
         # this is needed because the slot bugs and has two sets of dom elements
@@ -31,7 +35,6 @@ class OneThousandOneHundredElevenLightProductionsGemburstRush(Slot):
         bonusStr = 'div.mg-buy-circle'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        # choose scatter
         scatterStr = 'div.bonus-cards > div.bonus-card > div.bonus-footer'
         self.sb.find_elements(scatterStr)[editIndex].click()
         Sleep(self.sb)
@@ -39,24 +42,11 @@ class OneThousandOneHundredElevenLightProductionsGemburstRush(Slot):
         self.sb.find_elements(yesStr)[editIndex].click()
 
     def run(self):
-        Sleep(self.sb,17)
-        # find play btn
-        canvasStr = 'canvas'
-        canvas = self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
-        # find what was won
-        self.findFinBal()
+        self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
-        canvasStr = 'canvas'
-        canvas = self.sb.find_element(canvasStr).click()
+        self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,3)
-        # totalWinStr = '//div[contains(@class,"mg-data-panel")]/div[4]/div[2]/span[contains(@class,"mg-balance-value")]'
-        # totalWin = self.sb.find_element(totalWinStr).text
-        # self.winnings = cleanNumber(totalWin)
         balanceStr = 'span.mg-balance-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance
-        pass

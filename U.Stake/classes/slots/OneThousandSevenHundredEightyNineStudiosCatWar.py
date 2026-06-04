@@ -17,18 +17,21 @@ class OneThousandSevenHundredEightyNineStudiosCatWar(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 180
         self.estimatedWaitTime = 30
-        # need to pass two splash screens
+        self.canvasStr = 'canvas'
+
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,15)
         self.run()
-        Sleep(self.sb,5)
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWordsList)
+        Sleep(sb,3)
+        self.sb.find_element(self.canvasStr).click()
+        Sleep(sb,5)
         self.findFinBal()
-        # while check for same screenshots to see if game ended
-        # record ending balance
 
     def setup(self):
         xValBonus, yValBonus = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)
@@ -42,15 +45,7 @@ class OneThousandSevenHundredEightyNineStudiosCatWar(Slot):
         ClickTheDom(sb=self.sb,xVal=xValConfirm,yVal=yValConfirm)
 
     def run(self):
-        Sleep(self.sb,15)
-        # find play btn
-        canvasStr = 'canvas'
-        self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
-
-        self.sb.find_element(canvasStr).click()
+        self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
         picLocation = takePicture(sb=self.sb,action='fin')

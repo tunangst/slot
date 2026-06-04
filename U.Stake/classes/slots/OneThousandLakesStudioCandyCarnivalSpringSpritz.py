@@ -14,24 +14,24 @@ class OneThousandLakesStudioCandyCarnivalSpringSpritz(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 30
+        self.canvasStr = 'canvas#game'
         # need to pass two splash screens
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,15)
         self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWords)
+        Sleep(sb,5)
+        self.findFinBal()
 
     def setup(self):
-        # click bonus
-        Sleep(self.sb,3)
         bonusStr = 'button.game-buttons__bonus'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        # choose scatter
         scatterStr = '//article[@data-offer-id="super_modifier"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
@@ -39,26 +39,10 @@ class OneThousandLakesStudioCandyCarnivalSpringSpritz(Slot):
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb,15)
-        # find play btn
-        canvasStr = '#game'
-        canvas = self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWords)
-        # find what was won
-        self.findFinBal()
+        self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
-        # winBlockStr = 'div[data-variant="win"]'
-        # winBlock = self.sb.find_element(winBlockStr)
-        # winTxt = winBlock.text
-        # win = cleanNumber(winTxt)
-        # self.winnings = win
-        Sleep(self.sb,5)
-        canvasStr = 'canvas#game'
-        self.sb.find_element(canvasStr).click()
-
+        self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,5)
         balanceStr = 'span.frame-hud__display-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)

@@ -44,7 +44,7 @@ from classes.slots.OneThousandSevenHundredEightyNineStudiosCatWar import OneThou
 # ]
 
 override = True
-overrideName = '1789studios-cat-war'
+overrideName = '1000lakesstudios-yakuza-v-i-p'
 
 def findSubclass(sb, slotName, obs):
         if override:

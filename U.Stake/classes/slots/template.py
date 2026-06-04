@@ -13,14 +13,19 @@ class Template(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = False
         self.estimatedWaitTime = 30
-        # need to pass two splash screens
+        self.canvasStr = '#game'
+
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,15)
         self.run()
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWordsList)
+        Sleep(sb,3)
+        self.findFinBal()
         # while check for same screenshots to see if game ended
         # record ending balance
 
@@ -40,17 +45,10 @@ class Template(Slot):
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb,15)
         # find play btn
-        canvasStr = '#game'
-        canvas = self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
-        # find what was won
-        self.findFinBal()
+        self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
-        alanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
+        balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance

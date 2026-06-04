@@ -12,31 +12,29 @@ class ZeroxLuckyLabObsidianSpin(Slot):
     def __init__(self, sb, obs):
         Sleep(sb,2)
         super().__init__(sb, slotCode, obs)
-        # this is a 34 buyout event then a spin of 50 times 1 dollar
         self.buyoutBalance = 34
         self.spinCount = 50
         self.spinCost = 1
         self.estimatedWaitTime = 60
-        # need to pass two splash screens
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,10)
+        Sleep(sb,10)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
-        self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        # Sleep(self.sb,3)
+        # self.run()
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin()
+        Sleep(sb,3)
+        self.findFinBal()
 
     def setup(self):
-        # click bonus
         bonusOption = 3                
         bonusStr = '//div[contains(@class,"right-controls")]/div[contains(@class, "button-stack")]/button[@title="Modes"]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        # choose scatter
         scatterStr = f'//div[contains(@class,"modal-body")]//div[contains(@class, "mode-cards")]/div[{bonusOption}]/div[contains(@class,"mode-card-right")]/button'
-        # scatterStr = f'(//div[contains(@class, "tiles-row")]/div[{bonusOption}]//div[contains(@class, "tile-body")]//button)[1]'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
         yesStr = '//button[contains(text(), "Confirm")]'
@@ -46,36 +44,24 @@ class ZeroxLuckyLabObsidianSpin(Slot):
         # set up turbo speed
         settingBtn = '//button[@title="Settings"]'
         self.sb.find_element(settingBtn).click()
-
+        Sleep(self.sb)
         speedBtn = '//button[@aria-label="Spin Speed"]'
         self.sb.find_element(speedBtn).click()
-
+        Sleep(self.sb)
         closeBtn = '//button[@aria-label="Close"]'
         self.sb.find_element(closeBtn).click()
-
-        # speedBtn = '//div[contains(@class,"modal-body")]/div[3]/div[contains(@class,"option-row")]/'
-        # aria-label="Spin Speed
-
-        # set up autospins right-controls
+        Sleep(self.sb)
         autoSpin = '//div[contains(@class,"right-controls")]/div[contains(@class,"button-stack")]/button[@title="Auto Play"]'
         self.sb.find_element(autoSpin).click()
-
+        Sleep(self.sb)
         numBar = f'//div[contains(@class,"modal-content")]/div[contains(@class,"modal-body")]/div[contains(@class,"rounds-grid")]/button[contains(., "{self.spinCount}")]'
         self.sb.find_element(numBar).click()
-
+        Sleep(self.sb)
         startBar = '//div[contains(@class,"modal-content")]/div[contains(@class,"modal-footer")]//button'
         self.sb.find_element(startBar).click()
 
     def run(self):
-        # Sleep(self.sb,15)
-        # find play btn
-        # canvasStr = '#game'
-        # canvas = self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin()
-        # find what was won
-        self.findFinBal()
+        pass
 
     def checkFin(self):
         spinCountStr = 'span.autoplay-counter-overlay'

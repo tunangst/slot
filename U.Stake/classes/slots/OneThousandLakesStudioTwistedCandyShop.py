@@ -13,23 +13,24 @@ class OneThousandLakesStudioTwistedCandyShop(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 180
-        # need to pass two splash screens
+        self.canvasStr = 'canvas#game'
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,10)
+        Sleep(sb,10)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,5)
         self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWords)
+        Sleep(sb,3)
+        self.findFinBal()
 
     def setup(self):
-        # click bonus
         bonusStr = 'button[aria-label="Open BONUS"]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        # choose scatter
         scatterStr = '//article[@data-offer-id="buy_12fs"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
@@ -37,27 +38,11 @@ class OneThousandLakesStudioTwistedCandyShop(Slot):
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb,6)
-        # find play btn
-        canvasStr = '#game'
-        canvas = self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWords)
-        # find what was won
-        self.findFinBal()
+        self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
-        # crop the screenshot because it will pull in date and other out of range options
-        Sleep(self.sb,3)
-        canvasStr = 'canvas#game'
-        self.sb.find_element(canvasStr).click()
+        self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,20)
-        # picLocation = takePicture(sb=self.sb,action='fin',eleStr=canvasStr)
-        # cap = Capture(imageLocation=picLocation,action='find number')
-        # winStr = cap.status
-        # self.winnings = cleanNumber(winStr)
         balanceStr = 'span.frame-hud__display-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance
-        pass

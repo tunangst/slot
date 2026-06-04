@@ -14,24 +14,24 @@ class OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(Slot):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 100
         self.estimatedWaitTime = 30
-        # need to pass two splash screens
+        self.canvasStr = 'canvas#game'
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,7)
+        Sleep(sb,7)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,17)
         self.run()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(closingWordsList)
+        Sleep(sb,3)
+        self.findFinBal()
 
     def setup(self):
-        # this is needed because the slot bugs and has two sets of dom elements
-        editIndex = 1
         bonusStr = 'div.mg-buy-circle'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        # choose scatter
         scatterStr = '//div[contains(@class,"cards")]/div[3]/div[contains(@class,"card-body")]/button'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
@@ -39,23 +39,11 @@ class OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(Slot):
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb,17)
-        # find play btn
-        canvasStr = 'canvas'
-        canvas = self.sb.find_element(canvasStr).click()
-       
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
-        # find what was won
-        self.findFinBal()
+        self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
-        canvasStr = 'canvas'
-        canvas = self.sb.find_element(canvasStr).click()
+        self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,3)
-        # totalWinStr = '//div[contains(@class,"mg-data-panel")]/div[4]/div[2]/span[contains(@class,"mg-balance-value")]'
-        # totalWin = self.sb.find_element(totalWinStr).text
-        # self.winnings = cleanNumber(totalWin)
         balanceStr = 'span.mg-balance-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance

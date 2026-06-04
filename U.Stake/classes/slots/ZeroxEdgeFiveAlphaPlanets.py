@@ -10,38 +10,33 @@ class ZeroxEdgeFiveAlphaPlanets(Slot):
         self.startingBalance = 1000.00
         self.buyoutBalance = 250
         self.estimatedWaitTime = 60
-        # need to pass two splash screens
+        
         self.changeScene() # take the screen blocks off
-        Sleep(self.sb,5)
+        Sleep(sb,5)
         self.passSplashScreen()
-        Sleep(self.sb,3)
+        Sleep(sb,3)
         self.setup()
-        Sleep(self.sb,3)
+        Sleep(sb,10)
         self.run()
+        Sleep(sb, self.estimatedWaitTime)
+        self.checkFin()
+        Sleep(sb,3)
+        self.findFinBal()
 
     def setup(self):
-        # click bonus
         bonusOption = 4
         bonusStr = 'button.bonus-x-btn'
         self.sb.find_element(bonusStr).click()
-        # choose scatter
+        Sleep(self.sb)
         scatterStr = f'(//div[contains(@class, "tiles-row")]/div[{bonusOption}]//div[contains(@class, "tile-body")]//button)[1]'
         self.sb.find_element(scatterStr).click()
+        Sleep(self.sb)
         yesStr = '.confirm-yes'
         self.sb.find_element(yesStr).click()
 
     def run(self):
-        Sleep(self.sb,10)
-        # find play btn
         continueStr = '.fsi-tap'
         self.sb.find_element(continueStr).click()
-
-        # find a way to trigger checkFin
-        # read reoccur screenshots to look for " click to continue "
-        Sleep(self.sb, self.estimatedWaitTime)
-        self.checkFin()
-        # find what was won
-        self.findFinBal()
 
     def checkFin(self):
         ssNum = 1
@@ -62,8 +57,6 @@ class ZeroxEdgeFiveAlphaPlanets(Slot):
                 return
 
     def findFinBal(self):
-        # value = self.sb.get_text('span.info-value')
-        # self.winnings = cleanNumber(value)
         balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)
