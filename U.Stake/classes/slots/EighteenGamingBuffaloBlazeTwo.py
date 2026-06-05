@@ -5,10 +5,10 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-golden-piggy'
+slotCode = '18gaming-buffalo-blaze-2'
 closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
 
-class EighteenGamingGoldenPiggy(Slot):
+class EighteenGamingBuffaloBlazeTwo(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 200
@@ -28,10 +28,11 @@ class EighteenGamingGoldenPiggy(Slot):
         self.findFinBal()
 
     def setup(self):
+        cardIndex = 4
         bonusStr = '//div[contains(@class,"mg-buy-circle")]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        scatterStr = 'button.buy'
+        scatterStr = f'//div[contains(@class,"cards")]/div[{cardIndex}]/div[contains(@class,"card-body")]/button'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
         confirmStr = 'button.confirm-btn'

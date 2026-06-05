@@ -6,3 +6,4 @@ classes/__pycache__
 classes/slots/__pycache__
 __pycache__/
 *.py[cod]
+nextToBuild.md

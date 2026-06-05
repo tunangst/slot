@@ -5,10 +5,10 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-golden-piggy'
+slotCode = '18gaming-mystical-plum-grove'
 closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
 
-class EighteenGamingGoldenPiggy(Slot):
+class EighteenGamingMysticalPlumGrove(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 200
@@ -28,17 +28,23 @@ class EighteenGamingGoldenPiggy(Slot):
         self.findFinBal()
 
     def setup(self):
+        cardIndex = 4
         bonusStr = '//div[contains(@class,"mg-buy-circle")]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        scatterStr = 'button.buy'
+        scatterStr = f'//div[contains(@class,"cards")]/div[{cardIndex}]/div[contains(@class,"card-body")]/button'
         self.sb.find_element(scatterStr).click()
         Sleep(self.sb)
         confirmStr = 'button.confirm-btn'
         self.sb.find_element(confirmStr).click()
 
     def run(self):
-        self.sb.find_element(self.canvasStr).click()
+        canvas = self.sb.find_element(self.canvasStr)
+        x = canvas.size['width'] * .60 # 60%
+        y = canvas.size['height'] * .5 # 50%
+        ClickTheDom(sb=self.sb,xVal=x,yVal=y)
+        Sleep(self.sb,10)
+        ClickTheDom(sb=self.sb,xVal=x,yVal=y)
          
     def findFinBal(self):
         self.sb.find_element(self.canvasStr).click()

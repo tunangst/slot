@@ -29,7 +29,10 @@ from classes.slots.EighteenGamingSweetStakeTwentyFiveK import EighteenGamingSwee
 from classes.slots.EighteenGamingBowlingRiches import EighteenGamingBowlingRiches
 from classes.slots.EighteenGamingGoldenPiggy import EighteenGamingGoldenPiggy
 from classes.slots.EighteenGamingRockNRoll import EighteenGamingRockNRoll
-
+from classes.slots.EighteenGamingBuffaloBlazeTwo import EighteenGamingBuffaloBlazeTwo
+from classes.slots.EighteenGamingMysticalPlumGrove import EighteenGamingMysticalPlumGrove
+from classes.slots.EighteenGamingAztecSunBlaze import EighteenGamingAztecSunBlaze
+from classes.slots.EighteenGamingWrathOfOlympus import EighteenGamingWrathOfOlympus
 
 # slotTotal = [
 #         '0xedge-wild-zeus',
@@ -50,7 +53,7 @@ from classes.slots.EighteenGamingRockNRoll import EighteenGamingRockNRoll
 # ]
 
 override = True
-overrideName = '18gaming-rock-n-roll'
+overrideName = '18gaming-wrath-of-olympus'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -121,5 +124,13 @@ def findSubclass(sb, slotName, obs):
                         return EighteenGamingGoldenPiggy(sb,obs)
                 case '18gaming-rock-n-roll':
                         return EighteenGamingRockNRoll(sb,obs)
+                case '18gaming-buffalo-blaze-2':
+                        return EighteenGamingBuffaloBlazeTwo(sb,obs)
+                case '18gaming-mystical-plum-grove':
+                        return EighteenGamingMysticalPlumGrove(sb,obs)
+                case '18gaming-aztec-sun-blaze':
+                        return EighteenGamingAztecSunBlaze(sb,obs)
+                case '18gaming-wrath-of-olympus':
+                        return EighteenGamingWrathOfOlympus(sb,obs)
                 case _:
                         print('no subclass found')

@@ -1,33 +1,5 @@
 [
     {
-        "name": "buffalo blaze 2",
-        "creator": "18gaming",
-        "full": "18gaming-buffalo-blaze-2",
-        "index1": 6,
-        "index2": 5
-    },
-    {
-        "name": "mystical plum grove",
-        "creator": "18gaming",
-        "full": "18gaming-mystical-plum-grove",
-        "index1": 6,
-        "index2": 6
-    },
-    {
-        "name": "aztec sun blaze",
-        "creator": "18gaming",
-        "full": "18gaming-aztec-sun-blaze",
-        "index1": 6,
-        "index2": 7
-    },
-    {
-        "name": "wrath of olympus",
-        "creator": "18gaming",
-        "full": "18gaming-wrath-of-olympus",
-        "index1": 6,
-        "index2": 8
-    },
-    {
         "name": "crypto bonanza",
         "creator": "18gaming",
         "full": "18gaming-crypto-bonanza",

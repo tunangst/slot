@@ -37,7 +37,11 @@ builtSlotList = [
     '18gaming-sweet-stake-25k',
     '18gaming-bowling-riches',
     '18gaming-golden-piggy',
-    '18gaming-rock-n-roll'
+    '18gaming-rock-n-roll',
+    '18gaming-buffalo-blaze-2',
+    '18gaming-mystical-plum-grove',
+    '18gaming-aztec-sun-blaze',
+    '18gaming-wrath-of-olympus'
 ]
 
 class InputValidation:
