@@ -46,13 +46,13 @@ class OneThousandLakesStudiosDiscoCubes(Slot):
         pattern = r'^(\d+)/\1$'
         counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
         while True:
-            Sleep(self.sb, 10)
             counter = self.sb.find_element(counterStr)
             value = counter.text
             if re.match(pattern, value):
                 return
             else:
                 print(f'Not quite finished checking if finished: {value}')
+            Sleep(self.sb, 10)
 
     def findFinBal(self):
         self.sb.find_element(self.canvasStr).click()

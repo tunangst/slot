@@ -1,54 +1,5 @@
 [
     {
-        "name": "sunset serenade",
-        "creator": "111lightproductions",
-        "full": "111lightproductions-sunset-serenade",
-        "index1": 4,
-        "index2": 6
-    },
-    {
-        "name": "cat war",
-        "creator": "1789studios",
-        "full": "1789studios-cat-war",
-        "index1": 5,
-        "index2": 0
-    },
-    {
-        "name": "sweet stake 25k",
-        "creator": "18gaming",
-        "full": "18gaming-sweet-stake-25k",
-        "index1": 6,
-        "index2": 0
-    },
-    {
-        "name": "bowling riches",
-        "creator": "18gaming",
-        "full": "18gaming-bowling-riches",
-        "index1": 6,
-        "index2": 1
-    },
-    {
-        "name": "lucky joker",
-        "creator": "18gaming",
-        "full": "18gaming-lucky-joker",
-        "index1": 6,
-        "index2": 2
-    },
-    {
-        "name": "golden piggy",
-        "creator": "18gaming",
-        "full": "18gaming-golden-piggy",
-        "index1": 6,
-        "index2": 3
-    },
-    {
-        "name": "rock n roll",
-        "creator": "18gaming",
-        "full": "18gaming-rock-n-roll",
-        "index1": 6,
-        "index2": 4
-    },
-    {
         "name": "buffalo blaze 2",
         "creator": "18gaming",
         "full": "18gaming-buffalo-blaze-2",

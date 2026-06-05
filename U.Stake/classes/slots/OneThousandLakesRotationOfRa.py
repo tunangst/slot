@@ -26,8 +26,7 @@ class OneThousandLakesRotationOfRa(Slot):
         self.checkFin(closingWordsList)
         Sleep(sb,5)
         self.findFinBal()
-        # while check for same screenshots to see if game ended
-        # record ending balance
+        
     def setup(self):
         # enable turbo
         optionStr = 'button[aria-label="Open menu"]'

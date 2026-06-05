@@ -2,7 +2,8 @@ from classes.classUtilityFunctions import getInfoFromScrapedSlots
 from utilityFunctions import GetRandomNumber
 
 rejectSlotList = [
-    '0daygames-corsairs-hex'
+    '0daygames-corsairs-hex',
+    '18gaming-lucky-joker'
 ]
 
 builtSlotList = [
@@ -31,8 +32,12 @@ builtSlotList = [
     '111lightproductions-dragon-fortunes',
     '111lightproductions-legends-of-the-lost-grove',
     '111lightproductions-hearts-in-sync',
-    '111lightproductions-sunset-serenade'
-    '1789studios-cat-war'
+    '111lightproductions-sunset-serenade',
+    '1789studios-cat-war',
+    '18gaming-sweet-stake-25k',
+    '18gaming-bowling-riches',
+    '18gaming-golden-piggy',
+    '18gaming-rock-n-roll'
 ]
 
 class InputValidation:

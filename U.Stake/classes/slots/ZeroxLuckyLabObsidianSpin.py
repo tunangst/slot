@@ -65,7 +65,7 @@ class ZeroxLuckyLabObsidianSpin(Slot):
 
     def checkFin(self):
         spinCountStr = 'span.autoplay-counter-overlay'
-        count = 50
+        count = self.spinCount
         while count > 0:
             try:
                 countText = self.sb.find_element(spinCountStr).text

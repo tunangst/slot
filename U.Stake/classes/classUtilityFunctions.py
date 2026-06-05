@@ -1,6 +1,7 @@
 import json
 import cv2
 import time
+import numpy as np
 from skimage.metrics import structural_similarity as ssim
 from utilityFunctions import Sleep
 from classes.Capture import Capture
@@ -43,6 +44,8 @@ def takePicture(sb,action=False, increment=0, fileName=False, eleStr=False):
                 destination = f'{ssDir}tmp.png'
             case 'increment':
                 destination = f'{ssDir}screenshot{increment}.png'
+            case 'check fin':
+                destination = f'{ssDir}checkFin.png'
             case _:
                 print('no matching action for takePicture')
 
@@ -53,6 +56,31 @@ def takePicture(sb,action=False, increment=0, fileName=False, eleStr=False):
         else:
             sb.save_screenshot(destination)
         return destination
+
+def findCircles(imgLocation):
+    returnCircles = []
+    img = cv2.imread(imgLocation)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    circles = cv2.HoughCircles(
+        gray,
+        cv2.HOUGH_GRADIENT,
+        dp=1.2,
+        minDist=30,
+        param1=100,
+        param2=100,
+        minRadius=30,
+        maxRadius=100
+    )
+
+    if circles is not None:
+        circles = np.round(circles[0]).astype(int)
+
+        for x, y, r in circles:
+            returnCircles.append({'x':x,'y':y,'r':r})
+            print(f'Circle found: center=({x}, {y}), radius={r}')
+        return returnCircles
+    return False
 
 def findEmbeddedCoords(sb,checkWordList):
         # click bonus

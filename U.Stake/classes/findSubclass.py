@@ -25,6 +25,12 @@ from classes.slots.OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGr
 from classes.slots.OneThousandOneHundredElevenLightProductionsHeartsInSync import OneThousandOneHundredElevenLightProductionsHeartsInSync
 from classes.slots.OneThousandOneHundredElevenLightProductionsSunsetSerenade import OneThousandOneHundredElevenLightProductionsSunsetSerenade
 from classes.slots.OneThousandSevenHundredEightyNineStudiosCatWar import OneThousandSevenHundredEightyNineStudiosCatWar
+from classes.slots.EighteenGamingSweetStakeTwentyFiveK import EighteenGamingSweetStakeTwentyFiveK
+from classes.slots.EighteenGamingBowlingRiches import EighteenGamingBowlingRiches
+from classes.slots.EighteenGamingGoldenPiggy import EighteenGamingGoldenPiggy
+from classes.slots.EighteenGamingRockNRoll import EighteenGamingRockNRoll
+
+
 # slotTotal = [
 #         '0xedge-wild-zeus',
 #         '0xedgefrutti-bonanza',
@@ -44,7 +50,7 @@ from classes.slots.OneThousandSevenHundredEightyNineStudiosCatWar import OneThou
 # ]
 
 override = True
-overrideName = '1000lakesstudios-yakuza-v-i-p'
+overrideName = '18gaming-rock-n-roll'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -107,5 +113,13 @@ def findSubclass(sb, slotName, obs):
                         return OneThousandOneHundredElevenLightProductionsSunsetSerenade(sb,obs)
                 case '1789studios-cat-war':
                         return OneThousandSevenHundredEightyNineStudiosCatWar(sb,obs)
+                case '18gaming-sweet-stake-25k':
+                        return EighteenGamingSweetStakeTwentyFiveK(sb,obs)
+                case '18gaming-bowling-riches':
+                        return EighteenGamingBowlingRiches(sb,obs)
+                case '18gaming-golden-piggy':
+                        return EighteenGamingGoldenPiggy(sb,obs)
+                case '18gaming-rock-n-roll':
+                        return EighteenGamingRockNRoll(sb,obs)
                 case _:
                         print('no subclass found')

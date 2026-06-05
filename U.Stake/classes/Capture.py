@@ -41,12 +41,16 @@ class Capture:
         self.extractText()
 
         match self.action:
+            case 'find shape':
+                pass
             case 'find number':
                 self.status = self.findNumber()
             case 'find next':
                 self.status = self.findNext()
             case 'check end words':
                 self.status = self.checkGameEndWords()
+            case 'check all words':
+                self.status = self.checkAllWords()
             case _:
                 print('no action given to Capture')
 
@@ -100,6 +104,20 @@ class Capture:
                     self.fin = True
                     self.targetBlock = block
                     return
+                
+    def checkAllWords(self):
+        yesList = []
+        for i in self.textBlocksRange:
+            block = self.textBlocks[i]
+            lowerText = self.textBlocks[i]['text'].lower()
+            # compare lowerText with each word in target words
+            for word in self.targetWordList:
+                if word in lowerText:
+                    yesList.append(True)
+        if len(yesList) == len(self.targetWordList):
+            return True
+        else:
+            return False
                 
     # def checkGameEndWords(self):
     #     # loop over textBlocks and see if any match the words in targetWords
