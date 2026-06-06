@@ -41,7 +41,8 @@ builtSlotList = [
     '18gaming-buffalo-blaze-2',
     '18gaming-mystical-plum-grove',
     '18gaming-aztec-sun-blaze',
-    '18gaming-wrath-of-olympus'
+    '18gaming-wrath-of-olympus',
+    '18gaming-crypto-bonanza'
 ]
 
 class InputValidation:

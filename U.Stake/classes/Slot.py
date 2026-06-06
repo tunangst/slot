@@ -25,7 +25,7 @@ class Slot:
 
         #self.checkSlotNameInput(slotNameInput)
         self.loadSlotPage()
-        Sleep(self.sb,3)
+        Sleep(self.sb,10)
         checkCaptcha(self.sb)
         Sleep(self.sb, 3)
         checkRegionChange(self.sb)

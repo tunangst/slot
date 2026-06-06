@@ -1,12 +1,5 @@
 [
     {
-        "name": "crypto bonanza",
-        "creator": "18gaming",
-        "full": "18gaming-crypto-bonanza",
-        "index1": 6,
-        "index2": 9
-    },
-    {
         "name": "dragon fortune",
         "creator": "18gaming",
         "full": "18gaming-dragon-fortune",

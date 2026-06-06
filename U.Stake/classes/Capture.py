@@ -13,7 +13,7 @@ ssDir = './U.Stake/images/screenshots/'
 # clickTarget
 
 class Capture:
-    def __init__(self, imageLocation, action=False, closingWordsList=False, targetWordList=False):
+    def __init__(self, imageLocation, action=False, targetWordList=False):
         self.ocr = PaddleOCR(
             use_doc_orientation_classify=False,
             use_doc_unwarping=False,
@@ -22,7 +22,7 @@ class Capture:
         )
         self.action = action
         self.imageLocation = imageLocation
-        self.closingWordsList = closingWordsList
+        # self.closingWordsList = closingWordsList
         self.targetWordList = targetWordList
         self.textBlocks = []
         self.textBlocksRange = 0
@@ -98,7 +98,7 @@ class Capture:
             block = self.textBlocks[i]
             lowerText = self.textBlocks[i]['text'].lower()
             # compare lowerText with each word in target words
-            for word in self.closingWordsList:
+            for word in self.targetWordList:
                 if word in lowerText:
                     print(f'found word matching target words: {word}')
                     self.fin = True
