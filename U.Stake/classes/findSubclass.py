@@ -34,6 +34,14 @@ from classes.slots.EighteenGamingMysticalPlumGrove import EighteenGamingMystical
 from classes.slots.EighteenGamingAztecSunBlaze import EighteenGamingAztecSunBlaze
 from classes.slots.EighteenGamingWrathOfOlympus import EighteenGamingWrathOfOlympus
 from classes.slots.EighteenGamingCryptoBonanza import EighteenGamingCryptoBonanza
+from classes.slots.EighteenGamimgDragonFortune import EighteenGamimgDragonFortune
+from classes.slots.EighteenGamingSheriffsBounty import EighteenGamingSheriffsBounty
+from classes.slots.EighteenGamingWallStreetHoneyStakes import EighteenGamingWallStreetHoneyStakes
+from classes.slots.EighteenGamingBuffaloBlaze import EighteenGamingBuffaloBlaze
+from classes.slots.EighteenGamingDerbyRace import EighteenGamingDerbyRace
+from classes.slots.EighteenGamingBeachsideBetties import EighteenGamingBeachsideBetties
+from classes.slots.EighteenGamingDiamondLuxe import EighteenGamingDiamondLuxe
+
 
 # slotTotal = [
 #         '0xedge-wild-zeus',
@@ -54,7 +62,7 @@ from classes.slots.EighteenGamingCryptoBonanza import EighteenGamingCryptoBonanz
 # ]
 
 override = True
-overrideName = '18gaming-crypto-bonanza'
+overrideName = '18gaming-diamond-luxe'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -135,5 +143,19 @@ def findSubclass(sb, slotName, obs):
                         return EighteenGamingWrathOfOlympus(sb,obs)
                 case '18gaming-crypto-bonanza':
                         return EighteenGamingCryptoBonanza(sb,obs)
+                case '18gaming-dragon-fortune':
+                        return EighteenGamimgDragonFortune(sb,obs)
+                case '18gaming-sheriffs-bounty':
+                        return EighteenGamingSheriffsBounty(sb,obs)
+                case '18gaming-wall-street-honey-stakes':
+                        return EighteenGamingWallStreetHoneyStakes(sb,obs)
+                case '18gaming-buffalo-blaze':
+                        return EighteenGamingBuffaloBlaze(sb,obs)
+                case '18gaming-derby-race':
+                        return EighteenGamingDerbyRace(sb,obs)
+                case '18gaming-beachside-betties':
+                        return EighteenGamingBeachsideBetties(sb,obs)
+                case '18gaming-diamond-luxe':
+                        return EighteenGamingDiamondLuxe(sb,obs)
                 case _:
                         print('no subclass found')

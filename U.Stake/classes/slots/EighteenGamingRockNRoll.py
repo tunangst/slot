@@ -26,8 +26,6 @@ class EighteenGamingRockNRoll(Slot):
         self.checkFin(closingWordsList)
         Sleep(sb,3)
         self.findFinBal()
-        # while check for same screenshots to see if game ended
-        # record ending balance
 
     def setup(self):
         bonusStr = '//div[contains(@class,"mg-buy-circle")]'

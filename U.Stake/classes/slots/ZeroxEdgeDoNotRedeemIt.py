@@ -7,7 +7,6 @@ slotCode = '0xedge-do-not-redeem-it'
 class ZeroxEdgeDoNotRedeemIt(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.startingBalance = 1000.00
         self.estimatedWaitTime = 60
         self.betValue = 1
         self.spinCount = 50

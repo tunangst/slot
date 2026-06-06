@@ -24,15 +24,10 @@ class EighteenGamingSweetStakeTwentyFiveK(Slot):
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
-        # Sleep(sb,15)
-        # self.run()
         self.checkSpins()
-        # Sleep(sb, self.estimatedWaitTime)
         self.checkFin(closingWordsList)
         Sleep(sb,3)
         self.findFinBal()
-        # while check for same screenshots to see if game ended
-        # record ending balance
 
     def setup(self):
         xValBonus, yValBonus = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)

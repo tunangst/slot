@@ -70,7 +70,7 @@ class Slot:
             else:
                 picLocation = takePicture(sb=self.sb,action='custom',fileName=checkFinFileName)
                 # look for Click, Continue, etc
-            instance = Capture(imageLocation=picLocation,action='check end words',closingWordsList=closingWordsList)
+            instance = Capture(imageLocation=picLocation,action='check end words',targetWordList=closingWordsList)
             # if instance:
             if instance.fin:
                 return True

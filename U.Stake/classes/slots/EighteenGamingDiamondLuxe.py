@@ -5,20 +5,21 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-golden-piggy'
+slotCode = '18gaming-diamond-luxe'
 closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
+scatterWordList = ['200.00']
 
-class EighteenGamingGoldenPiggy(Slot):
+class EighteenGamingDiamondLuxe(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 200
-        self.estimatedWaitTime = 60
+        self.estimatedWaitTime = 30
         self.canvasStr = 'canvas'
         
         self.changeScene() # take the screen blocks off
-        Sleep(sb,3)
+        Sleep(sb,5)
         self.passSplashScreen()
-        Sleep(sb,3)
+        Sleep(sb,5)
         self.setup()
         Sleep(sb,15)
         self.run()
@@ -31,14 +32,21 @@ class EighteenGamingGoldenPiggy(Slot):
         bonusStr = '//div[contains(@class,"mg-buy-circle")]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        scatterStr = '//button[contains(@class,"buy")]'
-        self.sb.find_element(scatterStr).click()
+        xScatter,yScatter = findEmbeddedCoords(sb=self.sb,checkWordList=scatterWordList)
+        yScatter += 50 # add 50 px down for the btn
+        ClickTheDom(sb=self.sb,xVal=xScatter,yVal=yScatter)
         Sleep(self.sb)
-        confirmStr = 'button.confirm-btn'
-        self.sb.find_element(confirmStr).click()
+        xAccept,yAccept = findEmbeddedCoords(sb=self.sb,checkWordList=scatterWordList)
+        yAccept += 50 # add 50 px down for the btn
+        ClickTheDom(sb=self.sb,xVal=xAccept,yVal=yAccept)
 
     def run(self):
-        self.sb.find_element(self.canvasStr).click()
+        canvas = self.sb.find_element(self.canvasStr)
+        x = canvas.size['width'] * .7 # 70%
+        y = canvas.size['height'] * .50 # 50%
+        ClickTheDom(sb=self.sb,xVal=x,yVal=y)
+        Sleep(self.sb,10)
+        ClickTheDom(sb=self.sb,xVal=x,yVal=y)
          
     def findFinBal(self):
         self.sb.find_element(self.canvasStr).click()

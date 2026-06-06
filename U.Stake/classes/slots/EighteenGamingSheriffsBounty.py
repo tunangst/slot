@@ -5,14 +5,14 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-golden-piggy'
+slotCode = '18gaming-sheriffs-bounty'
 closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
 
-class EighteenGamingGoldenPiggy(Slot):
+class EighteenGamingSheriffsBounty(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 200
-        self.estimatedWaitTime = 60
+        self.estimatedWaitTime = 40
         self.canvasStr = 'canvas'
         
         self.changeScene() # take the screen blocks off
@@ -28,14 +28,16 @@ class EighteenGamingGoldenPiggy(Slot):
         self.findFinBal()
 
     def setup(self):
-        bonusStr = '//div[contains(@class,"mg-buy-circle")]'
+        scatterIndex = 1
+        domIndex = 1
+        bonusStr = '//div[contains(@class,"mg-buy-wrapper")]/div[contains(@class,"mg-buy")]/div[contains(@class,"mg-buy-circle")]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        scatterStr = '//button[contains(@class,"buy")]'
-        self.sb.find_element(scatterStr).click()
+        scatterStr = f'//div[contains(@class,"bonus-cards")]/div[{scatterIndex}]/div[contains(@class,"bonus-footer")]'
+        self.sb.find_elements(scatterStr)[domIndex].click()
         Sleep(self.sb)
-        confirmStr = 'button.confirm-btn'
-        self.sb.find_element(confirmStr).click()
+        confirmStr = '//div[contains(@class,"confirm-btn")]'
+        self.sb.find_elements(confirmStr)[domIndex].click()
 
     def run(self):
         self.sb.find_element(self.canvasStr).click()

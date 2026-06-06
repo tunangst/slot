@@ -86,7 +86,7 @@ def findEmbeddedCoords(sb,checkWordList):
         # click bonus
         destination = takePicture(sb=sb,action='tmp')
         # find the word "Get Bonus"'s box
-        cap = Capture(imageLocation=destination,action='check end words',closingWordsList=checkWordList)
+        cap = Capture(imageLocation=destination,action='check end words',targetWordList=checkWordList)
         wordBlock = cap.targetBlock['box']
 
         dpr = sb.execute_script('return window.devicePixelRatio')

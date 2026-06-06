@@ -5,14 +5,15 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-golden-piggy'
+slotCode = '18gaming-derby-race'
 closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
 
-class EighteenGamingGoldenPiggy(Slot):
+class EighteenGamingDerbyRace(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 200
         self.estimatedWaitTime = 60
+        self.betValue = 1
+        self.spinCount = 50
         self.canvasStr = 'canvas'
         
         self.changeScene() # take the screen blocks off
@@ -22,24 +23,38 @@ class EighteenGamingGoldenPiggy(Slot):
         self.setup()
         Sleep(sb,15)
         self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
+        # Sleep(sb, self.estimatedWaitTime)
+        self.checkFin()
         Sleep(sb,3)
         self.findFinBal()
 
     def setup(self):
-        bonusStr = '//div[contains(@class,"mg-buy-circle")]'
-        self.sb.find_element(bonusStr).click()
+        autoStr = '//div[contains(@class,"mg-right-container")]/div[contains(@class,"mg-action-autoplay")]/div[contains(@class,"mg-autoplay-icon")]'
+        self.sb.find_element(autoStr).click()
         Sleep(self.sb)
-        scatterStr = '//button[contains(@class,"buy")]'
-        self.sb.find_element(scatterStr).click()
+        countStr = '//li[contains(., "50")]'
+        self.sb.find_element(countStr).click()
         Sleep(self.sb)
-        confirmStr = 'button.confirm-btn'
-        self.sb.find_element(confirmStr).click()
+        btnStr = 'div.mg-action-play'
+        self.sb.find_element(btnStr).click()
 
     def run(self):
         self.sb.find_element(self.canvasStr).click()
          
+    def checkFin(self):
+        countStr = '//div[contains(@class,"icon-spin")]/div[contains(@class,"mg-stop-icon")]/span'
+        stuck = False
+        while True:
+            try:
+                checkCount = self.sb.find_element(countStr).text
+                if checkCount == stuck:
+                    self.sb.find_element(self.canvasStr).click()
+                stuck = checkCount
+                print(checkCount)
+                Sleep(self.sb,5)
+            except:
+                break
+
     def findFinBal(self):
         self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,3)

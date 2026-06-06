@@ -3,7 +3,8 @@ from utilityFunctions import GetRandomNumber
 
 rejectSlotList = [
     '0daygames-corsairs-hex',
-    '18gaming-lucky-joker'
+    '18gaming-lucky-joker',
+    '18gaming-santas-christmas-magic'
 ]
 
 builtSlotList = [
@@ -42,7 +43,14 @@ builtSlotList = [
     '18gaming-mystical-plum-grove',
     '18gaming-aztec-sun-blaze',
     '18gaming-wrath-of-olympus',
-    '18gaming-crypto-bonanza'
+    '18gaming-crypto-bonanza',
+    '18gaming-dragon-fortune',
+    '18gaming-sheriffs-bounty',
+    '18gaming-wall-street-honey-stakes',
+    '18gaming-buffalo-blaze',
+    '18gaming-derby-race',
+    '18gaming-beachside-betties',
+    '18gaming-diamond-luxe'
 ]
 
 class InputValidation:
