@@ -1,19 +1,5 @@
 [
     {
-        "name": "ketchup vs mayo",
-        "creator": "18gaming",
-        "full": "18gaming-ketchup-vs-mayo",
-        "index1": 6,
-        "index2": 18
-    },
-    {
-        "name": "legends of olympus",
-        "creator": "18gaming",
-        "full": "18gaming-legends-of-olympus",
-        "index1": 6,
-        "index2": 19
-    },
-    {
         "name": "phoenix winter parade",
         "creator": "18gaming",
         "full": "18gaming-phoenix-winter-parade",

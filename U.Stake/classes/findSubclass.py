@@ -41,6 +41,10 @@ from classes.slots.EighteenGamingBuffaloBlaze import EighteenGamingBuffaloBlaze
 from classes.slots.EighteenGamingDerbyRace import EighteenGamingDerbyRace
 from classes.slots.EighteenGamingBeachsideBetties import EighteenGamingBeachsideBetties
 from classes.slots.EighteenGamingDiamondLuxe import EighteenGamingDiamondLuxe
+from classes.slots.EighteenGamingKetchupVsMayo import EighteenGamingKetchupVsMayo
+from classes.slots.EighteenGamingLegendsOfOlympus import EighteenGamingLegendsOfOlympus
+from classes.slots.EighteenGamingPhoenixWinterParade import EighteenGamingPhoenixWinterParade
+
 
 
 # slotTotal = [
@@ -62,7 +66,7 @@ from classes.slots.EighteenGamingDiamondLuxe import EighteenGamingDiamondLuxe
 # ]
 
 override = True
-overrideName = '18gaming-diamond-luxe'
+overrideName = '18gaming-phoenix-winter-parade'
 
 def findSubclass(sb, slotName, obs):
         if override:
@@ -157,5 +161,11 @@ def findSubclass(sb, slotName, obs):
                         return EighteenGamingBeachsideBetties(sb,obs)
                 case '18gaming-diamond-luxe':
                         return EighteenGamingDiamondLuxe(sb,obs)
+                case '18gaming-ketchup-vs-mayo':
+                        return EighteenGamingKetchupVsMayo(sb,obs)
+                case '18gaming-legends-of-olympus':
+                        return EighteenGamingLegendsOfOlympus(sb,obs)
+                case '18gaming-phoenix-winter-parade':
+                        return EighteenGamingPhoenixWinterParade(sb,obs)
                 case _:
                         print('no subclass found')

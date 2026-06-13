@@ -50,7 +50,10 @@ builtSlotList = [
     '18gaming-buffalo-blaze',
     '18gaming-derby-race',
     '18gaming-beachside-betties',
-    '18gaming-diamond-luxe'
+    '18gaming-diamond-luxe',
+    '18gaming-ketchup-vs-mayo',
+    '18gaming-legends-of-olympus',
+    '18gaming-phoenix-winter-parade'
 ]
 
 class InputValidation:
