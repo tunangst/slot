@@ -5,14 +5,15 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-golden-piggy'
-closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
+slotCode = '18gaming-galaxy-of-gems'
+checkWordsList = ['congratulations','free spins']
+closingWordsList = ['you won']
 
-class EighteenGamingGoldenPiggy(Slot):
+class EighteenGamingGalaxyOfGems(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 200
-        self.estimatedWaitTime = 60
+        self.estimatedWaitTime = 30
         self.canvasStr = 'canvas'
         
         self.changeScene() # take the screen blocks off
@@ -21,26 +22,27 @@ class EighteenGamingGoldenPiggy(Slot):
         Sleep(sb,3)
         self.setup()
         Sleep(sb,15)
-        self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
+        # self.run()
+        # Sleep(sb, self.estimatedWaitTime)
+        self.checkStuckAndFin(checkList=checkWordsList,finList=closingWordsList)
         Sleep(sb,3)
         self.findFinBal()
 
     def setup(self):
         divIndex = 1
+        bonusIndex = 1
         bonusStr = '//div[contains(@class,"mg-buy-circle")]'
         self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        scatterStr = f'//div[contains(@class,"bonus-cards")]/div[{divIndex}]/div[contains(@class,"bonus-footer")]'
-        self.sb.find_element(scatterStr).click()
+        scatterStr = f'//div[contains(@class,"bonus-cards")]/div[{bonusIndex}]/div[contains(@class,"bonus-footer")]'
+        self.sb.find_elements(scatterStr)[divIndex].click()
         Sleep(self.sb)
         confirmStr = '//div[contains(@class,"confirm-btn")]'
-        self.sb.find_element(confirmStr).click()
+        self.sb.find_elements(confirmStr)[divIndex].click()
 
     def run(self):
         self.sb.find_element(self.canvasStr).click()
-         
+
     def findFinBal(self):
         self.sb.find_element(self.canvasStr).click()
         Sleep(self.sb,3)

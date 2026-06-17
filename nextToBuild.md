@@ -1,47 +1,5 @@
 [
     {
-        "name": "phoenix winter parade",
-        "creator": "18gaming",
-        "full": "18gaming-phoenix-winter-parade",
-        "index1": 6,
-        "index2": 20
-    },
-    {
-        "name": "fruit burst bonanza",
-        "creator": "18gaming",
-        "full": "18gaming-fruit-burst-bonanza",
-        "index1": 6,
-        "index2": 21
-    },
-    {
-        "name": "broccoli bankers blitz",
-        "creator": "18gaming",
-        "full": "18gaming-broccoli-bankers-blitz",
-        "index1": 6,
-        "index2": 22
-    },
-    {
-        "name": "jurassic jungle",
-        "creator": "18gaming",
-        "full": "18gaming-jurassic-jungle",
-        "index1": 6,
-        "index2": 23
-    },
-    {
-        "name": "eat sleep rave repeat",
-        "creator": "18gaming",
-        "full": "18gaming-eat-sleep-rave-repeat",
-        "index1": 6,
-        "index2": 24
-    },
-    {
-        "name": "galaxy of gems",
-        "creator": "18gaming",
-        "full": "18gaming-galaxy-of-gems",
-        "index1": 6,
-        "index2": 25
-    },
-    {
         "name": "egyptian gold reels",
         "creator": "18gaming",
         "full": "18gaming-egyptian-gold-reels",

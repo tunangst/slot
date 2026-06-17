@@ -1,6 +1,6 @@
 import json
 import time
-from utilityFunctions import Sleep
+from utilityFunctions import Sleep, ClickTheDom
 from classes.classUtilityFunctions import takePicture, checkCaptcha, checkRegionChange
 from classes.Capture import Capture
 
@@ -76,6 +76,17 @@ class Slot:
                 return True
             Sleep(self.sb,5)
 
+    def checkStuckAndFin(self,checkList,finList):
+        while True:
+            picLocation = takePicture(sb=self.sb,action='custom',fileName=checkFinFileName)
+            checkInstance = Capture(imageLocation=picLocation,action='check all words',targetWordList=checkList)
+            if checkInstance.fin:
+                self.sb.find_element(self.canvasStr).click()
+            else:
+                finInstance = Capture(imageLocation=picLocation,action='check end words',targetWordList=finList)
+                if finInstance.fin:
+                    break
+
     def findWinnings(self):
         pass
 
@@ -86,6 +97,12 @@ class Slot:
         # obs scene codes here
         self.obs.runMainScene()
         pass
+
+    def passTriangleScreen(self):
+        canvas = self.sb.find_element(self.canvasStr)
+        x = canvas.size['width'] * .5 # 50%
+        y = canvas.size['height'] * .80 # 80%
+        ClickTheDom(sb=self.sb,xVal=x,yVal=y)
 
     def timedScreenCheck(self,timeout,checkWordsList,eleStr):
         counter = timeout

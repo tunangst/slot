@@ -72,6 +72,6 @@ class EighteenGamingLuckyJoker(Slot):
                 break
          
     def findFinBal(self):
-        balanceStr = '//div[contains(@class,"mg-data-panel-container")]/div[contains(@class,"mg-data-panel-item")]/mg-balance-value[contains(@class,"mg-balance-value")]'
+        balanceStr = '//div[contains(@class,"mg-data-panel-container")]/div[contains(@class,"mg-data-panel-item")]/span[contains(@class,"mg-balance-value")]'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance

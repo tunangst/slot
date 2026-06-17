@@ -53,7 +53,12 @@ builtSlotList = [
     '18gaming-diamond-luxe',
     '18gaming-ketchup-vs-mayo',
     '18gaming-legends-of-olympus',
-    '18gaming-phoenix-winter-parade'
+    '18gaming-phoenix-winter-parade',
+    '18gaming-fruit-burst-bonanza',
+    '18gaming-broccoli-bankers-blitz',
+    '18gaming-jurassic-jungle',
+    '18gaming-eat-sleep-rave-repeat',
+    '18gaming-galaxy-of-gems'
 ]
 
 class InputValidation:

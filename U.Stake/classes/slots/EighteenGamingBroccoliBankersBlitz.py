@@ -5,63 +5,53 @@ from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-slotCode = '18gaming-phoenix-winter-parade'
+slotCode = '18gaming-broccoli-bankers-blitz'
 closingWordsList = ['conratulations','congratulations', 'cong', 'tions','ratulations']
 
-class EighteenGamingPhoenixWinterParade(Slot):
+class EighteenGamingBroccoliBankersBlitz(Slot):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.betValue = 1
-        self.spinCount = 50
+        self.buyoutBalance = 200
         self.estimatedWaitTime = 120
         self.canvasStr = 'canvas'
         
         self.changeScene() # take the screen blocks off
-        Sleep(sb,3)
+        Sleep(sb,7)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
         Sleep(sb,15)
         self.run()
         Sleep(sb, self.estimatedWaitTime)
-        self.checkFin()
+        self.checkFin(closingWordsList)
         Sleep(sb,3)
         self.findFinBal()
 
     def setup(self):
+        divIndex = 1
+        bonusInd = 1
         canvas = self.sb.find_element(self.canvasStr)
         x = canvas.size['width'] * .5 # 50%
         y = canvas.size['height'] * .80 # 80%
         # MarkTheDom(sb=self.sb,xVal=x,yVal=y)
         ClickTheDom(sb=self.sb,xVal=x,yVal=y)
         Sleep(self.sb)
-        autoStr = '//div[contains(@class,"mg-right-container")]/div[contains(@class,"mg-action-autoplay")]/div[contains(@class,"mg-autoplay-icon")]'
-        self.sb.find_element(autoStr).click()
+
+        bonusStr = '//div[contains(@class,"mg-buy-circle")]'
+        self.sb.find_element(bonusStr).click()
         Sleep(self.sb)
-        countStr = '//li[contains(., "50")]'
-        self.sb.find_element(countStr).click()
+        scatterStr = f'//div[contains(@class,"bonus-cards")]/div[{divIndex}]/div[contains(@class,"bonus-footer")]'
+        self.sb.find_elements(scatterStr)[bonusInd].click()
         Sleep(self.sb)
-        btnStr = 'div.mg-action-play'
-        self.sb.find_element(btnStr).click()
+        confirmStr = '//div[contains(@class,"confirm-btn")]'
+        self.sb.find_elements(confirmStr)[bonusInd].click()
 
     def run(self):
         self.sb.find_element(self.canvasStr).click()
          
-    def checkFin(self):
-        countStr = '//div[contains(@class,"icon-spin")]/div[contains(@class,"mg-stop-icon")]/span'
-        stuck = False
-        while True:
-            try:
-                checkCount = self.sb.find_element(countStr).text
-                print(checkCount)
-                Sleep(self.sb,5)
-                if checkCount == stuck:
-                    self.sb.find_element(self.canvasStr).click()
-                stuck = checkCount
-            except:
-                break
-
     def findFinBal(self):
-        balanceStr = '//div[contains(@class,"mg-data-panel-container")]/div[contains(@class,"mg-data-panel-item")]/span[contains(@class,"mg-balance-value")]'
+        self.sb.find_element(self.canvasStr).click()
+        Sleep(self.sb,3)
+        balanceStr = 'span.mg-balance-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance

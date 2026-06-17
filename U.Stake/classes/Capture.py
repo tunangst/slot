@@ -115,6 +115,7 @@ class Capture:
                 if word in lowerText:
                     yesList.append(True)
         if len(yesList) == len(self.targetWordList):
+            self.fin = True
             return True
         else:
             return False

@@ -44,8 +44,11 @@ from classes.slots.EighteenGamingDiamondLuxe import EighteenGamingDiamondLuxe
 from classes.slots.EighteenGamingKetchupVsMayo import EighteenGamingKetchupVsMayo
 from classes.slots.EighteenGamingLegendsOfOlympus import EighteenGamingLegendsOfOlympus
 from classes.slots.EighteenGamingPhoenixWinterParade import EighteenGamingPhoenixWinterParade
-
-
+from classes.slots.EighteenGamingFruitBurstBonanza import EighteenGamingFruitBurstBonanza
+from classes.slots.EighteenGamingBroccoliBankersBlitz import EighteenGamingBroccoliBankersBlitz
+from classes.slots.EighteenGamingJurassicJungle import EighteenGamingJurassicJungle
+from classes.slots.EighteenGamingEatSleepRaveRepeat import EighteenGamingEatSleepRaveRepeat
+from classes.slots.EighteenGamingGalaxyOfGems import EighteenGamingGalaxyOfGems
 
 # slotTotal = [
 #         '0xedge-wild-zeus',
@@ -66,15 +69,12 @@ from classes.slots.EighteenGamingPhoenixWinterParade import EighteenGamingPhoeni
 # ]
 
 override = True
-overrideName = '18gaming-phoenix-winter-parade'
+overrideName = '18gaming-galaxy-of-gems'
 
 def findSubclass(sb, slotName, obs):
         if override:
                 slotName = overrideName     # override
         match slotName:
-                # this game is a web based one and breaks with spins over 50
-                        # case '0daygames-corsairs-hex':
-                # newSubclass = ZeroDayGamesCorsairsHex(sb, slotObj)
                 case '0xedge-wild-zeus':
                         return ZeroxEdgeWildZeus(sb,obs)
                 case '0xedgefrutti-bonanza':
@@ -167,5 +167,15 @@ def findSubclass(sb, slotName, obs):
                         return EighteenGamingLegendsOfOlympus(sb,obs)
                 case '18gaming-phoenix-winter-parade':
                         return EighteenGamingPhoenixWinterParade(sb,obs)
+                case '18gaming-fruit-burst-bonanza':
+                        return EighteenGamingFruitBurstBonanza(sb,obs)
+                case '18gaming-broccoli-bankers-blitz':
+                        return EighteenGamingBroccoliBankersBlitz(sb,obs)
+                case '18gaming-jurassic-jungle':
+                        return EighteenGamingJurassicJungle(sb,obs)
+                case '18gaming-eat-sleep-rave-repeat':
+                        return EighteenGamingEatSleepRaveRepeat(sb,obs)
+                case '18gaming-galaxy-of-gems':
+                        return EighteenGamingGalaxyOfGems(sb,obs)
                 case _:
                         print('no subclass found')
