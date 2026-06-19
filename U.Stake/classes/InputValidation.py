@@ -58,7 +58,12 @@ builtSlotList = [
     '18gaming-broccoli-bankers-blitz',
     '18gaming-jurassic-jungle',
     '18gaming-eat-sleep-rave-repeat',
-    '18gaming-galaxy-of-gems'
+    '18gaming-galaxy-of-gems',
+    '18gaming-egyptian-gold-reels',
+    '18gaming-zombie-harvest',
+    '18gaming-halloween-trick-and-spin',
+    '18gaming-velvet-royale',
+    '18gaming-toppings-tantalizer'
 ]
 
 class InputValidation:

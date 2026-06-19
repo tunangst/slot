@@ -1,55 +1,5 @@
-from classes.slots.ZeroxEdgeWildZeus import ZeroxEdgeWildZeus
-from classes.slots.ZeroxEdgeFruttiBonanza import ZeroxEdgeFruttiBonanza
-from classes.slots.ZeroxEdgeSuperCandyDrop import ZeroxEdgeSuperCandyDrop
-from classes.slots.ZeroxEdgeDoNotRedeemIt import ZeroxEdgeDoNotRedeemIt
-from classes.slots.ZeroxEdgeFiveAlphaPlanets import ZeroxEdgeFiveAlphaPlanets
-from classes.slots.ZeroxLuckyLabObsidianSpin import ZeroxLuckyLabObsidianSpin
-from classes.slots.OneThousandLakesStudiosToivo import OneThousandLakesStudiosToivo
-from classes.slots.OneThousandLakesStudiosDiscoCubes import OneThousandLakesStudiosDiscoCubes
-from classes.slots.OneThousandLakesStudiosBassFury import OneThousandLakesStudiosBassFury
-from classes.slots.OneThousandLakesStudiosOperationEpicTaco import OneThousandLakesStudiosOperationEpicTaco
-from classes.slots.OneThousandLakesStudiosRIPOneThousand import OneThousandLakesStudiosRIPOneThousand
-from classes.slots.OneThousandLakesStudiosFlyingFinsOneThousand import OneThousandLakesStudiosFlyingFinsOneThousand
-from classes.slots.OneThousandLakesStudiosBloomEm import OneThousandLakesStudiosBloomEm
-from classes.slots.OneThousandLakesStudioApexSyndicate import OneThousandLakesStudioApexSyndicate
-from classes.slots.OneThousandLakesStudioYakuzaVIP import OneThousandLakesStudioYakuzaVIP
-from classes.slots.OneThousandLakesStudioCandyCarnivalSpringSpritz import OneThousandLakesStudioCandyCarnivalSpringSpritz
-from classes.slots.OneThousandLakesStudioTwistedCandyShop import OneThousandLakesStudioTwistedCandyShop
-from classes.slots.OneThousandLakesStudioArcticRunes import OneThousandLakesStudioArcticRunes
-from classes.slots.OneThousandLakesRotationOfRa import OneThousandLakesRotationOfRa
-from classes.slots.OneThousandOneHundredElevenLightProductionsTheSyndicate import OneThousandOneHundredElevenLightProductionsTheSyndicate
-from classes.slots.OneThousandOneHundredElevenLightProductionsGemburstRush import OneThousandOneHundredElevenLightProductionsGemburstRush
-from classes.slots.OneThousandOneHundredElevenLightProductionsNFLTouchdown import OneThousandOneHundredElevenLightProductionsNFLTouchdown
-from classes.slots.OneThousandOneHundredElevenLightProductionsDragonFortunes import OneThousandOneHundredElevenLightProductionsDragonFortunes
-from classes.slots.OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove import OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove
-from classes.slots.OneThousandOneHundredElevenLightProductionsHeartsInSync import OneThousandOneHundredElevenLightProductionsHeartsInSync
-from classes.slots.OneThousandOneHundredElevenLightProductionsSunsetSerenade import OneThousandOneHundredElevenLightProductionsSunsetSerenade
-from classes.slots.OneThousandSevenHundredEightyNineStudiosCatWar import OneThousandSevenHundredEightyNineStudiosCatWar
-from classes.slots.EighteenGamingSweetStakeTwentyFiveK import EighteenGamingSweetStakeTwentyFiveK
-from classes.slots.EighteenGamingBowlingRiches import EighteenGamingBowlingRiches
-from classes.slots.EighteenGamingGoldenPiggy import EighteenGamingGoldenPiggy
-from classes.slots.EighteenGamingRockNRoll import EighteenGamingRockNRoll
-from classes.slots.EighteenGamingBuffaloBlazeTwo import EighteenGamingBuffaloBlazeTwo
-from classes.slots.EighteenGamingMysticalPlumGrove import EighteenGamingMysticalPlumGrove
-from classes.slots.EighteenGamingAztecSunBlaze import EighteenGamingAztecSunBlaze
-from classes.slots.EighteenGamingWrathOfOlympus import EighteenGamingWrathOfOlympus
-from classes.slots.EighteenGamingCryptoBonanza import EighteenGamingCryptoBonanza
-from classes.slots.EighteenGamimgDragonFortune import EighteenGamimgDragonFortune
-from classes.slots.EighteenGamingSheriffsBounty import EighteenGamingSheriffsBounty
-from classes.slots.EighteenGamingWallStreetHoneyStakes import EighteenGamingWallStreetHoneyStakes
-from classes.slots.EighteenGamingBuffaloBlaze import EighteenGamingBuffaloBlaze
-from classes.slots.EighteenGamingDerbyRace import EighteenGamingDerbyRace
-from classes.slots.EighteenGamingBeachsideBetties import EighteenGamingBeachsideBetties
-from classes.slots.EighteenGamingDiamondLuxe import EighteenGamingDiamondLuxe
-from classes.slots.EighteenGamingKetchupVsMayo import EighteenGamingKetchupVsMayo
-from classes.slots.EighteenGamingLegendsOfOlympus import EighteenGamingLegendsOfOlympus
-from classes.slots.EighteenGamingPhoenixWinterParade import EighteenGamingPhoenixWinterParade
-from classes.slots.EighteenGamingFruitBurstBonanza import EighteenGamingFruitBurstBonanza
-from classes.slots.EighteenGamingBroccoliBankersBlitz import EighteenGamingBroccoliBankersBlitz
-from classes.slots.EighteenGamingJurassicJungle import EighteenGamingJurassicJungle
-from classes.slots.EighteenGamingEatSleepRaveRepeat import EighteenGamingEatSleepRaveRepeat
-from classes.slots.EighteenGamingGalaxyOfGems import EighteenGamingGalaxyOfGems
-
+import slots as slots
+slots.OneThousandLakesStudios
 # slotTotal = [
 #         '0xedge-wild-zeus',
 #         '0xedgefrutti-bonanza',
@@ -69,113 +19,123 @@ from classes.slots.EighteenGamingGalaxyOfGems import EighteenGamingGalaxyOfGems
 # ]
 
 override = True
-overrideName = '18gaming-galaxy-of-gems'
+overrideName = '18gaming-toppings-tantalizer'
 
 def findSubclass(sb, slotName, obs):
         if override:
                 slotName = overrideName     # override
         match slotName:
                 case '0xedge-wild-zeus':
-                        return ZeroxEdgeWildZeus(sb,obs)
+                        return slots.ZeroxEdge.WildZeus(sb,obs)
                 case '0xedgefrutti-bonanza':
-                        return ZeroxEdgeFruttiBonanza(sb,obs)
+                        return slots.ZeroxEdge.FruttiBonanza(sb,obs)
                 case '0xedge-super-candy-drop':
-                        return ZeroxEdgeSuperCandyDrop(sb,obs)
+                        return slots.ZeroxEdge.SuperCandyDrop(sb,obs)
                 case '0xedge-do-not-redeem-it':
-                        return ZeroxEdgeDoNotRedeemIt(sb,obs)
+                        return slots.ZeroxEdge.DoNotRedeemIt(sb,obs)
                 case '0xedge-5-alpha-planets':
-                        return ZeroxEdgeFiveAlphaPlanets(sb,obs)
+                        return slots.ZeroxEdge.FiveAlphaPlanets(sb,obs)
                 case '0xluckylab-obsidian-spin':
-                        return ZeroxLuckyLabObsidianSpin(sb,obs)
+                        return slots.ZeroxLuckyLab.ObsidianSpin(sb,obs)
                 case '1000lakesstudios-toivo':
-                        return OneThousandLakesStudiosToivo(sb,obs)
+                        return slots.OneThousandLakesStudios.Toivo(sb,obs)
                 case '1000lakesstudios-disco-cubes':
-                        return OneThousandLakesStudiosDiscoCubes(sb,obs)
+                        return slots.OneThousandLakesStudios.DiscoCubes(sb,obs)
                 case '1000lakesstudios-bass-fury':
-                        return OneThousandLakesStudiosBassFury(sb,obs)
+                        return slots.OneThousandLakesStudios.BassFury(sb,obs)
                 case '1000lakesstudios-operation-epic-taco':
-                        return OneThousandLakesStudiosOperationEpicTaco(sb,obs)
+                        return slots.OneThousandLakesStudios.OperationEpicTaco(sb,obs)
                 case '1000lakesstudios-r-i-p-1000':
-                        return OneThousandLakesStudiosRIPOneThousand(sb,obs)
+                        return slots.OneThousandLakesStudios.RIPOneThousand(sb,obs)
                 case '1000lakesstudios-flying-finns-1000':
-                        return OneThousandLakesStudiosFlyingFinsOneThousand(sb,obs)
+                        return slots.OneThousandLakesStudios.FlyingFinsOneThousand(sb,obs)
                 case '1000lakesstudios-bloom-em':
-                        return OneThousandLakesStudiosBloomEm(sb,obs)
+                        return slots.OneThousandLakesStudios.BloomEm(sb,obs)
                 case '1000lakesstudios-apex-syndicate':
-                        return OneThousandLakesStudioApexSyndicate(sb,obs)
+                        return slots.OneThousandLakesStudios.ApexSyndicate(sb,obs)
                 case '1000lakesstudios-yakuza-v-i-p':
-                        return OneThousandLakesStudioYakuzaVIP(sb,obs)
+                        return slots.OneThousandLakesStudios.YakuzaVIP(sb,obs)
                 case '1000lakesstudios-candy-carnival-spring-spritz':
-                        return OneThousandLakesStudioCandyCarnivalSpringSpritz(sb,obs)
+                        return slots.OneThousandLakesStudios.CandyCarnivalSpringSpritz(sb,obs)
                 case '1000lakesstudios-twisted-candy-shop':
-                        return OneThousandLakesStudioTwistedCandyShop(sb,obs)
+                        return slots.OneThousandLakesStudios.TwistedCandyShop(sb,obs)
                 case '1000lakesstudios-arctic-runes':
-                        return OneThousandLakesStudioArcticRunes(sb,obs)
+                        return slots.OneThousandLakesStudios.ArcticRunes(sb,obs)
                 case '1000lakes-rotation-of-ra':
-                        return OneThousandLakesRotationOfRa(sb,obs)
+                        return slots.OneThousandLakes.RotationOfRa(sb,obs)
                 case '111lightproductions-the-syndicate':
-                        return OneThousandOneHundredElevenLightProductionsTheSyndicate(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.TheSyndicate(sb,obs)
                 case '111lightproductions-gemburst-rush':
-                        return OneThousandOneHundredElevenLightProductionsGemburstRush(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.GemburstRush(sb,obs)
                 case '111lightproductions-nfl-touchdown':
-                        return OneThousandOneHundredElevenLightProductionsNFLTouchdown(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.NFLTouchdown(sb,obs)
                 case '111lightproductions-dragon-fortunes':
-                        return OneThousandOneHundredElevenLightProductionsDragonFortunes(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.DragonFortunes(sb,obs)
                 case '111lightproductions-legends-of-the-lost-grove':
-                        return OneThousandOneHundredElevenLightProductionsLegendsOfTheLostGrove(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.LegendsOfTheLostGrove(sb,obs)
                 case '111lightproductions-hearts-in-sync':
-                        return OneThousandOneHundredElevenLightProductionsHeartsInSync(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.HeartsInSync(sb,obs)
                 case '111lightproductions-sunset-serenade':
-                        return OneThousandOneHundredElevenLightProductionsSunsetSerenade(sb,obs)
+                        return slots.OneThousandOneHundredElevenLightProductions.SunsetSerenade(sb,obs)
                 case '1789studios-cat-war':
-                        return OneThousandSevenHundredEightyNineStudiosCatWar(sb,obs)
+                        return slots.OneThousandSevenHundredEightyNineStudios.CatWar(sb,obs)
                 case '18gaming-sweet-stake-25k':
-                        return EighteenGamingSweetStakeTwentyFiveK(sb,obs)
+                        return slots.EighteenGaming.SweetStakeTwentyFiveK(sb,obs)
                 case '18gaming-bowling-riches':
-                        return EighteenGamingBowlingRiches(sb,obs)
+                        return slots.EighteenGaming.BowlingRiches(sb,obs)
                 case '18gaming-golden-piggy':
-                        return EighteenGamingGoldenPiggy(sb,obs)
+                        return slots.EighteenGaming.GoldenPiggy(sb,obs)
                 case '18gaming-rock-n-roll':
-                        return EighteenGamingRockNRoll(sb,obs)
+                        return slots.EighteenGaming.RockNRoll(sb,obs)
                 case '18gaming-buffalo-blaze-2':
-                        return EighteenGamingBuffaloBlazeTwo(sb,obs)
+                        return slots.EighteenGaming.BuffaloBlazeTwo(sb,obs)
                 case '18gaming-mystical-plum-grove':
-                        return EighteenGamingMysticalPlumGrove(sb,obs)
+                        return slots.EighteenGaming.MysticalPlumGrove(sb,obs)
                 case '18gaming-aztec-sun-blaze':
-                        return EighteenGamingAztecSunBlaze(sb,obs)
+                        return slots.EighteenGaming.AztecSunBlaze(sb,obs)
                 case '18gaming-wrath-of-olympus':
-                        return EighteenGamingWrathOfOlympus(sb,obs)
+                        return slots.EighteenGaming.WrathOfOlympus(sb,obs)
                 case '18gaming-crypto-bonanza':
-                        return EighteenGamingCryptoBonanza(sb,obs)
+                        return slots.EighteenGaming.CryptoBonanza(sb,obs)
                 case '18gaming-dragon-fortune':
-                        return EighteenGamimgDragonFortune(sb,obs)
+                        return slots.EighteenGaming.DragonFortune(sb,obs)
                 case '18gaming-sheriffs-bounty':
-                        return EighteenGamingSheriffsBounty(sb,obs)
+                        return slots.EighteenGaming.SheriffsBounty(sb,obs)
                 case '18gaming-wall-street-honey-stakes':
-                        return EighteenGamingWallStreetHoneyStakes(sb,obs)
+                        return slots.EighteenGaming.WallStreetHoneyStakes(sb,obs)
                 case '18gaming-buffalo-blaze':
-                        return EighteenGamingBuffaloBlaze(sb,obs)
+                        return slots.EighteenGaming.BuffaloBlaze(sb,obs)
                 case '18gaming-derby-race':
-                        return EighteenGamingDerbyRace(sb,obs)
+                        return slots.EighteenGaming.DerbyRace(sb,obs)
                 case '18gaming-beachside-betties':
-                        return EighteenGamingBeachsideBetties(sb,obs)
+                        return slots.EighteenGaming.BeachsideBetties(sb,obs)
                 case '18gaming-diamond-luxe':
-                        return EighteenGamingDiamondLuxe(sb,obs)
+                        return slots.EighteenGaming.DiamondLuxe(sb,obs)
                 case '18gaming-ketchup-vs-mayo':
-                        return EighteenGamingKetchupVsMayo(sb,obs)
+                        return slots.EighteenGaming.KetchupVsMayo(sb,obs)
                 case '18gaming-legends-of-olympus':
-                        return EighteenGamingLegendsOfOlympus(sb,obs)
+                        return slots.EighteenGaming.LegendsOfOlympus(sb,obs)
                 case '18gaming-phoenix-winter-parade':
-                        return EighteenGamingPhoenixWinterParade(sb,obs)
+                        return slots.EighteenGaming.PhoenixWinterParade(sb,obs)
                 case '18gaming-fruit-burst-bonanza':
-                        return EighteenGamingFruitBurstBonanza(sb,obs)
+                        return slots.EighteenGaming.FruitBurstBonanza(sb,obs)
                 case '18gaming-broccoli-bankers-blitz':
-                        return EighteenGamingBroccoliBankersBlitz(sb,obs)
+                        return slots.EighteenGaming.BroccoliBankersBlitz(sb,obs)
                 case '18gaming-jurassic-jungle':
-                        return EighteenGamingJurassicJungle(sb,obs)
+                        return slots.EighteenGaming.JurassicJungle(sb,obs)
                 case '18gaming-eat-sleep-rave-repeat':
-                        return EighteenGamingEatSleepRaveRepeat(sb,obs)
+                        return slots.EighteenGaming.EatSleepRaveRepeat(sb,obs)
                 case '18gaming-galaxy-of-gems':
-                        return EighteenGamingGalaxyOfGems(sb,obs)
+                        return slots.EighteenGaming.GalaxyOfGems(sb,obs)
+                case '18gaming-egyptian-gold-reels':
+                        return slots.EighteenGaming.EgyptianGoldReels(sb,obs)
+                case '18gaming-zombie-harvest':
+                        return slots.EighteenGaming.ZombieHarvest(sb,obs)
+                case '18gaming-halloween-trick-and-spin':
+                        return slots.EighteenGaming.HalloweenTrickAndSpin(sb,obs)
+                case '18gaming-velvet-royale':
+                        return slots.EighteenGaming.VelvetRoyale(sb,obs)
+                case '18gaming-toppings-tantalizer':
+                        return slots.EighteenGaming.ToppingsTantalizer(sb,obs)
                 case _:
                         print('no subclass found')

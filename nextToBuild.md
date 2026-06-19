@@ -1,40 +1,5 @@
 [
     {
-        "name": "egyptian gold reels",
-        "creator": "18gaming",
-        "full": "18gaming-egyptian-gold-reels",
-        "index1": 6,
-        "index2": 26
-    },
-    {
-        "name": "zombie harvest",
-        "creator": "18gaming",
-        "full": "18gaming-zombie-harvest",
-        "index1": 6,
-        "index2": 27
-    },
-    {
-        "name": "halloween trick and spin",
-        "creator": "18gaming",
-        "full": "18gaming-halloween-trick-and-spin",
-        "index1": 6,
-        "index2": 28
-    },
-    {
-        "name": "velvet royale",
-        "creator": "18gaming",
-        "full": "18gaming-velvet-royale",
-        "index1": 6,
-        "index2": 29
-    },
-    {
-        "name": "toppings tantalizer",
-        "creator": "18gaming",
-        "full": "18gaming-toppings-tantalizer",
-        "index1": 6,
-        "index2": 30
-    },
-    {
         "name": "sushi jet dash",
         "creator": "18gaming",
         "full": "18gaming-sushi-jet-dash",
