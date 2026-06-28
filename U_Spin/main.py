@@ -13,7 +13,7 @@ import os
 
 # pageTitle = 'U Spin Chrome'
 slotDataLocation = 'slotdata.json'
-scrapeSlotsToggle = False
+scrapeSlotsToggle = True
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
 errorHandling = False
@@ -46,6 +46,7 @@ class Main:
             obs.runFindChromeWindowToCapture()
             if scrapeSlotsToggle:
                 ScrapeSlots(sb=self.sb)
+                return
             else:
                 # run program
                 while True:

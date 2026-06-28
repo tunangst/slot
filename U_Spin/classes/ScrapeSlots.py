@@ -15,26 +15,23 @@ class ScrapeSlots:
         self.pubNameLabelStr = ''
         self.loadMoreEle = '//div[contains(@class,"load-more-container")]/button'
         self.slotCard = '//div[contains(@class,"game-card-wrap")]//div[contains(@class,"img-wrap")]'
-        # self.slotCard = '//div[contains(@id,"main-content")]/div/div[4]/div[2]'
         self.publisherList = []
         self.slotId = ''
         self.slotInfoObj = {}
         self.slotNames = []
-        # self.fullSlotList = []
-        # self.finalSlotList = []
+        self.countToRefreshLimit = 100
 
         sb.open(stake)
         checkCaptcha(sb)
         Sleep(self.sb,10)
         checkRegionChange(sb)
-        # self.stripAndSaveAllSlots()
         self.startFile()
         self.run()
         self.endFile()
 
     def startFile(self):
         with open(self.locationName, 'w') as file:
-            file.write('[')
+            file.write('[ \n')
 
     def writeSlotToFile(self):
         with open(self.locationName, 'a') as file:
@@ -42,7 +39,7 @@ class ScrapeSlots:
             file.write(', \n')
 
     def endFile(self):
-        with open(self.locationName, 'w') as file:
+        with open(self.locationName, 'a') as file:
             file.write(']')
 
     def run(self):
@@ -50,26 +47,30 @@ class ScrapeSlots:
         self.extractPublisherNames()
         self.clickPublisherBtn()
         self.cyclePublishers()
-        # self.populateSlotInfo()
-        # self.saveSlotInfo()
         
     def clickPublisherBtn(self):
         self.sb.find_element(self.providerBtnStr).click()
 
     def extractPublisherNames(self):
-        publisherEles = self.sb.find_elements(self.providerNameStr)
+        publisherEleList = self.sb.find_elements(self.providerNameStr)
         indexCheck = 0
-        for ele in publisherEles:
-            # start recording after popular publishers
+        domIndexCount = 0
+        print(f'there are {len(publisherEleList)} publishers captured')
+        for ele in publisherEleList:
             if indexCheck <= self.cutPubListInd:
                 indexCheck += 1
+                domIndexCount += 1
             else:
-                pubName = ele.text
-                self.pubName = pubName.replace('$','')
+                domIndexCount += 1
+                # need to get find provider by going to div index instead of name, name takes too long
+                provName = ele.text
+                provName = provName.replace('$','')
                 # skip play'n go until I figure out how to add it in
-                if self.pubName in voidNames:
+                if provName in voidNames:
                     continue
-                self.publisherList.append(self.pubName)
+                provNameTemplate = (provName,domIndexCount)
+                self.publisherList.append(provNameTemplate)
+                print(provNameTemplate)
 
     def buildSlotObj(self):
         splitNames = splitSlotNames(self.slotId)
@@ -80,10 +81,17 @@ class ScrapeSlots:
         }
 
     def cyclePublishers(self):
+        processCount = self.cutPubListInd
         while len(self.publisherList) > 1:
+            # refresh page to refresh dom speed
+            processCount += 1
+            if processCount % self.countToRefreshLimit == 0:
+                print('refreshing page to refresh the memory cache')
+                self.refreshPage()
+
             pubName = self.publisherList.pop(0)
             self.clickPublisherBtn()
-            self.pubNameLabelStr = fr'//p/div/*[contains(.,"{pubName}")]'
+            self.pubNameLabelStr = f'//div[contains(@class,"provider-list")]/div[{pubName[1]}]/label/span/p/div/span'
 
             self.clickProvider()
             # close provider list
@@ -92,10 +100,10 @@ class ScrapeSlots:
             # save 
             self.listAvailableSlots()
             self.unclickProvider()
+            print(f'writing {pubName}')
 
     def clickProvider(self):
         if self.sb.is_element_present(self.pubNameLabelStr):
-            print(self.pubNameLabelStr)
             self.sb.find_element(self.pubNameLabelStr).click()
             return
         else:
@@ -122,12 +130,9 @@ class ScrapeSlots:
                 except:
                     print('failed to press load more btn')
             else:
-                print('load more btn not found')
                 break
-            print(count)
 
     def listAvailableSlots(self):
-        # self.slotNames = []
         parentElement = self.sb.find_elements(self.slotCard)
         # loop over parent element
         for element in parentElement:
@@ -139,21 +144,6 @@ class ScrapeSlots:
                 self.slotId = element.children[0].id
                 self.buildSlotObj()
                 self.writeSlotToFile()
-                # available slot, push it to the list
-                # self.slotNames.append(element.children[0].id)
-            # random empty comments might mess up this 
-        # self.fullSlotList.append(self.slotNames)
-
-    # def populateSlotInfo(self):
-    #     for name in self.fullSlotList:
-    #         splitNames = splitSlotNames(name)
-    #         slotInfoObj = {
-    #             'name': splitNames[1], 
-    #             'creator': splitNames[0],
-    #             'full': name
-    #         }
-    #         self.writeSlotToFile(slotInfoObj)
-    #         # self.finalSlotList.append(slotInfoObj)
 
     def refreshPage(self):
         self.sb.refresh_page()
@@ -162,6 +152,3 @@ class ScrapeSlots:
         Sleep(self.sb,10)
         checkRegionChange(self.sb)
         Sleep(self.sb,5)
-
-    # def saveSlotInfo(self):
-    #     SaveFile(location=self.locationName,list=self.finalSlotList)
