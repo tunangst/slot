@@ -11,7 +11,6 @@ from seleniumbase import SB
 import threading
 import os
 
-# pageTitle = 'U Spin Chrome'
 slotDataLocation = 'slotdata.json'
 scrapeSlotsToggle = True
 buildSpreadsheetToggle = False
