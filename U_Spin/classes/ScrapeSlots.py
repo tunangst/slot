@@ -11,7 +11,7 @@ class ScrapeSlots:
         self.sb = sb
         self.providerBtnStr = '//div[contains(@id, "main-content")]/div/div/div/div/div/button/span'
         self.providerNameStr = '//div[contains(@class,"provider-list")]/div/label/span/p/div/span'
-        self.cutPubListInd = 507 # 13
+        self.cutPubListInd = 13
         self.pubNameLabelStr = ''
         self.loadMoreEle = '//div[contains(@class,"load-more-container")]/button'
         self.slotCard = '//div[contains(@class,"game-card-wrap")]//div[contains(@class,"img-wrap")]'
