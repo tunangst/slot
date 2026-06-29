@@ -19,7 +19,7 @@ class ScrapeSlots:
         self.slotId = ''
         self.slotInfoObj = {}
         self.slotNames = []
-        self.countToRefreshLimit = 100
+        self.countToRefreshLimit = 50
 
         sb.open(stake)
         checkCaptcha(sb)
