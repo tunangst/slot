@@ -17,15 +17,9 @@ errorDir = './U_Spin/images/error/'
 
 
 def pullScrapedSlots():
-    slotList = []
     with open(slotFile,'r') as file:
-        slotdata = json.load(file)
-        for i in range(len(slotdata)):
-            for j in range(len(slotdata[i])):
-                slotObj = slotdata[i][j]
-                # print(slotObj)
-                slotList.append(slotObj)
-        return slotList
+        slotData = json.load(file)
+        return slotData
 
 def getInfoFromScrapedSlots(slotInput):
     # loop over slotData

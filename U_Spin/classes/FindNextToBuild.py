@@ -13,10 +13,6 @@ class FindNextToBuild:
         self.compareNames()
         self.bulkRemove()
         self.buildFile()
-        # get list from file
-        # loop through
-        # 
-        pass
 
     def compareNames(self):
         for i in range(len(self.scrapedList)):

@@ -12,7 +12,7 @@ import threading
 import os
 
 slotDataLocation = 'slotdata.json'
-scrapeSlotsToggle = True
+scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
 errorHandling = False
