@@ -26,14 +26,13 @@ def getInfoFromScrapedSlots(slotInput):
     try:
         with open(slotFile, 'r') as file:
             slotdata = json.load(file)
-            for i in range(len(slotdata)):
-                for j in range(len(slotdata[i])):
-                    if slotdata[i][j]['full'] == slotInput:
-                        print(f'Done! Found: {slotdata[i][j]["full"]}')
-                        return slotdata[i][j]
-                    else:
-                        pass
-                        # print(f'looping to find slot: {slotdata[i][j]["full"]}')
+            for data in slotdata:
+                if data['full'] == slotInput:
+                    print(f'Done! Found: {data["full"]}')
+                    return data
+                else:
+                    pass
+                    # print(f'looping to find slot: {slotdata[i][j]["full"]}')
             return False
     except:
         print('failed to get info from scraped slots getInfoFromScrapedSlots, classUtilityfunctions')
