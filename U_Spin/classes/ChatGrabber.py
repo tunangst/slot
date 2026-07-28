@@ -43,7 +43,8 @@ class ChatGrabber:
                             'type',
                             'unknown'
                         )
-                        platform = f'[{platform}]'
+                        platform = f'{platform}'
+                        # platform = f'[{platform}]'
                         username = f'{username}:'
                         chatMessage = f'{chatMessage}'
                         msgBlock = {
@@ -64,7 +65,7 @@ class ChatGrabber:
         return self.startTime + timedelta(seconds=self.timeout)
     
     def filterMsg(self, msgBlock):
-        # search whole string for 
+        # search whole string for  pattern ||x||
         regex = r'\|\|(.*?)\|\|'
         msg = msgBlock['chatMessage']
         match = re.search(regex,msg)
