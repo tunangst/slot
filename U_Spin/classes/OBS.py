@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import time
 
+load_dotenv()
 host = os.getenv('OBS_HOST')
 port = os.getenv('OBS_PORT')
 passw = os.getenv('OBS_PASS')
