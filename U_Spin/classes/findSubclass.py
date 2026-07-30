@@ -1,11 +1,8 @@
 import classes.slots as slots
 
-override = True
-overrideName = '0xedge-5-alpha-planets'
-
-def findSubclass(sb, slotName, obs):
+def findSubclass(sb, slotName, obs, override=False):
         if override:
-                slotName = overrideName
+                slotName = override
         match slotName:
                 case '0xedge-wild-zeus':
                         return slots.ZeroxEdge.WildZeus.WildZeus(sb,obs)

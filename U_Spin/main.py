@@ -12,11 +12,12 @@ import threading
 import os
 
 slotDataLocation = 'slotdata.json'
+inputOverride = False #'0xedge-5-alpha-planets'
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
-errorHandling = False
-votingTimeout = 0 #30
+errorHandling = True
+votingTimeout = 30 #30
 loopIncrement = 1
 
 if buildSpreadsheetToggle:
@@ -78,7 +79,7 @@ class Main:
             ## OBS to change scene to block screen
             obs.runSetSelectedScene(self.iv.slotObj)
             obs.runSelectedScene()
-            slotObj = findSubclass(slotName=self.iv.validatedSlot , sb=self.sb, obs=obs)
+            slotObj = findSubclass(slotName=self.iv.validatedSlot , sb=self.sb, obs=obs, override=inputOverride)
             # remove images in image directory
             obs.runSetWinnerScene(cg.winner,self.iv.validatedSlot,slotObj.winnings)
             obs.runWinnerScene()
