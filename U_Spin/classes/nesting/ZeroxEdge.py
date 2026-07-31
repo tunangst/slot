@@ -28,7 +28,7 @@ class ZeroxEdge(Slot):
         self.sb.find_element(self.bonusStr).click()
 
     def clickBonusCard(self):
-        bonusCardStr = f'//div[contains(@class, "tiles-grid")]/div[{self.bonusOption}]//div[contains(@class, "tile-body")]//button'
+        bonusCardStr = f'//div[contains(@class, "tiles-grid")]/div[{self.bonusOption}]/div[contains(@class, "tile-footer")]/button'
         self.sb.find_element(bonusCardStr).click()
 
     def clickConfirm(self):

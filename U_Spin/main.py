@@ -12,12 +12,12 @@ import threading
 import os
 
 slotDataLocation = 'slotdata.json'
-inputOverride = False #'0xedge-5-alpha-planets'
+inputOverride = '0xedge-wild-zeus' #'0xedge-5-alpha-planets'
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
-errorHandling = True
-votingTimeout = 30 #30
+errorHandling = False
+votingTimeout = 3 #30
 loopIncrement = 1
 
 if buildSpreadsheetToggle:

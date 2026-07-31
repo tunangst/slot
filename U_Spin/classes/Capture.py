@@ -40,6 +40,10 @@ class Capture:
         self.getPicSize()
         self.extractText()
 
+        # account for the cases where the screenshot is taken and does not find words
+        if not self.textBlocksRange:
+            return
+
         match self.action:
             case 'find shape':
                 pass
@@ -94,6 +98,7 @@ class Capture:
 
     def checkGameEndWords(self):
         # loop over textBlocks and see if any match the words in targetWords
+        
         for i in self.textBlocksRange:
             block = self.textBlocks[i]
             lowerText = self.textBlocks[i]['text'].lower()
