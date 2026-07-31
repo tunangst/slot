@@ -12,12 +12,12 @@ import threading
 import os
 
 slotDataLocation = 'slotdata.json'
-inputOverride = '0xedge-wild-zeus' #'0xedge-5-alpha-planets'
+inputOverride = False #'0xedge-5-alpha-planets', False
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
-errorHandling = False
-votingTimeout = 3 #30
+errorHandling = True
+votingTimeout = 30 #30
 loopIncrement = 1
 
 if buildSpreadsheetToggle:
@@ -55,7 +55,12 @@ class Main:
                             self.mainCodeBlock()
                         except Exception as e:
                             # append to error log
-                            createErrorLog(self.sb,name=self.iv.slotObj['full'],exception=e)  
+                            try:
+                                createErrorLog(self.sb,name=self.iv.slotObj['full'],exception=e)
+                            except:
+                                createErrorLog(self.sb,name='undefined, no name obj',exception=e)
+
+
                     else:
                         self.mainCodeBlock()
 
