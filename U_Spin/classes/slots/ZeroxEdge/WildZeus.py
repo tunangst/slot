@@ -13,7 +13,10 @@ class WildZeus(ZeroxEdge):
         self.buyoutBalance = 500
         self.estimatedWaitTime = 80
         self.bonusOption = 6
-        self.canvasStr = 'div.fs-content'
+        self.canvasStr = '//div[contains(@class,"game-container")]'
+        self.canvasStr2 = '//div[contains(@class,"fs-content")]'
+        self.counterStr = '//button[contains(@class,"play-btn-circle")]/span[contains(@class,"fs-btn-counter")]/span[contains(@class,"fs-btn-num") and not(contains(@class,"fs-btn-total"))]'
+        self.checkEndFlag = False
         
         self.changeScene() # take the screen blocks off
         self.runSleepMain()
@@ -21,9 +24,11 @@ class WildZeus(ZeroxEdge):
         self.runSleepThree()
         self.setup()
         self.runSleepThree()
-        self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin(closingWords)
+        # self.run()
+        # Sleep(sb, self.estimatedWaitTime)
+        self.checkStart()
+        self.checkFin()
+        # self.checkFin(closingWords)
         self.runSleepThree()
         self.findFinBal()
 
@@ -34,9 +39,35 @@ class WildZeus(ZeroxEdge):
         self.runSleepOne()
         self.clickConfirm()
 
-    def run(self):
-        continueStr = '.fsi-tap'
-        self.sb.find_element(continueStr).click()
+    def checkStart(self):
+        while True:
+            Sleep(self.sb,2)
+            counterStatus = self.sb.is_element_present(self.counterStr)
+            if counterStatus:
+                self.sb.find_element(self.counterStr)
+                break
+
+            try:
+                self.sb.find_element(self.canvasStr).click()
+            except:
+                self.sb.find_element(self.canvasStr2).click()
+
+    def checkFin(self):
+        Sleep(self.sb,2)
+        while True:
+            try:
+                self.sb.find_element(self.canvasStr).click()
+                counterNum = self.sb.find_element(self.counterStr).text
+                self.checkEndFlag = False
+            except:
+                try:
+                    self.sb.find_element(self.canvasStr).click()
+                except:
+                    self.sb.find_element(self.canvasStr2).click()
+                if not self.checkEndFlag:
+                    self.checkEndFlag = True
+                else:
+                    break
 
     def findFinBal(self):
         self.sb.find_element(self.canvasStr).click()
@@ -45,3 +76,7 @@ class WildZeus(ZeroxEdge):
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)
         self.finalBalance = self.endingBalance - self.startingBalance
+
+    # def run(self):
+    #     continueStr = '.fsi-tap'
+    #     self.sb.find_element(continueStr).click()

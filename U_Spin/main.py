@@ -12,12 +12,12 @@ import threading
 import os
 
 slotDataLocation = 'slotdata.json'
-inputOverride = False #'0xedge-5-alpha-planets', False
+inputOverride = '0xedge-wild-zeus' #'0xedge-5-alpha-planets', False
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
-errorHandling = True
-votingTimeout = 30 #30
+errorHandling = False
+votingTimeout = 0 #30
 loopIncrement = 1
 
 if buildSpreadsheetToggle:
@@ -77,6 +77,8 @@ class Main:
         ).start()
 
         cg = ChatGrabber(votingTimeout)
+        if inputOverride:    # run make input find the override slot
+            cg.winner['slotChoice'] = inputOverride
         self.iv = InputValidation(input=cg.winner['slotChoice'])
         # get slot information from scraped info based on fullName
 
