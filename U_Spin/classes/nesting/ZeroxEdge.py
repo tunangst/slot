@@ -13,7 +13,6 @@ class ZeroxEdge(Slot):
         self.startStr = '//button[contains(@class,"start-btn")]'
         self.confirmStr = '//button[contains(@class,"confirm-yes")]'
         self.bonusStr = '//button[contains(@class,"bonus-outline-btn")]'
-        self.bonusCardStr = f'//div[contains(@class, "tiles-grid")]/div[{self.bonusOption}]/div[contains(@class, "tile-footer")]/button'
 
     def clickTurbo(self):
         self.sb.find_element(self.turboStr).click()
@@ -28,6 +27,8 @@ class ZeroxEdge(Slot):
         self.sb.find_element(self.bonusStr).click()
 
     def clickBonusCard(self):
+        # needs to be here otherwise it will initialize bonusCardStr as 1, the init value
+        self.bonusCardStr = f'//div[contains(@class, "tiles-grid")]/div[{self.bonusOption}]/div[contains(@class, "tile-footer")]/button'
         self.sb.find_element(self.bonusCardStr).click()
 
     def clickConfirm(self):

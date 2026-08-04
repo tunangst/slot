@@ -61,9 +61,10 @@ class WildZeus(ZeroxEdge):
                     break
 
     def findFinBal(self):
-        self.defaultClick()
-        self.runSleepOne()
         balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
+        while not self.sb.is_element_present(balanceStr):
+            Sleep(self.sb,2)
+            print('not present, still loading')
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)
         self.finalBalance = self.endingBalance - self.startingBalance
