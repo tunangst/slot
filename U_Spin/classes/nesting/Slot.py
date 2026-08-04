@@ -21,6 +21,7 @@ class Slot:
         self.domAdjustment = 1
         self.betValue = 1
         self.spinCount = 50
+        self.defaultClickCoords = (0,0)
 
         #self.checkSlotNameInput(slotNameInput)
         self.loadSlotPage()
@@ -31,6 +32,7 @@ class Slot:
         Sleep(self.sb, 3)
         self.fullScreen()
         self.findDimensions()
+        self.setDefaultClick()
 
     def fullScreen(self):
         # find fullscreen btn and click it
@@ -42,10 +44,15 @@ class Slot:
         Sleep(self.sb)
         bodyString = 'body'
         if self.sb.is_element_present(bodyString):
-                body = self.sb.find_element(bodyString)
-                self.gameBoardInfo = body.get_position()
+            body = self.sb.find_element(bodyString)
+            self.gameBoardInfo = body.get_position()
         else:
             print('canvas element not found')
+
+    def setDefaultClick(self):
+        x = self.gameBoardInfo.width * .5
+        y = self.gameBoardInfo.height * .025
+        self.defaultClickCoords = (x,y)
 
     def loadSlotPage(self):
         Sleep(self.sb)
@@ -165,3 +172,6 @@ class Slot:
             if instance.fin:
                 self.sb.find_element(eleStr).click()
             Sleep(self.sb,5)
+
+    def defaultClick(self):
+        ClickTheDom(sb=self.sb,xVal=self.defaultClickCoords[0],yVal=self.defaultClickCoords[1])

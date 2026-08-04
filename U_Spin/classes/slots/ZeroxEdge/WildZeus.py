@@ -19,24 +19,21 @@ class WildZeus(ZeroxEdge):
         self.checkEndFlag = False
         
         self.changeScene() # take the screen blocks off
-        self.runSleepMain()
+        Sleep(sb,15)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepThree()
-        # self.run()
-        # Sleep(sb, self.estimatedWaitTime)
+        Sleep(sb,3)
         self.checkStart()
         self.checkFin()
-        # self.checkFin(closingWords)
-        self.runSleepThree()
+        Sleep(sb,3)
         self.findFinBal()
 
     def setup(self):
         self.clickBonus()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickBonusCard()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickConfirm()
 
     def checkStart(self):
@@ -47,36 +44,26 @@ class WildZeus(ZeroxEdge):
                 self.sb.find_element(self.counterStr)
                 break
 
-            try:
-                self.sb.find_element(self.canvasStr).click()
-            except:
-                self.sb.find_element(self.canvasStr2).click()
+            self.defaultClick()
 
     def checkFin(self):
         Sleep(self.sb,2)
         while True:
             try:
-                self.sb.find_element(self.canvasStr).click()
+                self.defaultClick()
                 counterNum = self.sb.find_element(self.counterStr).text
                 self.checkEndFlag = False
             except:
-                try:
-                    self.sb.find_element(self.canvasStr).click()
-                except:
-                    self.sb.find_element(self.canvasStr2).click()
+                self.defaultClick()
                 if not self.checkEndFlag:
                     self.checkEndFlag = True
                 else:
                     break
 
     def findFinBal(self):
-        self.sb.find_element(self.canvasStr).click()
+        self.defaultClick()
         self.runSleepOne()
         balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)
         self.finalBalance = self.endingBalance - self.startingBalance
-
-    # def run(self):
-    #     continueStr = '.fsi-tap'
-    #     self.sb.find_element(continueStr).click()

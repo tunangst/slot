@@ -1,6 +1,6 @@
 from classes.nesting.ZeroxEdge import ZeroxEdge
 from classes.classUtilityFunctions import takePicture, compareImages, cleanNumber
-from utilityFunctions import Sleep
+from utilityFunctions import Sleep, MarkTheDom,ClickTheDom
 
 slotCode = '0xedge-super-candy-drop'
 
@@ -9,26 +9,31 @@ class SuperCandyDrop(ZeroxEdge):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 213
         self.estimatedWaitTime = 35
-        self.bonusOption = 6
+        self.bonusOption = 5
+        self.canvasStr = '//canvas'
+        self.bonusCardStr = f'//div[contains(@class, "tiles-grid")]/div[{self.bonusOption}]/div[contains(@class, "tile-body")]/button'
+        self.counterStr = '//button[contains(@class,"play-btn-circle")]/span[contains(@class,"fs-btn-counter")]/span[contains(@class,"fs-btn-num") and not(contains(@class,"fs-btn-total"))]'
+        self.inProgressClickableStr = '//div[contains(@class,"board-layer")]'
+        self.checkEndFlag = False
         
         self.changeScene() # take the screen blocks off
         self.runSleepThree()
         self.passSplashScreen()
         self.runSleepThree()
         self.setup()
-        self.runSleepMain()
-        self.run()
-        Sleep(sb, self.estimatedWaitTime)
+        # self.runSleepMain()
+        # self.run()
+        # Sleep(sb, self.estimatedWaitTime)
+        self.checkStart()
         self.checkFin()
         self.runSleepThree()
         self.findFinBal()
 
     def passSplashScreen(self):
-        str = 'body'
         self.sb.switch_to_frame('iframe')
-        self.sb.find_element(str).click()
+        self.defaultClick()
         Sleep(self.sb)
-        self.sb.find_element(str).click()
+        self.defaultClick()
 
     def setup(self):
         self.clickBonus()
@@ -37,29 +42,36 @@ class SuperCandyDrop(ZeroxEdge):
         self.runSleepOne()
         self.clickConfirm()
 
-    def run(self):
-        continueStr = '.fsi-tap'
-        self.sb.find_element(continueStr).click()
+    def checkStart(self):
+        while True:
+            Sleep(self.sb,2)
+            self.defaultClick()
+            counterStatus = self.sb.is_element_present(self.counterStr)
+            if counterStatus:
+                self.sb.find_element(self.counterStr)
+                break
 
     def checkFin(self):
-        ssNum = 1
         while True:
-            # take screenshot 1
-            picLocation1 = takePicture(sb=self.sb,action='increment', increment=ssNum)
-            # change increment
-            ssNum = (ssNum % 2) + 1
-            Sleep(self.sb,10)
-            # take screenshot 2
-            picLocation2 = takePicture(sb=self.sb,action='increment',increment=ssNum)
-            # change increment
-            ssNum = (ssNum % 2) + 1
-            # compare
-            sameImg = compareImages(picLocation1,picLocation2)
-            # exit if they are the same
-            if sameImg:
-                return
+            Sleep(self.sb,2)
+            # when it ends, this is no longer clickable, I need to find a reoccurring clickable element or cycle through them with is_element_presents
+            self.defaultClick()
+            if self.sb.is_element_present(self.counterStr):
+                try:
+                    counterNum = self.sb.find_element(self.counterStr).text
+                    self.checkEndFlag = False
+                except:
+                    continue
+            else:
+                if not self.checkEndFlag:
+                    self.checkEndFlag = True
+                else:
+                    break
 
     def findFinBal(self):
         balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
+        while not self.sb.is_element_present(balanceStr):
+            Sleep(self.sb,2)
+            print('not present, still loading')
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
         self.finalBalance = self.endingBalance - self.startingBalance
