@@ -11,19 +11,17 @@ class Slot:
         self.sb = sb
         self.slotCode = slotCode
         self.obs = obs
-        self.startingBalance = 1000.00
         self.canvasStr = 'canvas'
         self.buyoutBalance = 0
+        self.startingBalance = 1000.00
         self.endingBalance = 0
         self.winnings = 0
-        self.finalBalance = 0
         self.bonusOption = 1
         self.domAdjustment = 1
         self.betValue = 1
         self.spinCount = 50
         self.defaultClickCoords = (0,0)
 
-        #self.checkSlotNameInput(slotNameInput)
         self.loadSlotPage()
         Sleep(self.sb,10)
         checkCaptcha(self.sb)
@@ -35,8 +33,6 @@ class Slot:
         self.setDefaultClick()
 
     def fullScreen(self):
-        # find fullscreen btn and click it
-        # maximizeBtnIdentifier = '.game-footer > div > div > button'
         maximizeBtnIdentifier = '//div[contains(@class,"game-footer")]/div/div/button'
         self.sb.find_element(maximizeBtnIdentifier).click()
 
@@ -90,27 +86,6 @@ class Slot:
                 if finInstance.fin:
                     break
 
-    # def setupFifty(self, count):
-    #     autoStr = '//div[contains(@class,"mg-right-container")]/div[contains(@class,"mg-action-autoplay")]/div[contains(@class,"mg-autoplay-icon")]'
-    #     self.sb.find_element(autoStr).click()
-    #     Sleep(self.sb)
-    #     countStr = f'//li[contains(., "{count}")]'
-    #     self.sb.find_element(countStr).click()
-    #     Sleep(self.sb)
-    #     btnStr = '//div[contains(@class,"mg-action-play")]'
-    #     self.sb.find_element(btnStr).click()
-
-    def runSleepOne(self):
-        Sleep(self.sb)
-    def runSleepThree(self):
-        Sleep(self.sb,3)
-    def runSleepFive(self):
-        Sleep(self.sb,5)
-    def runSleepMain(self):
-        Sleep(self.sb,15)
-    def runSleepTwenty(self):
-        Sleep(self.sb,20)
-
     def checkFiftyFin(self,spinWordsList):
         countStr = '//div[contains(@class,"icon-spin")]/div[contains(@class,"mg-stop-icon")]/span'
         stuck = False
@@ -136,9 +111,6 @@ class Slot:
                             finCheck = True
                 except:
                     break
-
-    def findWinnings(self):
-        pass
 
     def findFinBal(self):
         pass
@@ -175,3 +147,7 @@ class Slot:
 
     def defaultClick(self):
         ClickTheDom(sb=self.sb,xVal=self.defaultClickCoords[0],yVal=self.defaultClickCoords[1])
+
+    def calculateWinnings(self):
+        self.winnings = self.startingBalance - self.endingBalance
+        pass

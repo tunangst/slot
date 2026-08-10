@@ -17,7 +17,7 @@ scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False
 errorHandling = False
-votingTimeout = 0 #30
+votingTimeout = 0 #10
 loopIncrement = 1
 
 if buildSpreadsheetToggle:
