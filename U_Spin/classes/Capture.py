@@ -42,7 +42,7 @@ class Capture:
 
         # account for the cases where the screenshot is taken and does not find words
         if not self.textBlocksRange:
-            return
+            return False
 
         match self.action:
             case 'find shape':
@@ -108,7 +108,7 @@ class Capture:
                     print(f'found word matching target words: {word}')
                     self.fin = True
                     self.targetBlock = block
-                    return
+                    return True
                 
     def checkAllWords(self):
         yesList = []
@@ -148,9 +148,10 @@ class Capture:
                 if text[0] == '$':
                     targetValue = text[1:] 
                 floatValue = float(targetValue)
-                return text
+                return floatValue
             except:
                 print(f'this increment did not find a number in findNumber: {text}')
+                return False
         
     def findNext(self):
         for i in self.textBlocksRange:

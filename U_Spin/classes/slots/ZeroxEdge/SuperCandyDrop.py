@@ -10,13 +10,4 @@ class SuperCandyDrop(ZeroxEdge):
         self.estimatedWaitTime = 35
         self.bonusOption = 5
 
-        self.changeScene() # take the screen blocks off
-        Sleep(sb,3)
-        self.passSplashScreen()
-        Sleep(sb,3)
-        self.setup()
-        self.checkStart()
-        self.checkFin()
-        Sleep(sb,3)
-        self.findFinBal()
-        self.calculateWinnings()
+        self.run()

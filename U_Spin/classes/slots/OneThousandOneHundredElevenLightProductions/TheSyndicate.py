@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 slotCode = '111lightproductions-the-syndicate'
 winningScreenshot = 'fin'
 closingWordsList = ['you won','youwon']
+spinWords = ['free spins','free','spins']
 
 class TheSyndicate(OneThousandOneHundredElevenLightProductions):
     def __init__(self, sb, obs):
@@ -15,31 +16,31 @@ class TheSyndicate(OneThousandOneHundredElevenLightProductions):
         self.buyoutBalance = 200
         
         self.changeScene() # take the screen blocks off
-        self.runSleepFive()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepMain()
-        self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
-        self.runSleepThree()
+        Sleep(sb,15)
+        # self.run()
+        # Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(locLabel='top-third',action='check end words',targetWordList=spinWords)
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):
         self.clickBuyout()
-        self.runSleepOne()
+        Sleep(self.sb)
         confirmBtnStr = '//button[contains(@class,"buy")]'
         self.sb.find_element(confirmBtnStr).click()
-        self.runSleepOne()
-        self.clickConfirmBtn()
+        Sleep(self.sb)
+        self.clickConfirm()
 
     def run(self):
-        self.sb.find_element(self.canvasStr).click()
+        self.defaultClick()
 
     def findFinBal(self):
-        self.sb.find_element(self.canvasStr).click()
+        self.defaultClick()
         Sleep(self.sb,3)
         balanceStr = 'span.mg-balance-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-        self.finalBalance = self.endingBalance - self.startingBalance

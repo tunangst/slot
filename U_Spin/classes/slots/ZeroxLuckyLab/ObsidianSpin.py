@@ -17,24 +17,23 @@ class ObsidianSpin(ZeroxLuckyLab):
         self.bonusOption = 3
         
         self.changeScene() # take the screen blocks off
-        self.runSleepMain()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        # Sleep(self.sb,3)
-        # self.run()
         Sleep(sb, self.estimatedWaitTime)
         self.checkFin()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):              
         bonusStr = '//div[contains(@class,"right-controls")]/div[contains(@class, "button-stack")]/button[@title="Modes"]'
         self.sb.find_element(bonusStr).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         bonusCardStr = f'//div[contains(@class,"modal-body")]//div[contains(@class, "mode-cards")]/div[{self.bonusOption}]/div[contains(@class,"mode-card-right")]/button'
         self.sb.find_element(bonusCardStr).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         yesStr = '//button[contains(text(), "Confirm")]'
         self.sb.find_element(yesStr).click()
 
@@ -42,24 +41,21 @@ class ObsidianSpin(ZeroxLuckyLab):
         # set up turbo speed
         settingBtn = '//button[@title="Settings"]'
         self.sb.find_element(settingBtn).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         speedBtn = '//button[@aria-label="Spin Speed"]'
         self.sb.find_element(speedBtn).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         closeBtn = '//button[@aria-label="Close"]'
         self.sb.find_element(closeBtn).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         autoSpin = '//div[contains(@class,"right-controls")]/div[contains(@class,"button-stack")]/button[@title="Auto Play"]'
         self.sb.find_element(autoSpin).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         numBar = f'//div[contains(@class,"modal-content")]/div[contains(@class,"modal-body")]/div[contains(@class,"rounds-grid")]/button[contains(., "{self.spinCount}")]'
         self.sb.find_element(numBar).click()
-        self.runSleepOne()
+        Sleep(self.sb)
         startBar = '//div[contains(@class,"modal-content")]/div[contains(@class,"modal-footer")]//button'
         self.sb.find_element(startBar).click()
-
-    def run(self):
-        pass
 
     def checkFin(self):
         spinCountStr = 'span.autoplay-counter-overlay'
@@ -78,4 +74,3 @@ class ObsidianSpin(ZeroxLuckyLab):
         balanceStr = '//div[contains(@class,"info-display-container")]/div[contains(@class,"info-content")]/div[contains(@class,"info-row")]/div[contains(@class,"info-item-inline")]/span[@class="info-value"]'
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)
-        self.finalBalance = self.endingBalance - self.startingBalance

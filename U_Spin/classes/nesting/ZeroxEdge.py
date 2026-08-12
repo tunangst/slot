@@ -73,3 +73,15 @@ class ZeroxEdge(Slot):
         self.clickBonusCard()
         Sleep(self.sb)
         self.clickConfirm()
+
+    def run(self):
+        self.changeScene() # take the screen blocks off
+        Sleep(self.sb,3) # loading time
+        self.passSplashScreen()
+        Sleep(self.sb,3)
+        self.setup()
+        self.checkStart()
+        self.checkFin()
+        Sleep(self.sb,3)
+        self.findFinBal()
+        self.calculateWinnings()

@@ -12,24 +12,25 @@ class FiveAlphaPlanets(ZeroxEdge):
         self.bonusOption = 4
         
         self.changeScene() # take the screen blocks off
-        self.runSleepFive()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepMain()
+        Sleep(sb,3)
         self.run()
         Sleep(sb, self.estimatedWaitTime)
         self.checkFin()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):
         bonusStr = 'button.bonus-x-btn'
         self.sb.find_element(bonusStr).click()
-        self.runSleepOne()
+        Sleep(self.sb,3)
         bonusCardStr = f'//div[contains(@class, "tiles-row")]/div[{self.bonusOption}]//div[contains(@class, "tile-body")]//button'
         self.sb.find_element(bonusCardStr).click()
-        self.runSleepOne()
+        Sleep(self.sb,3)
         self.clickConfirm()
 
     def run(self):
@@ -58,4 +59,3 @@ class FiveAlphaPlanets(ZeroxEdge):
         balanceStr = '//div[contains(@class,"bar-left")]/div[contains(@class,"info-stack")]/div[contains(@class,"info-row")]/span[contains(@class,"info-value")]'
         balance = self.sb.find_element(balanceStr).text
         self.endingBalance = cleanNumber(balance)
-        self.finalBalance = self.endingBalance - self.startingBalance

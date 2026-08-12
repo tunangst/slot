@@ -10,28 +10,24 @@ class DoNotRedeemIt(ZeroxEdge):
         self.estimatedWaitTime = 60
         
         self.changeScene() # take the screen blocks off
-        self.runSleepThree()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        # Sleep(self.sb,3)
-        # self.run()
         Sleep(sb, self.estimatedWaitTime)
         self.checkFin()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):
         self.clickTurbo()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickAuto()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickStart()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickConfirm()
-
-    def run(self):
-        pass
 
     def checkFin(self):
         # find autoplay count and break when the element goes invisible
@@ -49,4 +45,3 @@ class DoNotRedeemIt(ZeroxEdge):
         spanStr = 'span.info-value'
         txtNum = self.sb.get_text(spanStr)
         self.endingBalance = cleanNumber(txtNum)
-        self.finalBalance = self.endingBalance - self.startingBalance

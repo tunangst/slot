@@ -62,28 +62,60 @@ def takePicture(sb,action=False, increment=0, fileName=False, eleStr=False, crop
     else:
         sb.save_screenshot(destination)
 
-    match crop:
-        case 'mid-fifty':
-            runMidFifty(destination)
-        case _:
-            print('no matching crop for takePicture')
+    if crop:
+        cropPicture(destination,crop)
             
     return destination
-def runMidFifty(destination):
+
+def cropPicture(destination,crop):
     ss = Image.open(destination)
     width, height = ss.size
     halfWidth = width/2
+    thirdWidth = width/3
     quarterWidth = width/4
+    sixthWidth = width/6
     halfHeight = height/2
     quarterHeight = height/4
-    # Keep the center 50%
-    left = halfWidth - quarterWidth
-    right = halfWidth + quarterWidth
-    top = halfHeight - quarterHeight
-    bottom = halfHeight + quarterHeight
-
+    octHeight = height/8
+    left = right = top = bottom = 0
+    match crop:
+        case 'mid-fifty':
+            left = halfWidth - quarterWidth
+            right = halfWidth + quarterWidth
+            top = halfHeight - quarterHeight
+            bottom = halfHeight + quarterHeight
+        case 'top-mid-left':
+            buffer = 100
+            left = quarterWidth
+            right = halfWidth - buffer
+            top = 0
+            bottom = octHeight
+        case 'top-third':
+            bufferL = 50
+            bufferR = 30
+            left = sixthWidth - bufferL
+            right = thirdWidth - bufferR
+            top = 0
+            bottom = octHeight
+        case _:
+            print('no matching crop for cropPicture')
     cropped = ss.crop((left, top, right, bottom))
     cropped.save(destination)
+
+# def runTopMidLeft(destination):
+#     ss = Image.open(destination)
+#     width, height = ss.size
+#     halfWidth = width/2
+#     quarterWidth = width/4
+#     octHeight = height/8
+#     rightBuffer = 100
+#     left = quarterWidth
+#     right = halfWidth - rightBuffer
+#     top = 0
+#     bottom = octHeight
+
+#     cropped = ss.crop((left, top, right, bottom))
+#     cropped.save(destination)
 
 def findCircles(imgLocation):
     returnCircles = []

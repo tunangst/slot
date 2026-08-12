@@ -19,36 +19,35 @@ class CatWar(OneThousandSevenHundredEightyNineStudios):
         self.estimatedWaitTime = 30
 
         self.changeScene() # take the screen blocks off
-        self.runSleepThree()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepMain()
+        Sleep(sb,3)
         self.run()
-        Sleep(sb, self.estimatedWaitTime)
+        Sleep(sb,3)
         self.checkFin(closingWordsList)
-        self.runSleepThree()
-        self.sb.find_element(self.canvasStr).click()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):
         xValBonus, yValBonus = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)
         # switch it to take full screenshot and mark the click location
         ClickTheDom(sb=self.sb,xVal=xValBonus,yVal=yValBonus)
-        self.runSleepThree()
+        Sleep(self.sb,3)
         xValScatter, yValScatter = findEmbeddedCoords(sb=self.sb,checkWordList=scatterWords)
         ClickTheDom(sb=self.sb,xVal=xValScatter,yVal=yValScatter)
-        self.runSleepThree()
+        Sleep(self.sb,3)
         xValConfirm, yValConfirm = findEmbeddedCoords(sb=self.sb,checkWordList=confirmWords)
         ClickTheDom(sb=self.sb,xVal=xValConfirm,yVal=yValConfirm)
 
     def run(self):
-        self.sb.find_element(self.canvasStr).click()
+        self.defaultClick()
+        # self.sb.find_element(self.canvasStr).click()
 
     def findFinBal(self):
         picLocation = takePicture(sb=self.sb,action='fin')
         cap = Capture(imageLocation=picLocation,action='find next',targetWordList=nextWordList)
         winStr = cap.targetBlock
         self.endingBalance = cleanNumber(winStr['text'])
-        self.finalBalance = self.endingBalance - self.startingBalance

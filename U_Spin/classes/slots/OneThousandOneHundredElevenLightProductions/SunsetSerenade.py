@@ -17,30 +17,30 @@ class SunsetSerenade(OneThousandOneHundredElevenLightProductions):
         self.canvasStr = 'canvas#game'
 
         self.changeScene() # take the screen blocks off
-        self.runSleepThree()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepMain()
-        self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
-        self.runSleepThree()
+        Sleep(sb,10)
+        # self.run()
+        # Sleep(sb, self.estimatedWaitTime)
+        self.checkFin(locLabel='top-mid-left')
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):
         self.clickBuyout()
-        self.runSleepOne()
-        self.clickBonusCardIncrement()
-        self.runSleepOne()
-        self.clickConfirmDivIncrement()
+        Sleep(self.sb)
+        self.clickBonusCard()
+        Sleep(self.sb)
+        self.clickConfirm()
 
     def run(self):
-        self.sb.find_element(self.canvasStr).click()
+        self.defaultClick()
 
     def findFinBal(self):
-        self.sb.find_element(self.canvasStr).click()
+        self.defaultClick()
         Sleep(self.sb,3)
         balanceStr = 'span.mg-balance-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-        self.finalBalance = self.endingBalance - self.startingBalance

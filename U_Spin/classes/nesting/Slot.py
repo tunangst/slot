@@ -74,6 +74,7 @@ class Slot:
             if instance.fin:
                 return True
             Sleep(self.sb,5)
+            self.defaultClick()
 
     def checkStuckAndFin(self,checkList,finList):
         while True:
