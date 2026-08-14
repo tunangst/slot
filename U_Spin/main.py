@@ -12,7 +12,7 @@ import threading
 import os
 
 slotDataLocation = 'slotdata.json'
-inputOverride = '111lightproductions-sunset-serenade' #'0xedge-5-alpha-planets', False
+inputOverride = '111lightproductions-dragon-fortunes' #'0xedge-5-alpha-planets', False
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False

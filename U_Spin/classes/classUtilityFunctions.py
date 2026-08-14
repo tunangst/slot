@@ -84,17 +84,55 @@ def cropPicture(destination,crop):
             right = halfWidth + quarterWidth
             top = halfHeight - quarterHeight
             bottom = halfHeight + quarterHeight
-        case 'top-mid-left':
-            buffer = 100
-            left = quarterWidth
-            right = halfWidth - buffer
-            top = 0
-            bottom = octHeight
-        case 'top-third':
+        case '111lightproductions-the-syndicate':
             bufferL = 50
             bufferR = 30
             left = sixthWidth - bufferL
             right = thirdWidth - bufferR
+            top = 0
+            bottom = octHeight
+        case '111lightproductions-nfl-touchdown':
+            bufferL = 50
+            bufferR = 150
+            left = quarterWidth -bufferL
+            right = halfWidth - bufferR
+            top = 0
+            bottom = octHeight
+        case '111lightproductions-sunset-serenade':
+            bufferR = 120
+            left = quarterWidth
+            right = halfWidth - bufferR
+            top = 0
+            bottom = octHeight
+        case '111lightproductions-legends-of-the-lost-grove':
+            bufferX = 180
+            bufferY = 80
+            left = quarterWidth - bufferX
+            right = halfWidth - bufferX
+            top = bufferY
+            bottom = octHeight + bufferY
+        case '111lightproductions-hearts-in-sync':
+            bufferL = 50
+            bufferR = 120
+            bufferY = 50
+            left = quarterWidth - bufferL
+            right = halfWidth - bufferR
+            top = bufferY
+            bottom = octHeight + bufferY
+        case '111lightproductions-gemburst-rush':
+            bufferL = 50
+            bufferR = 120
+            bufferB = 50
+            left = quarterWidth - bufferL
+            right = halfWidth - bufferR
+            top = 0
+            bottom = octHeight + bufferB
+        case '111lightproductions-dragon-fortunes':
+            bufferL = 50
+            bufferR = 120
+            bufferB = 50
+            left = quarterWidth
+            right = halfWidth
             top = 0
             bottom = octHeight
         case _:

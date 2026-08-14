@@ -43,19 +43,19 @@ def findSubclass(sb, slotName, obs, override=False):
                 case '1000lakes-rotation-of-ra':
                         return slots.OneThousandLakes.RotationOfRa.RotationOfRa(sb,obs)
                 case '111lightproductions-the-syndicate':
-                        return slots.OneThousandOneHundredElevenLightProductions.TheSyndicate.TheSyndicate(sb,obs)
+                        return slots.OneHundredElevenLightProductions.TheSyndicate.TheSyndicate(sb,obs)
                 case '111lightproductions-gemburst-rush':
-                        return slots.OneThousandOneHundredElevenLightProductions.GemburstRush.GemburstRush(sb,obs)
+                        return slots.OneHundredElevenLightProductions.GemburstRush.GemburstRush(sb,obs)
                 case '111lightproductions-nfl-touchdown':
-                        return slots.OneThousandOneHundredElevenLightProductions.NFLTouchdown.NFLTouchdown(sb,obs)
+                        return slots.OneHundredElevenLightProductions.NFLTouchdown.NFLTouchdown(sb,obs)
                 case '111lightproductions-dragon-fortunes':
-                        return slots.OneThousandOneHundredElevenLightProductions.DragonFortunes.DragonFortunes(sb,obs)
+                        return slots.OneHundredElevenLightProductions.DragonFortunes.DragonFortunes(sb,obs)
                 case '111lightproductions-legends-of-the-lost-grove':
-                        return slots.OneThousandOneHundredElevenLightProductions.LegendsOfTheLostGrove.LegendsOfTheLostGrove(sb,obs)
+                        return slots.OneHundredElevenLightProductions.LegendsOfTheLostGrove.LegendsOfTheLostGrove(sb,obs)
                 case '111lightproductions-hearts-in-sync':
-                        return slots.OneThousandOneHundredElevenLightProductions.HeartsInSync.HeartsInSync(sb,obs)
+                        return slots.OneHundredElevenLightProductions.HeartsInSync.HeartsInSync(sb,obs)
                 case '111lightproductions-sunset-serenade':
-                        return slots.OneThousandOneHundredElevenLightProductions.SunsetSerenade.SunsetSerenade(sb,obs)
+                        return slots.OneHundredElevenLightProductions.SunsetSerenade.SunsetSerenade(sb,obs)
                 case '1789studios-cat-war':
                         return slots.OneThousandSevenHundredEightyNineStudios.CatWar.CatWar(sb,obs)
                 case '18gaming-sweet-stake-25k':

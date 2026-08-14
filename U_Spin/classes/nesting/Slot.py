@@ -23,11 +23,11 @@ class Slot:
         self.defaultClickCoords = (0,0)
 
         self.loadSlotPage()
-        Sleep(self.sb,10)
-        checkCaptcha(self.sb)
-        Sleep(self.sb, 3)
-        checkRegionChange(self.sb)
-        Sleep(self.sb, 3)
+        Sleep(sb,10)
+        checkCaptcha(sb)
+        Sleep(sb, 3)
+        checkRegionChange(sb)
+        Sleep(sb, 3)
         self.fullScreen()
         self.findDimensions()
         self.setDefaultClick()
@@ -53,7 +53,6 @@ class Slot:
     def loadSlotPage(self):
         Sleep(self.sb)
         self.sb.open(slotUrl + self.slotCode)
-        # self.sb.minimize_window()
 
     def passSplashScreen(self):
         bodyStr = 'body'

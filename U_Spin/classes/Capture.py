@@ -1,8 +1,9 @@
 from utilityFunctions import GetRandomNumber
 from PIL import Image
 from paddleocr import PaddleOCR
-from decimal import Decimal
-import os
+import logging
+
+logging.getLogger("ppocr").setLevel(logging.ERROR)
 
 ssDir = './U.Stake/images/screenshots/'
 
