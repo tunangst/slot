@@ -18,6 +18,7 @@ class HeartsInSync(OneHundredElevenLightProductions):
         Sleep(sb,3)
         self.setup()
         self.checkFin(crop=slotCode)
+        Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()
 

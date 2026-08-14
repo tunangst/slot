@@ -16,8 +16,6 @@ class TheSyndicate(OneHundredElevenLightProductions):
         Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
-        self.setup()
-        Sleep(sb,15)
         self.checkFin(crop=slotCode,action='check end words',targetWordList=spinWords)
         Sleep(sb,3)
         self.findFinBal()

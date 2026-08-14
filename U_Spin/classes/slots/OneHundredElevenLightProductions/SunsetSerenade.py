@@ -15,7 +15,7 @@ class SunsetSerenade(OneHundredElevenLightProductions):
         self.passSplashScreen()
         Sleep(sb,5)
         self.setup()
-        Sleep(sb,10)
+        # Sleep(sb,10)
         self.checkFin(crop=slotCode)
         Sleep(sb,3)
         self.findFinBal()
