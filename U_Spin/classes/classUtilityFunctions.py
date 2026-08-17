@@ -73,6 +73,7 @@ def cropPicture(destination,crop):
     halfWidth = width/2
     thirdWidth = width/3
     quarterWidth = width/4
+    octWidth = width/8
     sixthWidth = width/6
     halfHeight = height/2
     quarterHeight = height/4
@@ -133,6 +134,29 @@ def cropPicture(destination,crop):
             bufferB = 50
             left = quarterWidth
             right = halfWidth
+            top = 0
+            bottom = octHeight
+        case '1000lakesstudios-yakuza-v-i-p':
+            bufferL = 50
+            bufferR = 120
+            bufferY = 0
+            left = halfWidth + quarterWidth - bufferL
+            right = halfWidth + quarterWidth + bufferR
+            top = 0
+            bottom = octHeight
+        case '1000lakesstudios-twisted-candy-shop':
+            bufferL = 50
+            bufferR = 120
+            bufferY = 0
+            left = halfWidth + bufferL
+            right = halfWidth + octWidth
+            top = 0
+            bottom = octHeight
+        case '1000lakesstudios-toivo':
+            bufferR = 120
+            bufferY = 0
+            left = halfWidth
+            right = halfWidth + octWidth
             top = 0
             bottom = octHeight
         case _:
@@ -229,24 +253,38 @@ def compareImages(image1,image2,similarity=False):
         return False
     
 def checkCaptcha(sb):
-        Sleep(sb,5)
+        switch = False
+        captchaTimeout = 0
+        captchaTimeoutLimit = 3
         captchaTag = '//h2[contains(., "Performing security verification")]'
         while True:
+            Sleep(sb,5)
             if sb.is_element_present(captchaTag):
                 sb.solve_captcha()
+                switch = True
             else:
+                if captchaTimeout >= captchaTimeoutLimit:
+                    break
+                if switch:
+                    captchaTimeout +=1
                 print('captcha tag not found')
-                break
 
 def checkRegionChange(sb):
-        Sleep(sb, 3)
+        switch = False
         target = '[data-testid="modal-close"]'
+        regionTimeout = 0
+        regionTimeoutLimit = 3
         while True:
+            Sleep(sb, 3)
             if sb.is_element_present(target):
                 sb.click(target)
+                switch = True
             else:
+                if regionTimeout >= regionTimeoutLimit:
+                    break
+                if switch:
+                    regionTimeout +=1
                 print('close btn not found')
-                break
 
 def clickDomElement(sb,selector):
     info = sb.execute_script(f"""

@@ -9,10 +9,9 @@ from classes.classUtilityFunctions import createErrorLog
 from classes.findSubclass import findSubclass
 from seleniumbase import SB
 import threading
-import os
 
 slotDataLocation = 'slotdata.json'
-inputOverride = '111lightproductions-dragon-fortunes' #'0xedge-5-alpha-planets', False
+inputOverride = '1000lakesstudios-toivo' #'0xedge-5-alpha-planets', False
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False

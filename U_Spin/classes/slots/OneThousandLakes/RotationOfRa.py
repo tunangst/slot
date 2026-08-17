@@ -1,8 +1,6 @@
 from classes.nesting.OneThousandLakes import OneThousandLakes
 from classes.classUtilityFunctions import cleanNumber
-from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom
-from selenium.webdriver.common.action_chains import ActionChains
+from utilityFunctions import Sleep
 
 slotCode = '1000lakes-rotation-of-ra'
 winningScreenshot = 'fin'
@@ -13,36 +11,31 @@ class RotationOfRa(OneThousandLakes):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 240
-        self.canvasStr = 'canvas#game'
-        # need to pass two splash screens
+
         self.changeScene() # take the screen blocks off
-        self.runSleepThree()
+        Sleep(sb,3)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
         Sleep(sb,15)
         self.run()
         Sleep(sb,self.estimatedWaitTime)
         self.checkFin(closingWordsList)
-        self.runSleepThree()
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
         
     def setup(self):
         self.setTurbo()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickBuyout()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickBonusCard()
-        self.runSleepOne()
+        Sleep(self.sb)
         self.clickConfirm()
 
-    def run(self):
-        self.sb.find_element(self.canvasStr).click()
-
     def findFinBal(self):
-        self.sb.find_element(self.canvasStr).click()
-
+        self.defaultClick()
         Sleep(self.sb,5)
         balanceStr = 'span.frame-hud__display-value'
         self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-        self.finalBalance = self.endingBalance - self.startingBalance

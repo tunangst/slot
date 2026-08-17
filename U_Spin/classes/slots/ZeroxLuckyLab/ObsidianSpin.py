@@ -1,8 +1,6 @@
 from classes.nesting.ZeroxLuckyLab import ZeroxLuckyLab
 from classes.classUtilityFunctions import cleanNumber
-from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom
-from selenium.webdriver.common.action_chains import ActionChains
+from utilityFunctions import Sleep
 
 slotCode = '0xluckylab-obsidian-spin'
 winningScreenshot = 'fin'
@@ -37,7 +35,7 @@ class ObsidianSpin(ZeroxLuckyLab):
         yesStr = '//button[contains(text(), "Confirm")]'
         self.sb.find_element(yesStr).click()
 
-        self.runSleepMain()
+        Sleep(self.sb,15)
         # set up turbo speed
         settingBtn = '//button[@title="Settings"]'
         self.sb.find_element(settingBtn).click()

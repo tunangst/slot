@@ -18,9 +18,6 @@ class OneHundredElevenLightProductions(Slot):
         Sleep(self.sb)
         self.clickConfirm()
 
-    def run(self):
-        self.defaultClick()
-
     def clickBuyout(self):
         self.sb.find_element(self.buyoutStr).click()
 
@@ -66,7 +63,7 @@ class OneHundredElevenLightProductions(Slot):
             case _:
                 print('error in clickConfirm function')      
 
-    def checkFin(self,crop,action='find number',targetWordList=False):
+    def checkFin(self,crop,action='find any text',targetWordList=False):
         startSwitch = False
         endSwitch = False
         while True:

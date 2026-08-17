@@ -55,13 +55,14 @@ class Slot:
         self.sb.open(slotUrl + self.slotCode)
 
     def passSplashScreen(self):
-        bodyStr = 'body'
         self.sb.switch_to_frame('iframe')
-        continueBtn = self.sb.find_element(bodyStr)
-        continueBtn.click()
+        self.defaultClick()
+        # bodyStr = 'body'
+        # continueBtn = self.sb.find_element(bodyStr)
+        # continueBtn.click()
 
     def run(self):
-        pass
+        self.defaultClick()
 
     def checkFin(self, closingWordsList,eleStr=False):
         while True:

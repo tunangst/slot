@@ -1,9 +1,7 @@
 from classes.nesting.OneHundredElevenLightProductions import OneHundredElevenLightProductions
-from classes.classUtilityFunctions import cleanNumber
 from utilityFunctions import Sleep
 
 slotCode = '111lightproductions-the-syndicate'
-spinWords = ['free spins','free','spins']
 
 class TheSyndicate(OneHundredElevenLightProductions):
     def __init__(self, sb, obs):
@@ -16,7 +14,9 @@ class TheSyndicate(OneHundredElevenLightProductions):
         Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
-        self.checkFin(crop=slotCode,action='check end words',targetWordList=spinWords)
+        self.setup()
+        self.checkFin(crop=slotCode)
+        # self.checkFin(crop=slotCode,action='check end words',targetWordList=spinWords)
         Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()

@@ -50,6 +50,8 @@ class Capture:
                 pass
             case 'find number':
                 self.status = self.findNumber()
+            case 'find any text':
+                self.status = self.textBlocks[0]
             case 'find next':
                 self.status = self.findNext()
             case 'check end words':
