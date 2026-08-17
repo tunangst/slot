@@ -1,6 +1,4 @@
 from classes.nesting.Slot import Slot
-import json
-import time
 from utilityFunctions import Sleep
 from classes.classUtilityFunctions import takePicture, cleanNumber
 from classes.Capture import Capture
@@ -57,7 +55,7 @@ class OneThousandLakesStudios(Slot):
                     instance = Capture(imageLocation=picLocation,action=action,targetWordList=targetWordList)
                     if instance.status: # count number is present
                         startSwitch = True
-                        endSwitch = 1
+                        endSwitch = 0
                     elif endSwitch >= endSwitchLimit:
                         break
                     elif startSwitch == True:

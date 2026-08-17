@@ -65,7 +65,8 @@ class OneHundredElevenLightProductions(Slot):
 
     def checkFin(self,crop,action='find any text',targetWordList=False):
         startSwitch = False
-        endSwitch = False
+        endSwitch = 0 # 0-3
+        endSwitchLimit = 3
         while True:
             try:
                 self.defaultClick()
@@ -75,11 +76,12 @@ class OneHundredElevenLightProductions(Slot):
                 instance = Capture(imageLocation=picLocation,action=action,targetWordList=targetWordList)
                 if instance.status: # count number is present
                     startSwitch = True
-                    endSwitch = False
-                elif endSwitch == True:
+                    endSwitch = 0
+                elif endSwitch >= endSwitchLimit:
                     break
                 elif startSwitch == True:
-                    endSwitch = True
+                    endSwitch += 1
+
             except:
                 print(f'{self.slotCode}, error in checkfin')
 

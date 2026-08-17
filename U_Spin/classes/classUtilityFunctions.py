@@ -159,6 +159,15 @@ def cropPicture(destination,crop):
             right = halfWidth + octWidth
             top = 0
             bottom = octHeight
+        case '1000lakesstudios-r-i-p-1000':
+            bufferL = 30
+            bufferR = 200
+            bufferT = 30
+            bufferB = 10
+            left = halfWidth + quarterWidth + bufferL
+            right = halfWidth + quarterWidth + bufferR
+            top = halfHeight + octHeight - bufferT
+            bottom = halfHeight + octHeight + bufferB
         case _:
             print('no matching crop for cropPicture')
     cropped = ss.crop((left, top, right, bottom))
@@ -258,7 +267,7 @@ def checkCaptcha(sb):
         captchaTimeoutLimit = 3
         captchaTag = '//h2[contains(., "Performing security verification")]'
         while True:
-            Sleep(sb,5)
+            Sleep(sb,3)
             if sb.is_element_present(captchaTag):
                 sb.solve_captcha()
                 switch = True

@@ -1,52 +1,56 @@
 from classes.nesting.OneThousandLakesStudios import OneThousandLakesStudios
-from classes.classUtilityFunctions import clickDomElement, cleanNumber, findEmbeddedCoords
+from classes.classUtilityFunctions import findEmbeddedCoords, takePicture
+from utilityFunctions import Sleep,ClickTheDom
 from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom,ClickTheDom
-import re
 
 slotCode = '1000lakesstudios-r-i-p-1000'
-winningScreenshot = 'fin'
 bonusWords = ['getbonus','get bonus']
-closingWords = ['freespinsover'] # 'totalwin'
-findWord = ['total win','totalwin']
-
 
 class RIPOneThousand(OneThousandLakesStudios):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 60
-        self.canvasStr = 'canvas#game'
         
         self.changeScene() # take the screen blocks off
-        self.runSleepThree()
+        Sleep(sb,15)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepTwenty()
-        self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin(closingWords)
-        self.runSleepFive()
+        Sleep(sb,5)
+        self.checkFin(crop=slotCode)
+        Sleep(sb,3)
         self.findFinBal()
+        self.calculateWinnings()
 
     def setup(self):
         xVal, yVal = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)
         # switch it to take full screenshot and mark the click location
         ClickTheDom(sb=self.sb,xVal=xVal,yVal=yVal)
-        self.runSleepOne()
-        # the rest are in dom
-        scatterStr = '//article[@data-offer-id="super_buy"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
-        self.sb.find_element(scatterStr).click()
-        self.runSleepOne()
+        Sleep(self.sb)
+        self.clickBonusCard()
+        Sleep(self.sb)
         self.clickConfirmBtn()
 
-    def run(self):
-        clickDomElement(sb=self.sb,selector=self.canvasStr)
-
-    def findFinBal(self):
-        self.sb.find_element(self.canvasStr).click()
-        Sleep(self.sb,5)
-        balanceStr = 'span.frame-hud__display-value'
-        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-        self.finalBalance = self.endingBalance - self.startingBalance
+    def checkFin(self,crop,action='find any text',targetWordList=False):
+        startSwitch = False
+        endSwitch = 0 # 0-3
+        endSwitchLimit = 3
+        while True:
+            try:
+                self.defaultClick()
+                Sleep(self.sb,3)
+                # screenshot the spin count
+                picLocation = takePicture(sb=self.sb,action='check fin',crop=crop)
+                instance = Capture(imageLocation=picLocation,action=action,targetWordList=targetWordList)
+                if instance.textBlocks[0]['text'].lower() in bonusWords:
+                    break
+                elif instance.status: # count number is present
+                    startSwitch = True
+                    endSwitch = 0
+                elif endSwitch >= endSwitchLimit:
+                    break
+                elif startSwitch == True:
+                    endSwitch += 1
+            except:
+                print(f'{self.slotCode}, error in checkfin')
