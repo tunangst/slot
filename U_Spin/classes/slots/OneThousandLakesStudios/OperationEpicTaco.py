@@ -8,7 +8,6 @@ class OperationEpicTaco(OneThousandLakesStudios):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 60
-        self.counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
         
         self.changeScene() # take the screen blocks off
         Sleep(sb,15)
@@ -23,7 +22,7 @@ class OperationEpicTaco(OneThousandLakesStudios):
     def checkFin(self):
         startSwitch = False
         endSwitch = 0 # 0-3
-        endSwitchLimit = 3
+        endSwitchLimit = 1
         while True:
             self.defaultClick()
             Sleep(self.sb,3)

@@ -13,9 +13,11 @@ class OneThousandLakesStudios(Slot):
         self.bonusCardStr3 = '//article[@data-offer-id="buy_super"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr4 = '//article[@data-offer-id="bonus3"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
 
-        # self.bonusCardStr = '//article[@data-offer-id="buy_apex"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.confirmBtnStr = '//button[contains(@class,"frame-confirm__accept")]'
         self.balanceStr = '//span[contains(@class,"frame-hud__display-value")]'
+
+        self.counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
+
 
     # aria-label: Open BONUS
     # button.frame-hud__button--buy
