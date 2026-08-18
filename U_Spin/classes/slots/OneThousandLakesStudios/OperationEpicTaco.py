@@ -13,47 +13,31 @@ class OperationEpicTaco(OneThousandLakesStudios):
         super().__init__(sb, slotCode, obs)
         self.buyoutBalance = 500
         self.estimatedWaitTime = 60
-        self.canvasStr = 'canvas#game'
+        self.counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
         
         self.changeScene() # take the screen blocks off
-        self.runSleepThree()
+        Sleep(sb,15)
         self.passSplashScreen()
-        self.runSleepThree()
+        Sleep(sb,3)
         self.setup()
-        self.runSleepTwenty()
-        self.run()
-        Sleep(self.sb, self.estimatedWaitTime)
         self.checkFin()
-        self.runSleepFive()
+        Sleep(sb,3)
         self.findFinBal()
-
-    def setup(self):
-        self.clickBuyout()
-        self.runSleepOne()
-        scatterStr = '//article[@data-offer-id="bonus3"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
-        self.sb.find_element(scatterStr).click()
-        self.runSleepOne()
-        self.clickConfirmBtn()
-
-    def run(self):
-        clickDomElement(sb=self.sb,selector=self.canvasStr)
+        self.calculateWinnings()
 
     def checkFin(self):
-        # need to keep element inside the loop due to needing to rerefrence the element
-        pattern = r'^(\d+)/\1$'
-        counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
+        startSwitch = False
+        endSwitch = 0 # 0-3
+        endSwitchLimit = 3
         while True:
-            Sleep(self.sb, 10)
-            counter = self.sb.find_element(counterStr)
-            value = counter.text
-            if re.match(pattern, value):
-                return
+            self.defaultClick()
+            Sleep(self.sb,3)
+            if self.sb.is_element_present(self.counterStr):
+                # value = self.sb.find_element(self.counterStr).text
+                startSwitch = True
+            elif endSwitch >= endSwitchLimit:
+                break
+            elif startSwitch:
+                endSwitch += 1
             else:
-                print(f'Not quite finished checking if finished: {value}')
-
-    def findFinBal(self):
-        self.sb.find_element(self.canvasStr).click()
-        Sleep(self.sb,5)
-        balanceStr = 'span.frame-hud__display-value'
-        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-        self.finalBalance = self.endingBalance - self.startingBalance
+                print('checkfin might not have started yet')
