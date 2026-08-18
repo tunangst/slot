@@ -12,6 +12,7 @@ class OneThousandLakesStudios(Slot):
         self.bonusCardStr2 = '//article[@data-offer-id="buy_12fs"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr3 = '//article[@data-offer-id="buy_super"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr4 = '//article[@data-offer-id="bonus3"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
+        self.bonusCardStr5 = '//article[@data-offer-id="super_modifier"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
 
         self.confirmBtnStr = '//button[contains(@class,"frame-confirm__accept")]'
         self.balanceStr = '//span[contains(@class,"frame-hud__display-value")]'
@@ -44,6 +45,8 @@ class OneThousandLakesStudios(Slot):
             self.sb.find_element(self.bonusCardStr3).click()
         elif self.sb.is_element_present(self.bonusCardStr4):
             self.sb.find_element(self.bonusCardStr4).click()
+        elif self.sb.is_element_present(self.bonusCardStr5):
+            self.sb.find_element(self.bonusCardStr5).click()
 
     def clickConfirmBtn(self):
         self.sb.find_element(self.confirmBtnStr).click()
