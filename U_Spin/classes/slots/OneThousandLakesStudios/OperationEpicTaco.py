@@ -1,12 +1,7 @@
 from classes.nesting.OneThousandLakesStudios import OneThousandLakesStudios
-from classes.classUtilityFunctions import takePicture, clickDomElement, cleanNumber
-from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom
-import re
+from utilityFunctions import Sleep
 
 slotCode = '1000lakesstudios-operation-epic-taco'
-winningScreenshot = 'fin'
-closingWords = ['the big catch over'] # 'total win'
 
 class OperationEpicTaco(OneThousandLakesStudios):
     def __init__(self, sb, obs):
@@ -33,7 +28,6 @@ class OperationEpicTaco(OneThousandLakesStudios):
             self.defaultClick()
             Sleep(self.sb,3)
             if self.sb.is_element_present(self.counterStr):
-                # value = self.sb.find_element(self.counterStr).text
                 startSwitch = True
             elif endSwitch >= endSwitchLimit:
                 break
