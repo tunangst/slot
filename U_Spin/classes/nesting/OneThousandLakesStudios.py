@@ -6,8 +6,11 @@ from classes.Capture import Capture
 class OneThousandLakesStudios(Slot):
     def __init__(self, sb, slotCode, obs):
         super().__init__(sb, slotCode, obs)
+        self.splashCheckStr = '//div[@aria-label="Press anywhere to continue"]'
+
         self.buyoutStr1 = '//button[contains(@class,"game-buttons__bonus")]'
         self.buyoutStr2 = '//button[@aria-label="Open BONUS"]'
+
         self.bonusCardStr1 = '//article[@data-offer-id="super_buy"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr2 = '//article[@data-offer-id="buy_12fs"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr3 = '//article[@data-offer-id="buy_super"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
@@ -19,9 +22,13 @@ class OneThousandLakesStudios(Slot):
 
         self.counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
 
-
-    # aria-label: Open BONUS
-    # button.frame-hud__button--buy
+    def findSplashLoaded(self):
+        self.sb.switch_to_frame('iframe')
+        self.sb.wait_for_element_visible(
+            self.splashCheckStr,
+            by="xpath",
+            timeout=30
+        )
 
     def setup(self):
         self.clickBuyout()

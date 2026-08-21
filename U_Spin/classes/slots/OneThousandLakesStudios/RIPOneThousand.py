@@ -24,15 +24,6 @@ class RIPOneThousand(OneThousandLakesStudios):
         self.findFinBal()
         self.calculateWinnings()
 
-    def findSplashLoaded(self):
-        self.sb.switch_to_frame('iframe')
-        splashTag = '//div[@aria-label="Press anywhere to continue"]'
-        self.sb.wait_for_element_visible(
-            splashTag,
-            by="xpath",
-            timeout=20
-        )
-
     def setup(self):
         xVal, yVal = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)
         # switch it to take full screenshot and mark the click location
