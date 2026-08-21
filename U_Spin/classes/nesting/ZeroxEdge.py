@@ -61,7 +61,6 @@ class ZeroxEdge(Slot):
             self.defaultClick()
 
     def passSplashScreen(self):
-        # self.sb.switch_to_frame('iframe')
         self.defaultClick()
         Sleep(self.sb)
         self.defaultClick()
