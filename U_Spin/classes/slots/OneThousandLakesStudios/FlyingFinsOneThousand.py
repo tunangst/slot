@@ -10,7 +10,8 @@ class FlyingFinsOneThousand(OneThousandLakesStudios):
         self.estimatedWaitTime = 30
         
         self.changeScene() # take the screen blocks off
-        Sleep(sb,15)
+        self.findSplashLoaded()
+        Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
