@@ -59,7 +59,7 @@ class OneThousandLakesStudios(Slot):
     def clickConfirmBtn(self):
         self.sb.find_element(self.confirmBtnStr).click()
 
-    def checkFin(self,crop,action='find any text',targetWordList=False):
+    def checkFin(self,crop=False,action='find any text',targetWordList=False):
             startSwitch = False
             endSwitch = 0 # 0-3
             endSwitchLimit = 3

@@ -67,7 +67,7 @@ def takePicture(sb,action=False, increment=0, fileName=False, eleStr=False, crop
             
     return destination
 
-def cropPicture(destination,crop):
+def cropPicture(destination,crop=False):
     ss = Image.open(destination)
     width, height = ss.size
     halfWidth = width/2
