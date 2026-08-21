@@ -185,6 +185,14 @@ def cropPicture(destination,crop=False):
             right = halfWidth + bufferX
             top = bufferT
             bottom = bufferB
+        case '1000lakesstudios-arctic-runes':
+            bufferX = 150
+            bufferT = 100
+            bufferB = 200
+            left = halfWidth - bufferX
+            right = halfWidth + bufferX
+            top = bufferT
+            bottom = bufferB
         case _:
             print('no matching crop for cropPicture')
     cropped = ss.crop((left, top, right, bottom))

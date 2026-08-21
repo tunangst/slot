@@ -1,9 +1,7 @@
 from classes.nesting.OneThousandLakesStudios import OneThousandLakesStudios
-from classes.classUtilityFunctions import takePicture, clickDomElement, cleanNumber
 from utilityFunctions import Sleep
 
 slotCode = '1000lakesstudios-bass-fury'
-winningScreenshot = 'fin'
 closingWords = ['the big catch over'] # 'totalwin'
 
 class BassFury(OneThousandLakesStudios):
@@ -26,21 +24,3 @@ class BassFury(OneThousandLakesStudios):
         Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()
-
-    # def setup(self):
-    #     self.clickBuyout()
-    #     self.runSleepOne()
-    #     bonusCardStr = '//article[@data-offer-id="buy_ultimate"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
-    #     self.sb.find_element(bonusCardStr).click()
-    #     self.runSleepOne()
-    #     self.clickConfirmBtn()
-
-    # def run(self):
-    #     clickDomElement(sb=self.sb,selector=self.canvasStr)
-
-    # def findFinBal(self):
-    #     self.sb.find_element(self.canvasStr).click()
-    #     Sleep(self.sb,5)
-    #     balanceStr = 'span.frame-hud__display-value'
-    #     self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-    #     self.finalBalance = self.endingBalance - self.startingBalance
