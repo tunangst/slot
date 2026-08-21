@@ -18,7 +18,6 @@ class OneThousandLakesStudios(Slot):
         self.bonusCardStr5 = '//article[@data-offer-id="super_modifier"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr6 = '//article[@data-offer-id="buy_ultimate"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'  
         self.bonusCardStr7 = '//article[@data-offer-id="buy_apex"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
-      
 
         self.confirmBtnStr = '//button[contains(@class,"frame-confirm__accept")]'
         self.balanceStr = '//span[contains(@class,"frame-hud__display-value")]'
