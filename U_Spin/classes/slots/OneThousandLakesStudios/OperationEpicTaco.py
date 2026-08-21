@@ -15,17 +15,17 @@ class OperationEpicTaco(OneThousandLakesStudios):
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
-        self.checkFin()
+        self.checkFinEles()
         Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()
 
-    def checkFin(self):
-        # make sure the spin starts
-        while not self.sb.is_element_present(self.counterStr):
-            Sleep(self.sb,2)
-            self.defaultClick()
-        # find when the spin finishes
-        while not self.sb.is_element_present(self.spinStr):
-            Sleep(self.sb,2)
-            self.defaultClick()
+    # def checkFinEles(self):
+    #     # make sure the spin starts
+    #     while not self.sb.is_element_present(self.counterStr):
+    #         Sleep(self.sb,2)
+    #         self.defaultClick()
+    #     # find when the spin finishes
+    #     while not self.sb.is_element_present(self.spinStr):
+    #         Sleep(self.sb,2)
+    #         self.defaultClick()
