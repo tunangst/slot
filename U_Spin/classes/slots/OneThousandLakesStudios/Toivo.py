@@ -13,6 +13,7 @@ class Toivo(OneThousandLakesStudios):
         self.introSkipStr = '//button[contains(@class,"finnisher-intro__skip")]'
 
         self.changeScene() # take the screen blocks off
+        self.findSplashLoaded()
         Sleep(sb,5)
         self.passSplashScreen()
         Sleep(sb,3)
@@ -25,10 +26,8 @@ class Toivo(OneThousandLakesStudios):
         self.calculateWinnings()
 
     def passSplashScreen(self):
-        self.sb.switch_to_frame('iframe')
-        Sleep(self.sb,3)
         self.defaultClick()
-        Sleep(self.sb,3)
+        Sleep(self.sb,10)
         self.sb.find_element(self.introSkipStr).click()
 
     def run(self):
