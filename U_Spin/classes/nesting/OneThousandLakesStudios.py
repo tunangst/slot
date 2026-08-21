@@ -16,6 +16,7 @@ class OneThousandLakesStudios(Slot):
         self.bonusCardStr3 = '//article[@data-offer-id="buy_super"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
         self.bonusCardStr4 = '//article[@data-offer-id="bonus3"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
         self.bonusCardStr5 = '//article[@data-offer-id="super_modifier"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'
+        self.bonusCardStr6 = '//article[@data-offer-id="buy_ultimate"]/div[contains(@class, "frame-bonus__card-body")]/div[contains(@class, "frame-bonus__card-footer")]/button'        
 
         self.confirmBtnStr = '//button[contains(@class,"frame-confirm__accept")]'
         self.balanceStr = '//span[contains(@class,"frame-hud__display-value")]'
@@ -55,30 +56,32 @@ class OneThousandLakesStudios(Slot):
             self.sb.find_element(self.bonusCardStr4).click()
         elif self.sb.is_element_present(self.bonusCardStr5):
             self.sb.find_element(self.bonusCardStr5).click()
+        elif self.sb.is_element_present(self.bonusCardStr5):
+            self.sb.find_element(self.bonusCardStr5).click()
 
     def clickConfirmBtn(self):
         self.sb.find_element(self.confirmBtnStr).click()
 
     def checkFin(self,crop=False,action='find any text',targetWordList=False):
-            startSwitch = False
-            endSwitch = 0 # 0-3
-            endSwitchLimit = 3
-            while True:
-                try:
-                    self.defaultClick()
-                    Sleep(self.sb,3)
-                    # screenshot the spin count
-                    picLocation = takePicture(sb=self.sb,action='check fin',crop=crop)
-                    instance = Capture(imageLocation=picLocation,action=action,targetWordList=targetWordList)
-                    if instance.status: # count number is present
-                        startSwitch = True
-                        endSwitch = 0
-                    elif endSwitch >= endSwitchLimit:
-                        break
-                    elif startSwitch == True:
-                        endSwitch += 1
-                except:
-                    print(f'{self.slotCode}, error in checkfin')
+        startSwitch = False
+        endSwitch = 0 # 0-3
+        endSwitchLimit = 3
+        while True:
+            try:
+                self.defaultClick()
+                Sleep(self.sb,3)
+                # screenshot the spin count
+                picLocation = takePicture(sb=self.sb,action='check fin',crop=crop)
+                instance = Capture(imageLocation=picLocation,action=action,targetWordList=targetWordList)
+                if instance.status: # count number is present
+                    startSwitch = True
+                    endSwitch = 0
+                elif endSwitch >= endSwitchLimit:
+                    break
+                elif startSwitch == True:
+                    endSwitch += 1
+            except:
+                print(f'{self.slotCode}, error in checkfin')
 
     def checkFinEles(self):
         # make sure the spin starts
@@ -91,6 +94,6 @@ class OneThousandLakesStudios(Slot):
             self.defaultClick()
 
     def findFinBal(self):
-            self.defaultClick()
-            Sleep(self.sb,3)   
-            self.endingBalance = cleanNumber(self.sb.find_element(self.balanceStr).text)
+        self.defaultClick()
+        Sleep(self.sb,3)   
+        self.endingBalance = cleanNumber(self.sb.find_element(self.balanceStr).text)

@@ -1,11 +1,7 @@
 from classes.nesting.OneThousandLakesStudios import OneThousandLakesStudios
-from classes.classUtilityFunctions import cleanNumber
-from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom
-from selenium.webdriver.common.action_chains import ActionChains
+from utilityFunctions import Sleep
 
 slotCode = '1000lakesstudios-bloom-em'
-winningScreenshot = 'fin'
 closingWords = ['total win']
 
 class BloomEm(OneThousandLakesStudios):
