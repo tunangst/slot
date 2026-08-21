@@ -21,6 +21,7 @@ class OneThousandLakesStudios(Slot):
         self.balanceStr = '//span[contains(@class,"frame-hud__display-value")]'
 
         self.counterStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label--counter")]'
+        self.spinStr = '//button[@aria-label="SPIN"]/span[contains(@class,"frame-hud__spin-label")]/img[contains(@class,"frame-hud__spin-icon")]'
 
     def findSplashLoaded(self):
         self.sb.switch_to_frame('iframe')
