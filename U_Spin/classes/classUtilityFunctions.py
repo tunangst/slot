@@ -193,6 +193,15 @@ def cropPicture(destination,crop=False):
             right = halfWidth + bufferX
             top = bufferT
             bottom = bufferB
+        case '1000lakesstudios-apex-syndicate':
+            bufferL = 50
+            bufferR = 150
+            bufferT = 150
+            bufferB = 20
+            left = halfWidth + quarterWidth - bufferL
+            right = halfWidth + quarterWidth + bufferR
+            top = halfHeight - bufferT
+            bottom = halfHeight + bufferB
         case _:
             print('no matching crop for cropPicture')
     cropped = ss.crop((left, top, right, bottom))
