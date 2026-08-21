@@ -145,7 +145,7 @@ def cropPicture(destination,crop):
             top = 0
             bottom = octHeight
         case '1000lakesstudios-twisted-candy-shop':
-            bufferL = 50
+            bufferL = 100
             bufferR = 120
             bufferY = 0
             left = halfWidth + bufferL

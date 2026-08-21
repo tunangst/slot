@@ -1,7 +1,5 @@
 from classes.nesting.OneThousandLakesStudios import OneThousandLakesStudios
-from classes.classUtilityFunctions import takePicture, cleanNumber
-from utilityFunctions import Sleep, MarkTheDom
-from selenium.webdriver.common.action_chains import ActionChains
+from utilityFunctions import Sleep
 
 slotCode = '1000lakesstudios-twisted-candy-shop'
 
@@ -12,7 +10,8 @@ class TwistedCandyShop(OneThousandLakesStudios):
         self.estimatedWaitTime = 180
         
         self.changeScene() # take the screen blocks off
-        Sleep(sb,15)
+        self.findSplashLoaded()
+        Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
