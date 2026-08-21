@@ -202,6 +202,14 @@ def cropPicture(destination,crop=False):
             right = halfWidth + quarterWidth + bufferR
             top = halfHeight - bufferT
             bottom = halfHeight + bufferB
+        case '0xedge-5-alpha-planets':
+            bufferX = 100
+            bufferT = 50
+            bufferB = 50
+            left = halfWidth - bufferX
+            right = halfWidth + bufferX
+            top = octHeight - bufferT
+            bottom = octHeight + bufferB
         case _:
             print('no matching crop for cropPicture')
     cropped = ss.crop((left, top, right, bottom))
