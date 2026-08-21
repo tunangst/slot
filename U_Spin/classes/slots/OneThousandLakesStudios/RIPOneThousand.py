@@ -4,7 +4,7 @@ from utilityFunctions import Sleep,ClickTheDom
 from classes.Capture import Capture
 
 slotCode = '1000lakesstudios-r-i-p-1000'
-bonusWords = ['getbonus','get bonus']
+bonusWords = ['getbonus','get bonus','getbonos','get bonos']
 
 class RIPOneThousand(OneThousandLakesStudios):
     def __init__(self, sb, obs):
@@ -13,7 +13,8 @@ class RIPOneThousand(OneThousandLakesStudios):
         self.estimatedWaitTime = 60
         
         self.changeScene() # take the screen blocks off
-        Sleep(sb,15)
+        self.findSplashLoaded()
+        Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
@@ -22,6 +23,15 @@ class RIPOneThousand(OneThousandLakesStudios):
         Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()
+
+    def findSplashLoaded(self):
+        self.sb.switch_to_frame('iframe')
+        splashTag = '//div[@aria-label="Press anywhere to continue"]'
+        self.sb.wait_for_element_visible(
+            splashTag,
+            by="xpath",
+            timeout=20
+        )
 
     def setup(self):
         xVal, yVal = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)

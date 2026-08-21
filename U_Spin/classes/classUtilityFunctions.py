@@ -279,38 +279,74 @@ def compareImages(image1,image2,similarity=False):
         return False
     
 def checkCaptcha(sb):
-        switch = False
-        captchaTimeout = 0
-        captchaTimeoutLimit = 3
+        # switch = False
+        # captchaTimeout = 0
+        # captchaTimeoutLimit = 3
         captchaTag = '//h2[contains(., "Performing security verification")]'
-        while True:
+        # captchaTag = '//input[@type="checkbox"]'
+        sb.wait_for_element_present(
+            captchaTag,
+            by="xpath",
+            timeout=10
+        )
+        print('captcha enter')
+
+        clickCounter = 0
+        while sb.is_element_present(captchaTag):
             Sleep(sb,3)
-            if sb.is_element_present(captchaTag):
-                sb.solve_captcha()
-                switch = True
-            else:
-                if captchaTimeout >= captchaTimeoutLimit:
-                    break
-                if switch:
-                    captchaTimeout +=1
-                print('captcha tag not found')
+            sb.solve_captcha()
+            clickCounter += 1
+            print(f'click #{clickCounter}')
+        print('captcha exit')
+# def checkCaptcha(sb):
+#         switch = False
+#         captchaTimeout = 0
+#         captchaTimeoutLimit = 3
+#         captchaTag = '//h2[contains(., "Performing security verification")]'
+#         while True:
+#             Sleep(sb,3)
+#             if sb.is_element_present(captchaTag):
+#                 sb.solve_captcha()
+#                 switch = True
+#             else:
+#                 if captchaTimeout >= captchaTimeoutLimit:
+#                     break
+#                 if switch:
+#                     captchaTimeout +=1
+#                 print('captcha tag not found')
 
 def checkRegionChange(sb):
-        switch = False
-        target = '[data-testid="modal-close"]'
-        regionTimeout = 0
-        regionTimeoutLimit = 3
-        while True:
-            Sleep(sb, 3)
-            if sb.is_element_present(target):
-                sb.click(target)
-                switch = True
-            else:
-                if regionTimeout >= regionTimeoutLimit:
-                    break
-                if switch:
-                    regionTimeout +=1
-                print('close btn not found')
+        # switch = False
+        # regionTimeout = 0
+        # regionTimeoutLimit = 3
+        # target = '[data-testid="modal-close"]'
+        xTag = '[data-testid="modal-close"]'
+        regionTag = '//div[@data-testid="modal-restrictedRegion"]'
+        sb.wait_for_element_present(
+            regionTag,
+            by="xpath",
+            timeout=10
+        )
+        print('region enter')
+        sb.find_element(xTag).click()
+        sb.wait_for_element_not_present(
+            regionTag,
+            by="xpath",
+            timeout=10
+        )
+        print('region exit')
+
+        # while True:
+        #     Sleep(sb, 3)
+        #     if sb.is_element_present(target):
+        #         sb.click(target)
+        #         switch = True
+        #     else:
+        #         if regionTimeout >= regionTimeoutLimit:
+        #             break
+        #         if switch:
+        #             regionTimeout +=1
+        #         print('close btn not found')
 
 def clickDomElement(sb,selector):
     info = sb.execute_script(f"""
