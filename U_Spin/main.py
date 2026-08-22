@@ -11,7 +11,7 @@ from seleniumbase import SB
 import threading
 
 slotDataLocation = 'slotdata.json'
-inputOverride = '0xedge-do-not-redeem-it' #'0xedge-5-alpha-planets', False
+inputOverride = '1000lakes-rotation-of-ra' #'0xedge-5-alpha-planets', False
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False

@@ -210,10 +210,20 @@ def cropPicture(destination,crop=False):
             right = halfWidth + bufferX
             top = octHeight - bufferT
             bottom = octHeight + bufferB
+        case '1000lakes-rotation-of-ra':
+            bufferL = 50
+            bufferR = 100
+            bufferT = 20
+            bufferB = 150
+            left = halfWidth + quarterWidth - bufferL
+            right = halfWidth + quarterWidth + bufferR
+            top = halfHeight + bufferT
+            bottom = halfHeight + bufferB
         case _:
             print('no matching crop for cropPicture')
     cropped = ss.crop((left, top, right, bottom))
     cropped.save(destination)
+    pass
 
 # def runTopMidLeft(destination):
 #     ss = Image.open(destination)

@@ -31,6 +31,9 @@ class CatWar(OneThousandSevenHundredEightyNineStudios):
         self.findFinBal()
         self.calculateWinnings()
 
+    def findSplashLoaded(self):
+        pass
+
     def setup(self):
         xValBonus, yValBonus = findEmbeddedCoords(sb=self.sb,checkWordList=bonusWords)
         # switch it to take full screenshot and mark the click location

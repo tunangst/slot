@@ -15,15 +15,26 @@ class ObsidianSpin(ZeroxLuckyLab):
         self.bonusOption = 3
         
         self.changeScene() # take the screen blocks off
+        self.findSplashLoaded()
         Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
         Sleep(sb, self.estimatedWaitTime)
-        self.checkFin()
+        self.checkFin(crop=slotCode)
         Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()
+
+    def defaultClick(self):
+        self.sb.find_element('body').click()
+
+    def findSplashLoaded(self):
+        spinStr = '//button[contains(@class,"btn-play")]'
+        self.sb.switch_to_frame('iframe')
+        while not self.sb.is_element_visible(spinStr):
+            Sleep(self.sb,2)
+            self.defaultClick() 
 
     def setup(self):              
         bonusStr = '//div[contains(@class,"right-controls")]/div[contains(@class, "button-stack")]/button[@title="Modes"]'

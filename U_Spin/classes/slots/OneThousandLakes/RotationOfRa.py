@@ -3,8 +3,6 @@ from classes.classUtilityFunctions import cleanNumber
 from utilityFunctions import Sleep
 
 slotCode = '1000lakes-rotation-of-ra'
-winningScreenshot = 'fin'
-closingWordsList = ['totalwin','total win']
 
 class RotationOfRa(OneThousandLakes):
     def __init__(self, sb, obs):
@@ -13,14 +11,12 @@ class RotationOfRa(OneThousandLakes):
         self.estimatedWaitTime = 240
 
         self.changeScene() # take the screen blocks off
+        self.findSplashLoaded()
         Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
         self.setup()
-        Sleep(sb,15)
-        self.run()
-        Sleep(sb,self.estimatedWaitTime)
-        self.checkFin(closingWordsList)
+        self.checkFin(crop=slotCode)
         Sleep(sb,3)
         self.findFinBal()
         self.calculateWinnings()
