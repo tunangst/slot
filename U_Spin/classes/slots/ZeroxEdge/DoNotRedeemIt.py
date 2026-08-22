@@ -10,6 +10,7 @@ class DoNotRedeemIt(ZeroxEdge):
         self.estimatedWaitTime = 60
         
         self.changeScene() # take the screen blocks off
+        self.findSplashLoaded()
         Sleep(sb,3)
         self.passSplashScreen()
         Sleep(sb,3)
@@ -41,7 +42,7 @@ class DoNotRedeemIt(ZeroxEdge):
             if not countIsPresent:
                 return
 
-    def findFinBal(self):
-        spanStr = 'span.info-value'
-        txtNum = self.sb.get_text(spanStr)
-        self.endingBalance = cleanNumber(txtNum)
+    # def findFinBal(self):
+    #     spanStr = 'span.info-value'
+    #     txtNum = self.sb.get_text(spanStr)
+    #     self.endingBalance = cleanNumber(txtNum)
