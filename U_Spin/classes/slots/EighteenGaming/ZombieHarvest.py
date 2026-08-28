@@ -9,11 +9,4 @@ class ZombieHarvest(EighteenGaming):
         self.buyoutBalance = 200
         self.estimatedWaitTime = 30
         
-        self.changeScene() # take the screen blocks off
-        self.passSplashScreen()
-        Sleep(sb,3)
-        self.setup()
-        self.checkFinEle()
-        Sleep(sb,3)
-        self.findFinBal()
-        self.calculateWinnings()
+        self.run()

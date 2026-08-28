@@ -13,6 +13,16 @@ class EighteenGaming(Slot):
         # self.confirmBtnStr2 = '//div[contains(@class,"confirm-btn")]'
         self.balanceStr = '//span[contains(@class,"mg-balance-value")]'
 
+    def run(self):
+        self.changeScene() # take the screen blocks off
+        self.passSplashScreen()
+        Sleep(self.sb,3)
+        self.setup()
+        self.checkFinEle()
+        Sleep(self.sb,3)
+        self.findFinBal()
+        self.calculateWinnings()
+
     def passSplashScreen(self):
         self.sb.switch_to_frame('iframe')
         while not self.sb.is_element_present(self.buyoutStr):
@@ -25,25 +35,6 @@ class EighteenGaming(Slot):
         self.clickBonusCard()
         Sleep(self.sb)
         self.clickConfirm()
-
-    # def clickBuyout(self):
-    #     self.sb.find_element(self.buyoutStr).click()
-
-    # def clickBonusCard(self):
-    #     bonusCardStr = f'//div[contains(@class,"bonus-cards")]/div[{self.bonusOption}]/div[contains(@class,"bonus-footer")]'
-    #     self.sb.find_element(bonusCardStr)
-    # def clickBonusCardIncrement(self):
-    #     bonusCardStr = f'//div[contains(@class,"bonus-cards")]/div[{self.bonusOption}]/div[contains(@class,"bonus-footer")]'
-    #     self.sb.find_elements(bonusCardStr)[self.domAdjustment].click()
-
-    # def clickConfirmDiv(self):
-    #     self.sb.find_element(self.confirmDivStr).click()
-    # def clickConfirmDivIncrement(self):
-    #     self.sb.find_elements(self.confirmDivStr)[self.domAdjustment].click()
-    # def clickConfirmBtn(self):
-    #     self.sb.find_element(self.confirmBtnStr).click()
-    # def clickConfirmBtnIncrement(self):
-    #     self.sb.find_elements(self.confirmBtnStr)[self.domAdjustment].click()
 
     def clickBuyout(self):
         self.sb.find_element(self.buyoutStr).click()
