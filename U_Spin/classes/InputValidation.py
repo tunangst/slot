@@ -4,8 +4,7 @@ from utilityFunctions import GetRandomNumber
 rejectSlotList = [
     '0daygames-corsairs-hex',
     '18gaming-lucky-joker',
-    '0xluckylab-obsidian-spin',
-    '18gaming-santas-christmas-magic'
+    '0xluckylab-obsidian-spin'
 ]
 
 builtSlotList = [
@@ -46,6 +45,7 @@ builtSlotList = [
     '18gaming-crypto-bonanza',
     '18gaming-dragon-fortune',
     '18gaming-sheriffs-bounty',
+    '18gaming-santas-christmas-magic',
     '18gaming-wall-street-honey-stakes',
     '18gaming-buffalo-blaze',
     '18gaming-derby-race',

@@ -11,7 +11,7 @@ from seleniumbase import SB
 import threading
 
 slotDataLocation = 'slotdata.json'
-inputOverride = '18gaming-wrath-of-olympus' #'0xedge-5-alpha-planets', False
+inputOverride = '18gaming-pistachio-paradise' #'0xedge-5-alpha-planets', False
 scrapeSlotsToggle = False
 buildSpreadsheetToggle = False
 findNextToBuildToggle = False

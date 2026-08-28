@@ -12,6 +12,9 @@ class EighteenGaming(Slot):
         self.confirmBtnStr = '//*[contains(@class,"confirm-btn")]'
         # self.confirmBtnStr2 = '//div[contains(@class,"confirm-btn")]'
         self.balanceStr = '//span[contains(@class,"mg-balance-value")]'
+        self.countStr = '//div[contains(@class,"mg-right-container")]/div[contains(@class,"mg-action-autoplay")]/div[contains(@class,"mg-autoplay-icon")]'
+        self.spinCountStr = '//div[contains(@class,"icon-spin")]/div[contains(@class,"mg-stop-icon")]/span'
+        self.spinStr = '//div[contains(@class,"mg-action-play")]/div[contains(@class,"icon-spin")]/div[contains(@class,"mg-spin-icon")]'
 
     def run(self):
         self.changeScene() # take the screen blocks off
@@ -25,7 +28,7 @@ class EighteenGaming(Slot):
 
     def passSplashScreen(self):
         self.sb.switch_to_frame('iframe')
-        while not self.sb.is_element_present(self.buyoutStr):
+        while not self.sb.is_element_present(self.spinStr):
             self.passTriangleScreen()
             Sleep(self.sb,2)
 
@@ -69,8 +72,7 @@ class EighteenGaming(Slot):
                 print('error in clickConfirm function') 
 
     def setupAutoSpin(self):
-        countStr = '//div[contains(@class,"mg-right-container")]/div[contains(@class,"mg-action-autoplay")]/div[contains(@class,"mg-autoplay-icon")]'
-        self.sb.find_element(countStr).click()
+        self.sb.find_element(self.countStr).click()
         Sleep(self.sb)
         numStr = f'//li[contains(., "{self.spinCount}")]'
         self.sb.find_element(numStr).click()
@@ -96,31 +98,29 @@ class EighteenGaming(Slot):
             if cap.status == True:
                 self.sb.find_element(self.canvasStr).click()
 
-    def checkAutoFin(self):
-        countStr = '//div[contains(@class,"icon-spin")]/div[contains(@class,"mg-stop-icon")]/span'
-        stuck = False
-        finCheck = False
-        while True:
-            try:
-                checkCount = self.sb.find_element(countStr).text
-                print(checkCount)
-                Sleep(self.sb,5)
-                if checkCount == stuck:
-                    self.sb.find_element(self.canvasStr).click()
-                stuck = checkCount
-                finCheck = False
-            except:
-                if finCheck:
-                    return
-                self.sb.find_element(self.canvasStr).click()
-                # see if autospin is done
-                try:
-                    self.sb.find_element(countStr)
-                except:
-                    finCheck = True
+    # def checkAutoFin(self):
+        # stuck = False
+        # finCheck = False
+        # while True:
+        #     try:
+        #         checkCount = self.sb.find_element(self.spinCountStr).text
+        #         print(checkCount)
+        #         Sleep(self.sb,5)
+        #         if checkCount == stuck:
+        #             self.defaultClick()
+        #         stuck = checkCount
+        #         finCheck = False
+        #     except:
+        #         if finCheck:
+        #             return
+        #         self.sb.find_element(self.canvasStr).click()
+        #         # see if autospin is done
+        #         try:
+        #             self.sb.find_element(self.spinCountStr)
+        #         except:
+        #             finCheck = True
 
     def checkFinEle(self):
-        self.spinStr = '//div[contains(@class,"mg-action-play")]/div[contains(@class,"icon-spin")]/div[contains(@class,"mg-spin-icon")]'
         while not self.sb.is_element_present(self.spinStr):
             self.defaultClick()
             Sleep(self.sb,3)

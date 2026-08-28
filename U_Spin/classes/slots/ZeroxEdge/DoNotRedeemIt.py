@@ -41,8 +41,3 @@ class DoNotRedeemIt(ZeroxEdge):
             countIsPresent = self.sb.is_element_visible(autoPlayCountStr)
             if not countIsPresent:
                 return
-
-    # def findFinBal(self):
-    #     spanStr = 'span.info-value'
-    #     txtNum = self.sb.get_text(spanStr)
-    #     self.endingBalance = cleanNumber(txtNum)

@@ -80,6 +80,8 @@ def findSubclass(sb, slotName, obs, override=False):
                         return slots.EighteenGaming.DragonFortune.DragonFortune(sb,obs)
                 case '18gaming-sheriffs-bounty':
                         return slots.EighteenGaming.SheriffsBounty.SheriffsBounty(sb,obs)
+                case '18gaming-santas-christmas-magic':
+                        return slots.EighteenGaming.SantasChristmasMagic.SantasChristmasMagic(sb,obs)
                 case '18gaming-wall-street-honey-stakes':
                         return slots.EighteenGaming.WallStreetHoneyStakes.WallStreetHoneyStakes(sb,obs)
                 case '18gaming-buffalo-blaze':

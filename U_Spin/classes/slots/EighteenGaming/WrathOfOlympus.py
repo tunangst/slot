@@ -1,5 +1,4 @@
 from classes.nesting.EighteenGaming import EighteenGaming
-from utilityFunctions import Sleep
 
 slotCode = '18gaming-wrath-of-olympus'
 
