@@ -11,7 +11,7 @@ class OneHundredElevenLightProductions(Slot):
         self.confirmDivStr = '//div[contains(@class,"confirm-btn")]'
         self.balanceStr = '//span[contains(@class,"mg-balance-value")]'
 
-    def findSplashLoaded(self):
+    def passSplashScreen(self):
         self.sb.switch_to_frame('iframe')
         while not self.sb.is_element_present(self.buyoutStr):
             self.defaultClick()
@@ -60,7 +60,7 @@ class OneHundredElevenLightProductions(Slot):
 
     def run(self):
         self.changeScene() # take the screen blocks off
-        self.findSplashLoaded()
+        self.passSplashScreen()
         Sleep(self.sb,3)
         self.setup()
         self.checkFin(crop=self.slotCode)

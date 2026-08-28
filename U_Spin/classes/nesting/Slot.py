@@ -114,10 +114,11 @@ class Slot:
         self.obs.runMainScene()
 
     def passTriangleScreen(self):
-        canvas = self.sb.find_element(self.canvasStr)
-        x = canvas.size['width'] * .5 # 50%
-        y = canvas.size['height'] * .80 # 80%
-        ClickTheDom(sb=self.sb,xVal=x,yVal=y)
+        if self.sb.is_element_present(self.canvasStr):
+            canvas = self.sb.find_element(self.canvasStr)
+            x = canvas.size['width'] * .5 # 50%
+            y = canvas.size['height'] * .80 # 80%
+            ClickTheDom(sb=self.sb,xVal=x,yVal=y)
 
     def timedScreenCheck(self,timeout,checkWordsList,eleStr):
         counter = timeout
