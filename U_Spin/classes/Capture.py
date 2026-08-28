@@ -23,7 +23,6 @@ class Capture:
         )
         self.action = action
         self.imageLocation = imageLocation
-        # self.closingWordsList = closingWordsList
         self.targetWordList = targetWordList
         self.textBlocks = []
         self.textBlocksRange = 0
@@ -127,20 +126,7 @@ class Capture:
             return True
         else:
             return False
-                
-    # def checkGameEndWords(self):
-    #     # loop over textBlocks and see if any match the words in targetWords
-    #     for i in self.textBlocksRange:
-    #         block = self.textBlocks[i]
-    #         lowerText = self.textBlocks[i]['text'].lower()
-    #         # compare lowerText with each word in target words
-    #         for word in self.closingWordsList:
-    #             if lowerText == word:
-    #                 print(f'found word matching target words: {word}')
-    #                 self.fin = True
-    #                 self.targetBlock = block
-    #                 return
-
+    
     def findNumber(self):
         # loop over textBlocks and see if any match the words in targetWords
         for i in self.textBlocksRange:
@@ -167,39 +153,3 @@ class Capture:
                     self.fin = True
                     self.targetBlock = self.textBlocks[i+1]
                     return
-
-       
-    # def selectClickTarget(self):
-    #     ########################################### might need to find "clickable" targets on canvas
-    #     # ? try to prioritize "click" or not
-    #     # get random number (0 - rangelen)
-    #     randIndex = GetRandomNumber(len(self.textBlocks)-1)
-    #     # grab index accordingly
-    #     print(randIndex)
-    #     self.textObj = self.textBlocks[randIndex]
-    #     # find middle of random element
-    #     self.findMiddle()
-    #     # click on target area
-    #     # find the "block" area and find a way to click it
-    #     # Calculate center point
-
-    # def findMiddle(self):
-    #     box = self.textObj['box']
-    #     x1 = box[0][0]
-    #     x2 = box[2][0]
-    #     y1 = box[0][1]
-    #     y2 = box[2][1]
-    #     x = int((x1 + x2) / 2)
-    #     y = int((y1 + y2) / 2)
-    #     print("CLICKING:", x, y)
-    #     # Click coordinates
-    #     self.clickTarget = (x, y)
-
-# things to look at
-# scatter
-# bonus
-# click
-# continue
-# spin
-# free
-# multi
