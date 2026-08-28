@@ -1,5 +1,4 @@
 from classes.nesting.OneHundredElevenLightProductions import OneHundredElevenLightProductions
-from utilityFunctions import Sleep
 
 slotCode = '111lightproductions-gemburst-rush'
 
@@ -9,12 +8,4 @@ class GemburstRush(OneHundredElevenLightProductions):
         self.buyoutBalance = 200
         self.estimatedWaitTime = 30
         
-        self.changeScene() # take the screen blocks off
-        Sleep(sb,13)
-        self.passSplashScreen()
-        Sleep(sb,3)
-        self.setup()
-        self.checkFin(crop=slotCode)
-        Sleep(sb,3)
-        self.findFinBal()
-        self.calculateWinnings()
+        self.run()

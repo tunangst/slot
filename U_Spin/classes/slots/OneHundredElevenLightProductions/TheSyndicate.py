@@ -1,5 +1,4 @@
 from classes.nesting.OneHundredElevenLightProductions import OneHundredElevenLightProductions
-from utilityFunctions import Sleep
 
 slotCode = '111lightproductions-the-syndicate'
 
@@ -10,27 +9,4 @@ class TheSyndicate(OneHundredElevenLightProductions):
         self.buyoutBalance = 200
         self.bonusOption = 3
         
-        self.changeScene() # take the screen blocks off
-        Sleep(sb,3)
-        self.passSplashScreen()
-        Sleep(sb,3)
-        self.setup()
-        self.checkFin(crop=slotCode)
-        # self.checkFin(crop=slotCode,action='check end words',targetWordList=spinWords)
-        Sleep(sb,3)
-        self.findFinBal()
-        self.calculateWinnings()
-
-    # def setup(self):
-    #     self.clickBuyout()
-    #     Sleep(self.sb)
-    #     scatterStr = f'//div[contains(@class,"cards")]/div[{self.bonusOption}]/div[contains(@class,"card-body")]/button'
-    #     self.sb.find_element(scatterStr).click()
-    #     Sleep(self.sb)
-    #     self.clickConfirm()
-
-    # def findFinBal(self):
-    #     self.defaultClick()
-    #     Sleep(self.sb,3)
-    #     balanceStr = 'span.mg-balance-value'
-    #     self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
+        self.run()

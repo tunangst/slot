@@ -11,6 +11,12 @@ class OneHundredElevenLightProductions(Slot):
         self.confirmDivStr = '//div[contains(@class,"confirm-btn")]'
         self.balanceStr = '//span[contains(@class,"mg-balance-value")]'
 
+    def findSplashLoaded(self):
+        self.sb.switch_to_frame('iframe')
+        while not self.sb.is_element_present(self.buyoutStr):
+            self.defaultClick()
+            Sleep(self.sb,2)
+
     def setup(self):
         self.clickBuyout()
         Sleep(self.sb)
@@ -37,17 +43,6 @@ class OneHundredElevenLightProductions(Slot):
                 bonusEles[0].click()
             case _:
                 print('error in clickbonus function')
-    # def clickBonusCard(self):
-    #     # this needs to be function level for accurate bonusOption
-    #     bonusCardStr = f'//div[contains(@class,"bonus-cards")]/div[{self.bonusOption}]/div[contains(@class,"bonus-footer")]'
-    #     bonusEles = self.sb.find_elements(bonusCardStr)
-    #     match len(bonusEles):
-    #         case n if n > 1:
-    #             bonusEles[1].click()
-    #         case n if n > 0:
-    #             bonusEles[0].click()
-    #         case _:
-    #             print('error in clickbonus function')
 
     def clickConfirm(self):
         confirmEles = []
@@ -62,6 +57,16 @@ class OneHundredElevenLightProductions(Slot):
                 confirmEles[0].click()
             case _:
                 print('error in clickConfirm function')      
+
+    def run(self):
+        self.changeScene() # take the screen blocks off
+        self.findSplashLoaded()
+        Sleep(self.sb,3)
+        self.setup()
+        self.checkFin(crop=self.slotCode)
+        Sleep(self.sb,3)
+        self.findFinBal()
+        self.calculateWinnings()
 
     def checkFin(self,crop,action='find any text',targetWordList=False):
         startSwitch = False
@@ -81,7 +86,6 @@ class OneHundredElevenLightProductions(Slot):
                     break
                 elif startSwitch == True:
                     endSwitch += 1
-
             except:
                 print(f'{self.slotCode}, error in checkfin')
 
