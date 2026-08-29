@@ -128,6 +128,8 @@ def findSubclass(sb, slotName, obs, override=False):
                         return slots.EighteenGaming.GrandPrixFortunes.GrandPrixFortunes(sb,obs)
                 case '18gaming-meme-clash':
                         return slots.EighteenGaming.MemeClash.MemeClash(sb,obs)
+                case '18gaming-lucky-joker':
+                        return slots.EighteenGaming.LuckyJoker.LuckyJoker(sb,obs)
                 case '18gaming-street-of-spices':
                         return slots.EighteenGaming.StreetOfSpices.StreetOfSpices(sb,obs)
                 case '18gaming-sloth-rush':

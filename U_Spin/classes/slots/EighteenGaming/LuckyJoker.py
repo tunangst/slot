@@ -1,61 +1,36 @@
 from classes.nesting.EighteenGaming import EighteenGaming
-from classes.classUtilityFunctions import cleanNumber, takePicture, findEmbeddedCoords, findCircles
-from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
-from selenium.webdriver.common.action_chains import ActionChains
-import time
+from utilityFunctions import ClickTheDom
 
 slotCode = '18gaming-lucky-joker'
-# winningScreenshot = 'fin'
-closingWordsList = ['spinsplayed','spins played']
-# nextWordList = ['youwon','you won', 'won', 'you']
-bonusWords = ['bonus']
-checkAllWordsList = ['congratulations','you won','free spins']
-
-# too much interaction
-
 
 class LuckyJoker(EighteenGaming):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
         self.estimatedWaitTime = 60
-        
-        self.changeScene() # take the screen blocks off
-        self.runSleepThree()
-        self.passSplashScreen()
-        self.passTriangleScreen()
-        self.runSleepThree()
-        self.setup()
-        self.runSleepMain()
+
         self.run()
-        Sleep(sb, self.estimatedWaitTime)
-        self.checkFin()
-        self.runSleepThree()
-        self.findFinBal()
-        # while check for same screenshots to see if game ended
-        # record ending balance
 
     def setup(self):
         self.setupAutoSpin()
+        # needed for bonus game
+        canvas = self.sb.find_element('canvas')
+        canvasWidth = canvas.size['width']
+        canvasHeight = canvas.size['height']
+        pt1x = canvasWidth * .3
+        pt2x = canvasWidth * .4
+        pt3x = canvasWidth * .5
+        pt4x = canvasWidth * .6
+        pt5x = canvasWidth * .7
+        pty = canvasHeight * .5
+        self.pt1 =(pt1x,pty)
+        self.pt2 =(pt2x,pty)
+        self.pt3 =(pt3x,pty)
+        self.pt4 =(pt4x,pty)
+        self.pt5 =(pt5x,pty)
 
-    def run(self):
-        self.sb.find_element(self.canvasStr).click()
-
-    def checkFin(self):
-        countStr = '//div[contains(@class,"icon-spin")]/div[contains(@class,"mg-stop-icon")]/span'
-        stuck = False
-        while True:
-            try:
-                checkCount = self.sb.find_element(countStr).text
-                print(checkCount)
-                Sleep(self.sb,5)
-                if checkCount == stuck:
-                    self.sb.find_element(self.canvasStr).click()
-                stuck = checkCount
-            except:
-                break
-         
-    def findFinBal(self):
-        balanceStr = '//div[contains(@class,"mg-data-panel-container")]/div[contains(@class,"mg-data-panel-item")]/span[contains(@class,"mg-balance-value")]'
-        self.endingBalance = cleanNumber(self.sb.find_element(balanceStr).text)
-        self.finalBalance = self.endingBalance - self.startingBalance
+    def defaultClick(self):
+        ClickTheDom(sb=self.sb,xVal=self.pt1[0],yVal=self.pt1[1])
+        ClickTheDom(sb=self.sb,xVal=self.pt2[0],yVal=self.pt2[1])
+        ClickTheDom(sb=self.sb,xVal=self.pt3[0],yVal=self.pt3[1])
+        ClickTheDom(sb=self.sb,xVal=self.pt4[0],yVal=self.pt4[1])
+        ClickTheDom(sb=self.sb,xVal=self.pt5[0],yVal=self.pt5[1])

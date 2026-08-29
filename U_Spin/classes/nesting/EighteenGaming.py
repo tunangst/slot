@@ -1,5 +1,4 @@
 from classes.nesting.Slot import Slot
-import json
 import time
 from utilityFunctions import Sleep
 from classes.classUtilityFunctions import takePicture, cleanNumber
@@ -27,7 +26,8 @@ class EighteenGaming(Slot):
         self.calculateWinnings()
 
     def passSplashScreen(self):
-        self.sb.switch_to_frame('iframe')
+        if self.sb.is_element_present('iframe'):
+            self.sb.switch_to_frame('iframe')
         while not self.sb.is_element_present(self.spinStr):
             self.passTriangleScreen()
             Sleep(self.sb,2)

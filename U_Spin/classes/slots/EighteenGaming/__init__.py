@@ -17,7 +17,7 @@ from . import HalloweenTrickAndSpin
 from . import JurassicJungle
 from . import KetchupVsMayo
 from . import LegendsOfOlympus
-# from . import LuckyJocker
+from . import LuckyJoker
 from . import MysticalPlumGrove
 from . import PhoenixWinterParade
 from . import RockNRoll
