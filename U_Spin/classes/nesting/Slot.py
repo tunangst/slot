@@ -145,5 +145,5 @@ class Slot:
         ClickTheDom(sb=self.sb,xVal=self.defaultClickCoords[0],yVal=self.defaultClickCoords[1])
 
     def calculateWinnings(self):
-        self.winnings = self.startingBalance - self.endingBalance
+        self.winnings = f'{self.endingBalance - self.startingBalance:.2f}'
         pass

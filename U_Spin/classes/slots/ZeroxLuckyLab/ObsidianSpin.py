@@ -10,7 +10,6 @@ class ObsidianSpin(ZeroxLuckyLab):
     def __init__(self, sb, obs):
         Sleep(sb,2)
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 30
         self.estimatedWaitTime = 60
         self.bonusOption = 3
         

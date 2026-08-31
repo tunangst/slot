@@ -6,11 +6,8 @@ slotCode = '18gaming-mystical-plum-grove'
 class MysticalPlumGrove(EighteenGaming):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 200
-        self.estimatedWaitTime = 60
         self.x = self.y = 0
         self.bonusOption = 4
-
         self.run()
 
     def defaultClick(self):

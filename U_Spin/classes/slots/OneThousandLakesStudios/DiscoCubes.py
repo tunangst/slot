@@ -6,8 +6,6 @@ slotCode = '1000lakesstudios-disco-cubes'
 class DiscoCubes(OneThousandLakesStudios):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 500
-        self.estimatedWaitTime = 90
         self.splashCheckStr = '//div[@aria-label="Press anywhere to drop the beat"]'
         
         self.changeScene() # take the screen blocks off

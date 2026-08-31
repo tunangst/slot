@@ -5,8 +5,5 @@ slotCode = '18gaming-sweet-stake-25k'
 class SweetStakeTwentyFiveK(EighteenGaming):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 500
-        self.estimatedWaitTime = 60
         self.bonusOption = 4
-
         self.run()

@@ -1,5 +1,4 @@
 from classes.nesting.ZeroxEdge import ZeroxEdge
-from classes.classUtilityFunctions import cleanNumber
 from utilityFunctions import Sleep
 
 slotCode = '0xedge-do-not-redeem-it'

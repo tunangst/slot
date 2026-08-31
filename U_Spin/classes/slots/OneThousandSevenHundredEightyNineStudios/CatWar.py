@@ -1,8 +1,7 @@
 from classes.nesting.OneThousandSevenHundredEightyNineStudios import OneThousandSevenHundredEightyNineStudios
 from classes.classUtilityFunctions import cleanNumber, takePicture, findEmbeddedCoords
 from classes.Capture import Capture
-from utilityFunctions import Sleep, MarkTheDom, ClickTheDom
-from selenium.webdriver.common.action_chains import ActionChains
+from utilityFunctions import Sleep, ClickTheDom
 
 slotCode = '1789studios-cat-war'
 winningScreenshot = 'fin'
@@ -15,8 +14,6 @@ confirmWords = ['confirm']
 class CatWar(OneThousandSevenHundredEightyNineStudios):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 180
-        self.estimatedWaitTime = 30
 
         self.changeScene() # take the screen blocks off
         Sleep(sb,3)

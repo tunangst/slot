@@ -6,8 +6,6 @@ slotCode = '1000lakesstudios-operation-epic-taco'
 class OperationEpicTaco(OneThousandLakesStudios):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 500
-        self.estimatedWaitTime = 60
         
         self.changeScene() # take the screen blocks off
         self.findSplashLoaded()

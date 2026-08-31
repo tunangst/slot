@@ -65,6 +65,18 @@ class OneThousandLakesStudios(Slot):
     def clickConfirmBtn(self):
         self.sb.find_element(self.confirmBtnStr).click()
 
+    def run(self):
+        self.changeScene()
+        self.findSplashLoaded()
+        Sleep(self.sb,3)
+        self.passSplashScreen()
+        Sleep(self.sb,3)
+        self.setup()
+        self.checkFin(crop=self.slotCode)
+        Sleep(self.sb,3)
+        self.findFinBal()
+        self.calculateWinnings()
+
     def checkFin(self,crop=False,action='find any text',targetWordList=False):
         startSwitch = False
         endSwitch = 0 # 0-3

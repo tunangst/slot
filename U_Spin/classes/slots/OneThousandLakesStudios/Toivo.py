@@ -8,8 +8,6 @@ continueStr = ['continue']
 class Toivo(OneThousandLakesStudios):
     def __init__(self, sb, obs):
         super().__init__(sb, slotCode, obs)
-        self.buyoutBalance = 300
-        self.estimatedWaitTime = 30
         self.introSkipStr = '//button[contains(@class,"finnisher-intro__skip")]'
 
         self.changeScene() # take the screen blocks off

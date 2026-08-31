@@ -2,7 +2,6 @@ from classes.nesting.EighteenGaming import EighteenGaming
 from utilityFunctions import GetRandomNumber
 
 slotCode = '18gaming-fruit-burst-bonanza'
-
 bonusArr = [100,70,111,112,42]
 
 class FruitBurstBonanza(EighteenGaming):
@@ -11,7 +10,6 @@ class FruitBurstBonanza(EighteenGaming):
         self.bonusInd = GetRandomNumber(len(bonusArr)-1)
         self.buyoutBalance = bonusArr[self.bonusInd]
         self.bonusOption = self.bonusInd + 1
-        self.estimatedWaitTime = 60
 
         count = 4
         while count > 0:
